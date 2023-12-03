@@ -96,7 +96,7 @@ const Home = () => {
   return (
     <main>
       <Head>
-        <title>Sling Academy</title>
+        <title>Doggy Daycare - Home</title>
         <meta
           name="description"
           content="I hope this tutorial is helpful for you"
