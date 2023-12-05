@@ -5,7 +5,7 @@ import React from "react";
 
 const Quote = () => {
   const urlToFetch =
-    "http://localhost:1337/api/content-media?populate[QuoteDivider][populate]=*";
+    "https://not-cool.onrender.com/api/content-media?populate[QuoteDivider][populate]=*";
   const { completeDataJSON: quoteData } = useDataFetching(urlToFetch);
 
   return (
@@ -14,7 +14,7 @@ const Quote = () => {
         <>
           <div
             style={{
-              backgroundImage: `url(http://localhost:1337${quoteData.data.attributes.QuoteDivider.BackgroundImage.data.attributes.formats.small.url})`,
+              backgroundImage: `url(https://not-cool.onrender.com${quoteData.data.attributes.QuoteDivider.BackgroundImage.data.attributes.formats.small.url})`,
             }}
             className="bg-no-repeat bg-cover bg-center flex justify-center items-center relative bg-fixed"
           >

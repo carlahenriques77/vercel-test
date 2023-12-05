@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 
 const Testimonials = () => {
   const urlToFetch =
-    "http://localhost:1337/api/content-media?populate[Testimonials][populate]=*";
+    "https://not-cool.onrender.com/api/content-media?populate[Testimonials][populate]=*";
   const { completeDataJSON: testimonialsData } = useDataFetching(urlToFetch);
 
   return (
@@ -37,7 +37,7 @@ const Testimonials = () => {
           <div className="relative rounded-[12px] mx-auto sm:max-w-[600px]">
             <Image
               className="w-full rounded-[12px]"
-              src={`http://localhost:1337${testimonialsData.data.attributes.Testimonials.Image.data.attributes.formats.small.url}`}
+              src={`https://not-cool.onrender.com${testimonialsData.data.attributes.Testimonials.Image.data.attributes.formats.small.url}`}
               alt={
                 testimonialsData.data.attributes.Testimonials
                   .ImageAlternativeTextForAccesibility

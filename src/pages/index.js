@@ -49,7 +49,7 @@ const ComponentWithLazyLoad = ({ lazyComponent }) => {
 };
 
 const checkFetchData = async () => {
-  const request = "http://localhost:1337/api/content-media?populate=*";
+  const request = "https://not-cool.onrender.com/api/content-media?populate=*";
 
   // For Production URL
   // const request = "https://not-cool.onrender.com/api/content-media?populate=*";

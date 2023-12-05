@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Faq = () => {
   const urlToFetch =
-    "http://localhost:1337/api/content-media?populate[FrequentlyAskedQuestions][populate][QuestionsAndAnswers][populate]=*";
+    "https://not-cool.onrender.com/api/content-media?populate[FrequentlyAskedQuestions][populate][QuestionsAndAnswers][populate]=*";
   const { completeDataJSON: faqData } = useDataFetching(urlToFetch);
 
   // State to manage visibility of all answers

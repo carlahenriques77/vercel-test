@@ -6,11 +6,11 @@ import React from "react";
 
 const LongText = () => {
   const urlToFetch =
-    "http://localhost:1337/api/content-media?populate[LongTextDescription][populate]=*";
+    "https://not-cool.onrender.com/api/content-media?populate[LongTextDescription][populate]=*";
   const { completeDataJSON: textData } = useDataFetching(urlToFetch);
 
   const urlToFetchImage =
-    "http://localhost:1337/api/content-media?populate[LongTextDescription][populate][ThirdTextGroup][populate]=*";
+    "https://not-cool.onrender.com/api/content-media?populate[LongTextDescription][populate][ThirdTextGroup][populate]=*";
   const { completeDataJSON: imageData } = useDataFetching(urlToFetchImage);
 
   return (
@@ -58,7 +58,7 @@ const LongText = () => {
                   <>
                     <Image
                       className="w-full"
-                      src={`http://localhost:1337${imageData.data.attributes.LongTextDescription.ThirdTextGroup.IllustrationImage.data.attributes.formats.small.url}`}
+                      src={`https://not-cool.onrender.com${imageData.data.attributes.LongTextDescription.ThirdTextGroup.IllustrationImage.data.attributes.formats.small.url}`}
                       alt={
                         imageData.data.attributes.LongTextDescription
                           .ThirdTextGroup.ImageAlternativeTextForAccesibility

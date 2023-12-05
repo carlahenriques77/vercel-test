@@ -4,7 +4,7 @@ import React from "react";
 
 const BookNowCallToAction = () => {
   const urlToFetch =
-    "http://localhost:1337/api/content-media?populate[BookNowCallToAction][populate]=*";
+    "https://not-cool.onrender.com/api/content-media?populate[BookNowCallToAction][populate]=*";
   const { completeDataJSON: bookNowData } = useDataFetching(urlToFetch);
 
   return (
