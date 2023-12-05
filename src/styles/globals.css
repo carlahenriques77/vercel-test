@@ -242,20 +242,6 @@ table {
   transition: 0.2s;
 }
 
-@keyframes slideIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-.slide-in {
-  animation: slideIn 0.3s ease-in-out;
-}
-
 @keyframes loading {
   0% {
     content: ".";
@@ -300,4 +286,12 @@ table {
   bottom: -2px; /* Adjust the distance of the underline from the text */
   left: 0;
   right: 0;
+}
+
+.grid-cols-3-1fr {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.bg-transparent-hover:hover {
+  background-color: rgba(0, 0, 0, 0) !important;
 }

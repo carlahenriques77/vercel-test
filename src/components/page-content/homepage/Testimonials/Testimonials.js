@@ -1,83 +1,58 @@
+import Attribution from "@/components/utils/Attribution";
+import PrimaryButton from "@/components/utils/PrimaryButton";
 import useDataFetching from "@/hooks/useDataFetching";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 const Testimonials = () => {
   const urlToFetch =
-    "https://not-cool.onrender.com/api/content-media?populate[Testimonials][populate][TestimonialVideoFormats][populate]=*";
+    "http://localhost:1337/api/content-media?populate[Testimonials][populate]=*";
   const { completeDataJSON: testimonialsData } = useDataFetching(urlToFetch);
 
-  const urlToFetchThumbnail =
-    "https://not-cool.onrender.com/api/content-media?populate[Testimonials][populate][VideoThumbnail][populate]=*";
-  const { completeDataJSON: thumbnailData } =
-    useDataFetching(urlToFetchThumbnail);
-
   return (
-    <div className="mt-[72px] bg-[url(/pattern.png)] bg-repeat text-[white] flex flex-col gap-9 py-[4%]">
-      {testimonialsData.data && thumbnailData.data && (
+    <div className="mt-[72px] bg-[url(/pattern.webp)] bg-repeat text-[white] flex flex-col py-[8%] gap-9 px-[24px] md:py-[4%] lg:px-[48px] lg:grid lg:grid-cols-2 lg:items-center">
+      {testimonialsData.data && (
         <>
-          <div className="flex flex-col gap-4 xl:gap-5 px-[24px] lg:px-[48px] lg:">
+          <div className="flex flex-col gap-4 xl:gap-5 sm:text-center sm:items-center lg:text-start lg:items-start">
             <h1 className="font-bold text-[28px]">
               {testimonialsData.data.attributes.Testimonials.Title}
             </h1>
 
-            <p className="font-semibold xl:text-[18px]">
+            <p className="font-semibold xl:text-[18px] sm:max-w-[600px]">
               {
                 testimonialsData.data.attributes.Testimonials.Description[0]
                   .children[0].text
               }
             </p>
+
+            <PrimaryButton
+              pageHref="/sobre"
+              buttonText="Veja a historia de nossos clientes"
+              iconSrc="/eye-icon.svg"
+              altText="Olho Icone"
+              buttonClassName="!mt-[24px] !bg-blueForText sm:w-fit sm:py-[16px] sm:px-[24px]"
+            />
           </div>
 
-          <div>
-            <div className="px-[8px] lg:px-[48px]">
-              <video
-                className="w-full rounded-[24px] object-cover h-[400px] bg-midnightBlack border-[8px] border-[black] border-solid"
-                controls
-                poster={`https://not-cool.onrender.com${thumbnailData.data.attributes.Testimonials.VideoThumbnail.ThumbnailOptional.data.attributes.formats.small.url}`}
-              >
-                <source
-                  src={`https://not-cool.onrender.com${testimonialsData.data.attributes.Testimonials.TestimonialVideoFormats.MP4Video.data.attributes.url}`}
-                  type="video/mp4"
-                />
-                <source
-                  src={`https://not-cool.onrender.com${testimonialsData.data.attributes.Testimonials.TestimonialVideoFormats.WebmVideo.data.attributes.url}`}
-                  type="video/webm"
-                />
-                Your browser does not support the video tag.
-              </video>
-            </div>
+          <div className="relative rounded-[12px] mx-auto sm:max-w-[600px]">
+            <Image
+              className="w-full rounded-[12px]"
+              src={`http://localhost:1337${testimonialsData.data.attributes.Testimonials.Image.data.attributes.formats.small.url}`}
+              alt={
+                testimonialsData.data.attributes.Testimonials
+                  .ImageAlternativeTextForAccesibility
+              }
+              width="0"
+              height="0"
+              unoptimized
+            />
 
-            <div className="px-[24px] lg:px-[48px] text-center flex flex-col gap-2 mt-[12px]">
-              <a
-                className="text-[0.5rem] hover:underline sm:text-[0.75rem] xl:text-[0.875rem] text-white75"
-                href={
-                  testimonialsData.data.attributes.Testimonials
-                    .TestimonialVideoFormats.SourceLinkIfAny
-                }
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {
-                  testimonialsData.data.attributes.Testimonials
-                    .TestimonialVideoFormats.AttributionIfAny
-                }
-              </a>
-
-              <a
-                className="text-[0.5rem] hover:underline sm:text-[0.75rem] xl:text-[0.875rem] text-white75"
-                href={
-                  thumbnailData.data.attributes.Testimonials.VideoThumbnail
-                    .SourceLinkIfAny
-                }
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {
-                  thumbnailData.data.attributes.Testimonials.VideoThumbnail
-                    .AttributionIfAny
-                }
-              </a>
-            </div>
+            <div
+              style={{
+                backgroundColor: `rgba(0, 0, 0, 0.${testimonialsData.data.attributes.Testimonials.GlassOverlayTransparency})`,
+              }}
+              className="w-full h-full absolute top-0 rounded-[12px] bg-transparent-hover"
+            ></div>
           </div>
         </>
       )}

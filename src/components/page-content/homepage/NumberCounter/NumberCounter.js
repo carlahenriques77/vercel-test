@@ -6,7 +6,7 @@ import { Waypoint } from "react-waypoint";
 
 const NumberCounter = () => {
   const urlToFetch =
-    "https://not-cool.onrender.com/api/content-media?populate[NumberCounter][populate]=*";
+    "http://localhost:1337/api/content-media?populate[NumberCounter][populate]=*";
   const { completeDataJSON: numberCounterData } = useDataFetching(urlToFetch);
 
   const [startAnimation, setStartAnimation] = useState(false);
@@ -20,7 +20,7 @@ const NumberCounter = () => {
   if (numberCounterData.data) {
     const imageSize = numberCounterData.data.attributes.NumberCounter.ImageSize;
 
-    backgroundImageUrl = `https://not-cool.onrender.com${numberCounterData.data.attributes.NumberCounter.CounterBackgroundImage.data.attributes.formats[imageSize].url}`;
+    backgroundImageUrl = `http://localhost:1337${numberCounterData.data.attributes.NumberCounter.CounterBackgroundImage.data.attributes.formats[imageSize].url}`;
   }
 
   return (
@@ -30,7 +30,7 @@ const NumberCounter = () => {
           style={{
             backgroundImage: `url(${backgroundImageUrl})`,
           }}
-          className="bg-cover bg-center relative"
+          className="bg-cover bg-center relative bg-fixed"
         >
           <div
             style={{

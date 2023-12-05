@@ -6,7 +6,7 @@ const ServerDown = () => {
     <div className="w-[100vw] fixed bg-[white] z-[500] px-[24px] lg:px-[48px] flex flex-col gap-4 justify-center items-center h-[100vh]">
       <Image
         className="w-[230px]"
-        src="/server-down-image.png"
+        src="/server-down-image.webp"
         alt="Pilha de Legos"
         width="0"
         height="0"

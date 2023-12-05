@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import SlideInMenu from "./SlideInMenu";
+import SlideInMenu from "@/components/common/NavBar/SlideInMenu";
 
 const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [is1024, setIs1024] = useState(false);
+  const [isScreen1024Px, setIsScreen1024Px] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -21,10 +21,10 @@ const NavBar = () => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
         setMenuOpen(true);
-        setIs1024(true);
+        setIsScreen1024Px(true);
       } else {
         setMenuOpen(false);
-        setIs1024(false);
+        setIsScreen1024Px(false);
       }
     };
 
@@ -42,13 +42,13 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className="w-full px-[24px] lg:px-[48px] flex h-[72px] text-[white] z-[400] pt-3 pb-1 border-b-8 border-b-skyBlue border-solid top-0 bg-[black] sticky">
-        <div className="w-full flex justify-between items-center">
-          <div className="w-fit relative after:bg-[url(/logo-arc.png)] h-[100%] after:content-[''] after:absolute after:w-[80px] after:h-[20px] after:bg-no-repeat after:mt-[4px] after:right-[70px]">
-            <Link className="block h-full w-full" href={"/"}>
+      <nav className="   text-[white] z-[400] top-0 sticky">
+        <div className="px-[24px] h-full py-[8px] lg:px-[48px] bg-[black] border-b-8 border-b-skyBlue border-solid w-full flex justify-between items-center">
+          <div className="w-fit h-fit relative after:bg-[url(/logo-arc.png)] after:z-20 after:content-[''] after:absolute after:w-[73px] after:h-[20px] after:bg-no-repeat after:bg-contain after:mt-[8px] after:right-[82px] after:block lg:after:mt-[11px]">
+            <Link className="block" href={"/"}>
               <Image
-                className="block h-full w-full"
-                src="/logo.png"
+                className="block h-[50px] w-full"
+                src="/logo.webp"
                 alt="Logo e Botão da Homepage"
                 width="0"
                 height="0"
@@ -58,7 +58,7 @@ const NavBar = () => {
             </Link>
           </div>
 
-          {is1024 ? (
+          {isScreen1024Px ? (
             <SlideInMenu menuOpen={menuOpen} isLinkActive={isLinkActive} />
           ) : (
             <button
@@ -85,11 +85,11 @@ const NavBar = () => {
             </button>
           )}
         </div>
-      </nav>
 
-      {!is1024 && (
-        <SlideInMenu menuOpen={menuOpen} isLinkActive={isLinkActive} />
-      )}
+        {!isScreen1024Px && (
+          <SlideInMenu menuOpen={menuOpen} isLinkActive={isLinkActive} />
+        )}
+      </nav>
     </>
   );
 };

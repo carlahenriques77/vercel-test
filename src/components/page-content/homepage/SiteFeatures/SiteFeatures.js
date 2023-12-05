@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 
 const SiteFeatures = () => {
   const urlToFetch =
-    "https://not-cool.onrender.com/api/content-media?populate[SiteFeatures][populate][FeaturesRepetable][populate]=*";
+    "http://localhost:1337/api/content-media?populate[SiteFeatures][populate][FeaturesRepetable][populate]=*";
   const { completeDataJSON: featuresData } = useDataFetching(urlToFetch);
 
   return (
@@ -13,7 +13,7 @@ const SiteFeatures = () => {
         <>
           <Image
             className="!absolute w-full md:!w-[50%]"
-            src="/dog-paws.png"
+            src="/dog-paws.webp"
             alt="Marcas de patas de cachorro"
             width="0"
             height="0"
@@ -33,7 +33,7 @@ const SiteFeatures = () => {
                 <div className="p-4 rounded-[100%] border-[3px] border-solid border-primaryBlue bg-midnightBlack">
                   <Image
                     className="h-[48px] w-[48px] xl:h-[60px] xl:w-[60px]"
-                    src={`https://not-cool.onrender.com${mapItem.FeatureIcon.data.attributes.url}`}
+                    src={`http://localhost:1337${mapItem.FeatureIcon.data.attributes.url}`}
                     alt={mapItem.ImageAlternativeTextForAccesibility}
                     width="48"
                     height="48"

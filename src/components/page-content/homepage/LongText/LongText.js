@@ -6,11 +6,11 @@ import React from "react";
 
 const LongText = () => {
   const urlToFetch =
-    "https://not-cool.onrender.com/api/content-media?populate[LongTextDescription][populate]=*";
+    "http://localhost:1337/api/content-media?populate[LongTextDescription][populate]=*";
   const { completeDataJSON: textData } = useDataFetching(urlToFetch);
 
   const urlToFetchImage =
-    "https://not-cool.onrender.com/api/content-media?populate[LongTextDescription][populate][ThirdTextGroup][populate]=*";
+    "http://localhost:1337/api/content-media?populate[LongTextDescription][populate][ThirdTextGroup][populate]=*";
   const { completeDataJSON: imageData } = useDataFetching(urlToFetchImage);
 
   return (
@@ -20,7 +20,7 @@ const LongText = () => {
           <div className="flex flex-col gap-12">
             <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2">
               <div className="flex flex-col gap-4 xl:gap-5">
-                <h1 className="text-skyBlue font-bold text-[24px] xl:text-[26px]">
+                <h1 className="text-blueForText font-bold text-[24px] xl:text-[26px]">
                   {
                     textData.data.attributes.LongTextDescription.FirstTextGroup
                       .Title
@@ -36,7 +36,7 @@ const LongText = () => {
               </div>
 
               <div className="flex flex-col gap-4 xl:gap-5">
-                <h1 className="text-skyBlue font-bold text-[24px] xl:text-[26px]">
+                <h1 className="text-blueForText font-bold text-[24px] xl:text-[26px]">
                   {
                     textData.data.attributes.LongTextDescription.SecondTextGroup
                       .Title
@@ -57,7 +57,8 @@ const LongText = () => {
                 {imageData.data && textData.data && (
                   <>
                     <Image
-                      src={`https://not-cool.onrender.com${imageData.data.attributes.LongTextDescription.ThirdTextGroup.IllustrationImage.data.attributes.formats.small.url}`}
+                      className="w-full"
+                      src={`http://localhost:1337${imageData.data.attributes.LongTextDescription.ThirdTextGroup.IllustrationImage.data.attributes.formats.small.url}`}
                       alt={
                         imageData.data.attributes.LongTextDescription
                           .ThirdTextGroup.ImageAlternativeTextForAccesibility
@@ -65,7 +66,6 @@ const LongText = () => {
                       width="0"
                       height="0"
                       unoptimized
-                      style={{ width: "100%" }}
                     />
 
                     <Attribution
@@ -85,7 +85,7 @@ const LongText = () => {
 
               <div className="mt-[12px] flex flex-col gap-[32px] lg:mt-[0px]">
                 <div className="flex flex-col gap-4 xl:gap-5">
-                  <h1 className="text-skyBlue font-bold text-[24px] xl:text-[26px]">
+                  <h1 className="text-blueForText font-bold text-[24px] xl:text-[26px]">
                     {
                       textData.data.attributes.LongTextDescription
                         .ThirdTextGroup.Title

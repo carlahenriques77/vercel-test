@@ -49,7 +49,10 @@ const ComponentWithLazyLoad = ({ lazyComponent }) => {
 };
 
 const checkFetchData = async () => {
-  const request = "https://not-cool.onrender.com/api/content-media?populate=*";
+  const request = "http://localhost:1337/api/content-media?populate=*";
+
+  // For Production URL
+  // const request = "https://not-cool.onrender.com/api/content-media?populate=*";
 
   const response = await fetch(request);
   if (!response.ok) {
@@ -96,10 +99,10 @@ const Home = () => {
   return (
     <main>
       <Head>
-        <title>Doggy Daycare - Home</title>
+        <title>Doggy Daycare: Seja bem-vindo!</title>
         <meta
           name="description"
-          content="I hope this tutorial is helpful for you"
+          content="Oferecemos uma creche para cães onde eles desfrutam de diversão, cuidado e companhia. Proporcionamos um ambiente seguro e alegre para o bem-estar do seu melhor amigo, independente da sua raça."
         />
       </Head>
 

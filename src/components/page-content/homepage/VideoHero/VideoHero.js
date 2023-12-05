@@ -1,15 +1,16 @@
+import Attribution from "@/components/utils/Attribution";
 import useDataFetching from "@/hooks/useDataFetching";
 import React, { useEffect, useState } from "react";
 
 const VideoHero = () => {
   const urlToFetch =
-    "https://not-cool.onrender.com/api/content-media?populate[HeroSection][populate][HeroVideosFormats][populate]=*";
+    "http://localhost:1337/api/content-media?populate[HeroSection][populate][HeroVideosFormats][populate]=*";
   const { completeDataJSON: videoData } = useDataFetching(urlToFetch);
 
   return (
     <>
       <div className="mb-[72px]">
-        <div className="relative after:content-[''] after:absolute after:bg-[length:28px] after:w-full after:h-[8px] after:bg-[url(/vector-hill.png)] after:bg-repeat-x after:-bottom-[2px]">
+        <div className="relative after:content-[''] after:absolute after:bg-[length:28px] after:w-full after:h-[8px] after:bg-[url(/vector-hill.svg)] after:bg-repeat-x after:-bottom-[2px]">
           <video
             autoPlay
             muted
@@ -19,11 +20,11 @@ const VideoHero = () => {
             {videoData.data && (
               <>
                 <source
-                  src={`https://not-cool.onrender.com${videoData.data.attributes.HeroSection.HeroVideosFormats.MP4VideoForTheHeroSection.data.attributes.url}`}
+                  src={`http://localhost:1337${videoData.data.attributes.HeroSection.HeroVideosFormats.MP4VideoForTheHeroSection.data.attributes.url}`}
                   type="video/mp4"
                 />
                 <source
-                  src={`https://not-cool.onrender.com${videoData.data.attributes.HeroSection.HeroVideosFormats.WebmVideoForTheHeroSection.data.attributes.url}`}
+                  src={`http://localhost:1337${videoData.data.attributes.HeroSection.HeroVideosFormats.WebmVideoForTheHeroSection.data.attributes.url}`}
                   type="video/webm"
                 />
                 Your browser does not support the video tag.
@@ -34,20 +35,17 @@ const VideoHero = () => {
 
         {videoData.data && (
           <div className="px-[24px] lg:px-[48px] text-center mt-[8px]">
-            <a
-              className="text-[0.5rem] hover:underline sm:text-[0.75rem] xl:text-[0.875rem] font-semibold text-black75"
-              href={
+            <Attribution
+              sourceHref={
                 videoData.data.attributes.HeroSection.HeroVideosFormats
                   .VideoSourceLinkIfAny
               }
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {
+              attributionText={
                 videoData.data.attributes.HeroSection.HeroVideosFormats
                   .VideoAttributionIfAny
               }
-            </a>
+              classNamesAndTextColor="text-black75"
+            />
           </div>
         )}
       </div>

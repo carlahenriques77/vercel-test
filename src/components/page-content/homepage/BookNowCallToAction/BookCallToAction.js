@@ -4,7 +4,7 @@ import React from "react";
 
 const BookNowCallToAction = () => {
   const urlToFetch =
-    "https://not-cool.onrender.com/api/content-media?populate[BookNowCallToAction][populate]=*";
+    "http://localhost:1337/api/content-media?populate[BookNowCallToAction][populate]=*";
   const { completeDataJSON: bookNowData } = useDataFetching(urlToFetch);
 
   return (
@@ -14,7 +14,7 @@ const BookNowCallToAction = () => {
           <div className="flex flex-col gap-[12px] text-center">
             <div
               className={
-                "relative pt-3 pb-3 after:bg-[url(/dog-walking-paws.png)] after:content-[''] after:absolute after:w-full after:h-full after:bg-repeat-x after:-z-10 after:bg-center after:left-0 after:top-0"
+                "relative pt-3 pb-3 after:bg-[url(/dog-walking-paws.webp)] after:content-[''] after:absolute after:w-full after:h-full after:bg-repeat-x after:-z-10 after:bg-center after:left-0 after:top-0"
               }
             >
               <h1 className="text-primaryBlue font-bold text-[28px] px-[24px] lg:px-[48px] ">

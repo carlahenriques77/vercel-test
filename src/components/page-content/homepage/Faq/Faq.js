@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Faq = () => {
   const urlToFetch =
-    "https://not-cool.onrender.com/api/content-media?populate[FrequentlyAskedQuestions][populate][QuestionsAndAnswers][populate]=*";
+    "http://localhost:1337/api/content-media?populate[FrequentlyAskedQuestions][populate][QuestionsAndAnswers][populate]=*";
   const { completeDataJSON: faqData } = useDataFetching(urlToFetch);
 
   // State to manage visibility of all answers
@@ -20,7 +20,7 @@ const Faq = () => {
   };
 
   return (
-    <div className="px-[24px] lg:px-[48px] mt-[72px] flex flex-col gap-4">
+    <div className="px-[24px] lg:px-[48px] mt-[72px] mb-[72px] flex flex-col gap-4">
       {faqData.data && (
         <>
           <h1 className="text-primaryBlue font-bold text-[28px]">

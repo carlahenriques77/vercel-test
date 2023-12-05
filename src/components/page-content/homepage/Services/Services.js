@@ -6,7 +6,7 @@ import React from "react";
 
 const Services = () => {
   const urlToFetch =
-    "https://not-cool.onrender.com/api/content-media?populate[ServicesSection][populate][ServicesText][populate]=*";
+    "http://localhost:1337/api/content-media?populate[ServicesSection][populate][ServicesText][populate]=*";
   const { completeDataJSON: servicesData } = useDataFetching(urlToFetch);
 
   return (
@@ -34,11 +34,11 @@ const Services = () => {
                     itemIndex % 2 === 0 ? "md:order-[1]" : "md:order-[0]"
                   }`}
                 >
-                  <h2 className="text-skyBlue font-bold text-[24px] xl:text-[26px]">
+                  <h2 className="text-blueForText font-bold text-[24px] xl:text-[26px]">
                     {mapItem.Title}
                   </h2>
 
-                  <p className="xl:text-[18px]">{mapItem.Description}</p>
+                  <p className="font-medium xl:text-[18px]">{mapItem.Description}</p>
 
                   <PrimaryButton
                     pageHref="/servicos"
@@ -52,7 +52,7 @@ const Services = () => {
                 <div>
                   <Image
                     className="rounded-[8px]"
-                    src={`https://not-cool.onrender.com${mapItem.Image.data.attributes.formats.small.url}`}
+                    src={`http://localhost:1337${mapItem.Image.data.attributes.formats.small.url}`}
                     alt={mapItem.ImageAlternativeTextForAccesibility}
                     width="0"
                     height="0"

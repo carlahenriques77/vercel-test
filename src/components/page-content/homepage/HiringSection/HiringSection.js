@@ -4,7 +4,7 @@ import useDataFetching from "@/hooks/useDataFetching";
 
 const HiringSection = () => {
   const urlToFetch =
-    "https://not-cool.onrender.com/api/content-media?populate[JoinUs][populate]=*";
+    "http://localhost:1337/api/content-media?populate[JoinUs][populate]=*";
   const { completeDataJSON: joinUsData } = useDataFetching(urlToFetch);
 
   return (
@@ -12,9 +12,9 @@ const HiringSection = () => {
       {joinUsData.data && (
         <div
           style={{
-            backgroundImage: `url(https://not-cool.onrender.com${joinUsData.data.attributes.JoinUs.BackgroundImage.data.attributes.formats.small.url})`,
+            backgroundImage: `url(http://localhost:1337${joinUsData.data.attributes.JoinUs.BackgroundImage.data.attributes.formats.small.url})`,
           }}
-          className="bg-cover bg-center relative"
+          className="bg-cover bg-center relative bg-fixed"
         >
           <div
             style={{
@@ -27,7 +27,7 @@ const HiringSection = () => {
                 {joinUsData.data.attributes.JoinUs.Title}
               </h1>
 
-              <p className="text-[white] font-semibold md:mx-auto md:w-[60%] xl:text-[18px]">
+              <p className="text-[white] font-semibold max-w-[600px] mx-auto xl:text-[18px]">
                 {
                   joinUsData.data.attributes.JoinUs.Description[0].children[0]
                     .text
@@ -35,13 +35,11 @@ const HiringSection = () => {
               </p>
             </div>
 
-            <div className="flex justify-center">
+            <div>
               <PrimaryButton
                 pageHref="/vagas-disponiveis"
-                buttonText="Explorar Vagas"
-                iconSrc="/briefcase-icon.svg"
-                altText="Pasta Icone"
-                buttonClassName="md:w-[60%] lg:w-[40%]"
+                buttonText="Junte-se a nós!"
+                buttonClassName="w-fit px-[24px] mx-auto !bg-blueForText"
               />
             </div>
           </div>
