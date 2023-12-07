@@ -5,7 +5,7 @@ import useDataFetching from "@/hooks/useDataFetching";
 
 const Footer = () => {
   const urlToFetch =
-    "https://not-cool.onrender.com/api/site-footer?populate[FooterSocials][populate][SocialsRepeatable][populate]=*";
+    "http://localhost:1337/api/site-footer?populate[FooterSocials][populate][SocialsRepeatable][populate]=*";
   const { completeDataJSON: footerData } = useDataFetching(urlToFetch);
 
   const linksData = [
@@ -40,16 +40,12 @@ const Footer = () => {
       <div className="px-[24px] lg:px-[48px] flex flex-col text-[white] z-[200] pt-[8px] pb-[32px] border-t-8 border-t-skyBlue border-solid bg-[black]">
         <div className="w-full flex flex-col">
           <div className="sm:flex sm:items-center sm:justify-between">
-            <div
-              className={
-                "relative after:bg-[url(/logo-arc.png)] after:content-[''] after:absolute after:w-[73px] after:h-[20px] after:bg-no-repeat after:bg-contain after:mt-[-78px] after:right-[82px] after:block after:scale-y-[-1]"
-              }
-            >
-              <Link href={"/"}>
+            <div className="w-fit h-fit relative after:bg-[url(/logo-arc.png)] after:z-20 after:content-[''] after:absolute after:w-[73px] after:h-[20px] after:bg-no-repeat after:bg-contain after:mt-[-78px] after:right-[82px] after:block after:scale-y-[-1]">
+              <Link className="block" href={"/"}>
                 <Image
                   className="block h-[50px] w-full"
                   src="/logo.webp"
-                  alt="Logo Site"
+                  alt="Logo e Botão da Homepage"
                   width="0"
                   height="0"
                   unoptimized
@@ -69,7 +65,7 @@ const Footer = () => {
                       >
                         <Image
                           className="w-full h-[20px]"
-                          src={`https://not-cool.onrender.com${mapItem.Icon.data.attributes.url}`}
+                          src={`http://localhost:1337${mapItem.Icon.data.attributes.url}`}
                           alt={mapItem.ImageAlternativeTextForAccesibility}
                           width="0"
                           height="0"
@@ -86,7 +82,7 @@ const Footer = () => {
             {linksData.map((mapItem, itemIndex) => (
               <li key={itemIndex}>
                 <Link
-                  className="block font-bold underline text-skyBlue p-4 text-[20px] hover:text-primaryBlue"
+                  className="block font-bold underline text-skyBlue p-4 text-[1.25rem] hover:text-primaryBlue"
                   href={mapItem.href}
                 >
                   {mapItem.text}

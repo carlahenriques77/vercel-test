@@ -16,6 +16,7 @@ module.exports = {
       navyBlue: "#1A447E",
       iceBlue: "#D8F0FF",
       blueForText: "#0079C3",
+      skeletonLoading: "#e0e0e0",
       black75: "rgba(0, 0, 0, 0.75)",
       black50: "rgba(0, 0, 0, 0.50)",
       black25: "rgba(0, 0, 0, 0.25)",

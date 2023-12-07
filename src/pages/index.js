@@ -15,95 +15,30 @@ import NavBar from "@/components/common/NavBar/NavBar";
 import LoadingScreen from "@/components/common/LoadingScreen/LoadingScreen";
 import ServerDown from "@/components/common/ServerDown/ServerDown";
 import Head from "next/head";
-
-const ComponentWithLazyLoad = ({ lazyComponent }) => {
-  const ref = useRef();
-  const [inView, setInView] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-        }
-      },
-      { root: null, rootMargin: "0px", threshold: 0.9 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.unobserve(ref.current);
-  }, []);
-
-  return (
-    <div ref={ref}>
-      {inView && (
-        <React.Suspense fallback={<div>Loading...</div>}>
-          {lazyComponent}
-        </React.Suspense>
-      )}
-    </div>
-  );
-};
-
-const checkFetchData = async () => {
-  const request = "https://not-cool.onrender.com/api/content-media?populate=*";
-
-  // For Production URL
-  // const request = "https://not-cool.onrender.com/api/content-media?populate=*";
-
-  const response = await fetch(request);
-  if (!response.ok) {
-    // throw new Error("Network response was not ok")
-    console.log("response not ok testing");
-  }
-};
-
-const LazyLoadComponent = ({ lazyComponent }) => (
-  <ComponentWithLazyLoad lazyComponent={lazyComponent} />
-);
+import LazyLoadComponent from "@/components/common/LazyLoadComponent/LazyLoadComponent";
+import useCheckFetch from "@/hooks/useCheckFetch";
 
 const Home = () => {
-  const [loadingComponents, setLoadingComponents] = useState(true);
-  const [hasError, setHasError] = useState(false);
+  const apiUrl = "http://localhost:1337/api/content-media?populate=*";
+  const { loading, error } = useCheckFetch(apiUrl);
 
-  useEffect(() => {
-    const fetchAndSetLoading = async () => {
-      try {
-        await checkFetchData();
-      } catch (error) {
-        setHasError(true);
-        console.log("error:", error);
-      } finally {
-        setTimeout(() => {
-          setLoadingComponents(false);
-        }, 1000);
-      }
-    };
-
-    fetchAndSetLoading();
-  }, []);
-
-  if (loadingComponents) {
+  if (loading) {
     return <LoadingScreen />;
-  } else if (hasError) {
-    return (
-      <>
-        <ServerDown />
-      </>
-    );
+  }
+
+  if (error) {
+    return <ServerDown />;
   }
 
   return (
     <main>
       <Head>
-        <title>Doggy Daycare: Seja bem-vindo!</title>
+        <title>Seja bem-vindo! | Doggy Daycare</title>
         <meta
           name="description"
           content="Oferecemos uma creche para cães onde eles desfrutam de diversão, cuidado e companhia. Proporcionamos um ambiente seguro e alegre para o bem-estar do seu melhor amigo, independente da sua raça."
         />
+        <link rel="shortcut icon" href="/favicon.png" />
       </Head>
 
       <NavBar />

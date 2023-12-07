@@ -5,16 +5,24 @@ import React from "react";
 
 const Quote = () => {
   const urlToFetch =
-    "https://not-cool.onrender.com/api/content-media?populate[QuoteDivider][populate]=*";
+    "http://localhost:1337/api/content-media?populate[QuoteDivider][populate]=*";
   const { completeDataJSON: quoteData } = useDataFetching(urlToFetch);
 
   return (
-    <div className="mt-[72px]">
+    <>
+      {!quoteData.data && (
+        <div className="pulsate bg-black25 rounded-[12px] mt-[72px] text-skeletonLoading bg-skeletonLoading rounded-[12px] flex justify-center items-center relative">
+          <h1 className="text-skeletonLoading bg-skeletonLoading text-center text-[1.5rem] xl:text-[1.625rem] my-[12%] text-[white] rounded-[12px]">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+          </h1>
+        </div>
+      )}
+
       {quoteData.data && (
-        <>
+        <div className="mt-[72px]">
           <div
             style={{
-              backgroundImage: `url(https://not-cool.onrender.com${quoteData.data.attributes.QuoteDivider.BackgroundImage.data.attributes.formats.small.url})`,
+              backgroundImage: `url(http://localhost:1337${quoteData.data.attributes.QuoteDivider.BackgroundImage.data.attributes.formats.small.url})`,
             }}
             className="bg-no-repeat bg-cover bg-center flex justify-center items-center relative bg-fixed"
           >
@@ -24,7 +32,7 @@ const Quote = () => {
               }}
               className="w-[100%] h-[100%] px-[24px] lg:px-[48px]"
             >
-              <h1 className="text-center text-shadow-black text-[24px] xl:text-[26px] my-[12%] font-bold text-[white]">
+              <h1 className="text-center text-shadow-black text-[1.5rem] xl:text-[1.625rem] my-[12%] font-bold text-[white]">
                 {quoteData.data.attributes.QuoteDivider.Quote}
               </h1>
 
@@ -43,9 +51,9 @@ const Quote = () => {
               />
             </div>
           </div>
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 

@@ -10,6 +10,7 @@
     format("truetype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -17,6 +18,7 @@
   src: url("../../public/fonts/Inter-Black.ttf") format("truetype");
   font-weight: 900; /* Black */
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -24,6 +26,7 @@
   src: url("../../public/fonts/Inter-Bold.ttf") format("truetype");
   font-weight: 700; /* Bold */
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -31,6 +34,7 @@
   src: url("../../public/fonts/Inter-ExtraBold.ttf") format("truetype");
   font-weight: 800; /* ExtraBold */
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -38,6 +42,7 @@
   src: url("../../public/fonts/Inter-ExtraLight.ttf") format("truetype");
   font-weight: 200; /* ExtraLight */
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -45,6 +50,7 @@
   src: url("../../public/fonts/Inter-Light.ttf") format("truetype");
   font-weight: 300; /* Light */
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -52,6 +58,7 @@
   src: url("../../public/fonts/Inter-Medium.ttf") format("truetype");
   font-weight: 500; /* Medium */
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -59,6 +66,7 @@
   src: url("../../public/fonts/Inter-SemiBold.ttf") format("truetype");
   font-weight: 600; /* SemiBold */
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -66,6 +74,7 @@
   src: url("../../public/fonts/Inter-Thin.ttf") format("truetype");
   font-weight: 100; /* Thin */
   font-style: normal;
+  font-display: swap;
 }
 
 body {
@@ -218,6 +227,10 @@ table {
   }
 }
 
+.text-shadow-black-light {
+  text-shadow: 1px 1px 0px #000;
+}
+
 .text-shadow-black {
   text-shadow: 3px 3px 1px #000;
 }
@@ -294,4 +307,20 @@ table {
 
 .bg-transparent-hover:hover {
   background-color: rgba(0, 0, 0, 0) !important;
+}
+
+@keyframes pulsate {
+  0% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+.pulsate {
+  animation: pulsate 1.5s ease-in-out infinite;
 }

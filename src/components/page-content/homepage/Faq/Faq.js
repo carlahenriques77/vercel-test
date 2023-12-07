@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Faq = () => {
   const urlToFetch =
-    "https://not-cool.onrender.com/api/content-media?populate[FrequentlyAskedQuestions][populate][QuestionsAndAnswers][populate]=*";
+    "http://localhost:1337/api/content-media?populate[FrequentlyAskedQuestions][populate][QuestionsAndAnswers][populate]=*";
   const { completeDataJSON: faqData } = useDataFetching(urlToFetch);
 
   // State to manage visibility of all answers
@@ -20,10 +20,39 @@ const Faq = () => {
   };
 
   return (
-    <div className="px-[24px] lg:px-[48px] mt-[72px] mb-[72px] flex flex-col gap-4">
+    <>
+      {!faqData.data && (
+        <div className="px-[24px] lg:px-[48px] mt-[72px] mb-[72px] flex flex-col gap-4">
+          <h1 className="w-fit text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1.75rem]">
+            Lorem ipsum dolor sit amet consectetur
+          </h1>
+
+          <hr aria-hidden="true" className="border-skeletonLoading" />
+
+          <ul className="flex flex-col gap-2">
+            {Array.from({ length: 3 }, (_, itemIndex) => (
+              <li key={itemIndex}>
+                <div
+                  className={`text-skeletonLoading bg-skeletonLoading rounded-[12px]  w-full text-left pl-[16px] pr-[16px] pt-[12px] pb-[12px] flex flex-row gap-3 items-center xl:text-[1.125rem]`}
+                >
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <hr aria-hidden="true" className="border-black25" />
+
+          <p className="w-fit text-skeletonLoading bg-skeletonLoading rounded-[12px] xl:text-[1.125rem]">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem
+            necessitatibus aut accusantium totam quibusdam ut provident sed.
+          </p>
+        </div>
+      )}
+
       {faqData.data && (
-        <>
-          <h1 className="text-primaryBlue font-bold text-[28px]">
+        <div className="px-[24px] lg:px-[48px] mt-[72px] mb-[72px] flex flex-col gap-4">
+          <h1 className="text-primaryBlue font-bold text-[1.75rem]">
             {faqData.data.attributes.FrequentlyAskedQuestions.SectionTitle}
           </h1>
 
@@ -35,7 +64,7 @@ const Faq = () => {
                 <li key={mapItem.id}>
                   <button
                     aria-expanded={openQuestions.includes(mapItem.id)}
-                    className={`bg-primaryBlue text-white90 font-bold  w-full text-left pl-[16px] pr-[16px] pt-[12px] pb-[12px] flex flex-row gap-3 items-center justify-between hover:text-[white] xl:text-[18px]`}
+                    className={`text-shadow-black-light bg-primaryBlue text-white90 font-bold  w-full text-left pl-[16px] pr-[16px] pt-[12px] pb-[12px] flex flex-row gap-3 items-center justify-between hover:text-[white] xl:text-[1.125rem]`}
                     onClick={() => toggleQuestion(mapItem.id)}
                   >
                     {mapItem.Question}
@@ -82,7 +111,7 @@ const Faq = () => {
 
           <hr aria-hidden="true" className="border-black25" />
 
-          <p className="font-bold xl:text-[18px]">
+          <p className="font-bold xl:text-[1.125rem]">
             {faqData.data.attributes.FrequentlyAskedQuestions.ContactUsText}
             {"  "}
             <Link className="text-primaryBlue" href="/">
@@ -92,9 +121,9 @@ const Faq = () => {
               }
             </Link>
           </p>
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 

@@ -1,96 +1,38 @@
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
+import useDataFetching from "@/hooks/useDataFetching";
 import Image from "next/image";
-import { useRouter } from "next/router";
-import SlideInMenu from "@/components/common/NavBar/SlideInMenu";
+import React, { useEffect, useState } from "react";
 
-const NavBar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [isScreen1024Px, setIsScreen1024Px] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
-  const router = useRouter();
-
-  // Function to determine if a link is active
-  const isLinkActive = (pathname) => router.pathname === pathname;
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 1024) {
-        setMenuOpen(true);
-        setIsScreen1024Px(true);
-      } else {
-        setMenuOpen(false);
-        setIsScreen1024Px(false);
-      }
-    };
-
-    // Initial check on component mount
-    handleResize();
-
-    // Add event listener for window resize
-    window.addEventListener("resize", handleResize);
-
-    // Clean up event listener on component unmount
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+const SiteFeatures = () => {
+  const urlToFetch =
+    "http://localhost:1337/api/content-media?populate[SiteFeatures][populate][FeaturesRepetable][populate]=*";
+  const { completeDataJSON: featuresData } = useDataFetching(urlToFetch);
 
   return (
-    <>
-      <nav className="   text-[white] z-[400] top-0 sticky">
-        <div className="px-[24px] h-full py-[8px] lg:px-[48px] bg-[black] border-b-8 border-b-skyBlue border-solid w-full flex justify-between items-center">
-          <div className="w-fit h-fit relative after:bg-[url(/logo-arc.png)] after:z-20 after:content-[''] after:absolute after:w-[73px] after:h-[20px] after:bg-no-repeat after:bg-contain after:mt-[8px] after:right-[82px] after:block lg:after:mt-[11px]">
-            <Link className="block" href={"/"}>
-              <Image
-                className="block h-[50px] w-full"
-                src="/logo.webp"
-                alt="Logo e Botão da Homepage"
-                width="0"
-                height="0"
-                unoptimized
-                priority={true}
-              />
-            </Link>
-          </div>
+    <div>
+      // Add a CSS class for the pulsating animation
+      <style jsx>{`
+        .pulsate {
+          animation: pulsate 1.5s ease-in-out infinite;
+        }
 
-          {isScreen1024Px ? (
-            <SlideInMenu menuOpen={menuOpen} isLinkActive={isLinkActive} />
-          ) : (
-            <button
-              aria-label={menuOpen ? "Fechar Menu" : "Abrir Menu"}
-              aria-expanded={menuOpen}
-              className="flex flex-col cursor-pointer lg:hidden"
-              onClick={toggleMenu}
-            >
-              <div
-                className={`transition-02s w-[35px] h-1 bg-[white] my-[3px] p-0  ${
-                  menuOpen ? "hamburger-spin-positive" : ""
-                }`}
-              ></div>
-              <div
-                className={`transition-02s w-[35px] h-1 bg-[white] my-[3px] p-0 ${
-                  menuOpen ? "!bg-[black]" : ""
-                }`}
-              ></div>
-              <div
-                className={`transition-02s w-[35px] h-1 bg-[white] my-[3px] p-0 ${
-                  menuOpen ? "hamburger-spin-negative" : ""
-                }`}
-              ></div>
-            </button>
-          )}
-        </div>
-
-        {!isScreen1024Px && (
-          <SlideInMenu menuOpen={menuOpen} isLinkActive={isLinkActive} />
-        )}
-      </nav>
-    </>
+        @keyframes pulsate {
+          0% {
+            opacity: 0.8;
+          }
+          50% {
+            opacity: 0.5;
+          }
+          100% {
+            opacity: 0.8;
+          }
+        }
+      `}</style>
+      // Apply the class to the elements you want to pulsate
+      <div
+        className={`bg-skeletonLoading h-[48px] w-[48px] xl:h-[60px] xl:w-[60px] pulsate`}
+      ></div>
+    </div>
   );
 };
-export default NavBar;
+
+export default SiteFeatures;

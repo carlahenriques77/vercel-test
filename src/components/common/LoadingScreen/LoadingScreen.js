@@ -64,7 +64,7 @@ const LoadingScreen = () => {
         </video>
 
         <div className="flex flex-col gap-3 text-center">
-          <h1 className="font-bold text-[24px] xl:text-[26px] text-white75">
+          <h1 className="font-bold text-[1.5rem] xl:text-[1.625rem] text-white75">
             Carregando Conteúdo do Strapi<span className="loading-dots"></span>
           </h1>
 

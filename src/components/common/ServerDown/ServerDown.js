@@ -15,7 +15,7 @@ const ServerDown = () => {
       />
 
       <div className="flex flex-col gap-3 text-center">
-        <h1 className="text-crimsonRed font-bold text-[24px] xl:text-[26px] text-black50">
+        <h1 className="text-crimsonRed font-bold text-[1.5rem] xl:text-[1.625rem] text-black50">
           Ops! Algo deu errado.
         </h1>
 
@@ -24,9 +24,9 @@ const ServerDown = () => {
           favor, entre em contato comigo pelo e-mail:{" "}
           <a
             className="underline text-primaryBlue"
-            href="mailto:carloshenrique.webdev@gmail.com"
+            href="mailto:null"
           >
-            carloshenrique.webdev@gmail.com
+            null
           </a>{" "}
           para que eu possa resolver este problema rapidinho. Agradeço a sua
           paciência e colaboração. Até logo!
