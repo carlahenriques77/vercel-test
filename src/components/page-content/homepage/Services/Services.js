@@ -6,7 +6,7 @@ import React from "react";
 
 const Services = () => {
   const urlToFetch =
-    "http://localhost:1337/api/content-media?populate[ServicesSection][populate][ServicesText][populate]=*";
+    "https://not-cool.onrender.com/api/content-media?populate[ServicesSection][populate][ServicesText][populate]=*";
   const { completeDataJSON: servicesData } = useDataFetching(urlToFetch);
 
   return (
@@ -97,7 +97,7 @@ const Services = () => {
                   <div>
                     <Image
                       className="rounded-[8px]"
-                      src={`http://localhost:1337${mapItem.Image.data.attributes.formats.small.url}`}
+                      src={`https://not-cool.onrender.com${mapItem.Image.data.attributes.formats.small.url}`}
                       alt={mapItem.ImageAlternativeTextForAccesibility}
                       width="0"
                       height="0"

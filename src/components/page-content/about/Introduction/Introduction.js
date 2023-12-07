@@ -3,7 +3,7 @@ import React from "react";
 
 const Introduction = () => {
   const urlToFetch =
-    "http://localhost:1337/api/about-page?populate[Introduction][populate]=*";
+    "https://not-cool.onrender.com/api/about-page?populate[Introduction][populate]=*";
   const { completeDataJSON: introductionData } = useDataFetching(urlToFetch);
 
   return (

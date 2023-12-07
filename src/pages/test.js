@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 
 const SiteFeatures = () => {
   const urlToFetch =
-    "http://localhost:1337/api/content-media?populate[SiteFeatures][populate][FeaturesRepetable][populate]=*";
+    "https://not-cool.onrender.com/api/content-media?populate[SiteFeatures][populate][FeaturesRepetable][populate]=*";
   const { completeDataJSON: featuresData } = useDataFetching(urlToFetch);
 
   return (

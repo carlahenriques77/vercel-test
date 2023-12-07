@@ -19,7 +19,7 @@ import LazyLoadComponent from "@/components/common/LazyLoadComponent/LazyLoadCom
 import useCheckFetch from "@/hooks/useCheckFetch";
 
 const Home = () => {
-  const apiUrl = "http://localhost:1337/api/content-media?populate=*";
+  const apiUrl = "https://not-cool.onrender.com/api/content-media?populate=*";
   const { loading, error } = useCheckFetch(apiUrl);
 
   if (loading) {

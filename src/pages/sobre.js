@@ -14,7 +14,7 @@ import Testimonials from "@/components/page-content/homepage/Testimonials/Testim
 import MeetOurTeam from "@/components/page-content/about/MeetOurTeam/MeetOurTeam";
 
 const About = () => {
-  const apiUrl = "http://localhost:1337/api/content-media?populate=*";
+  const apiUrl = "https://not-cool.onrender.com/api/content-media?populate=*";
   const { loading, error } = useCheckFetch(apiUrl);
 
   if (loading) {

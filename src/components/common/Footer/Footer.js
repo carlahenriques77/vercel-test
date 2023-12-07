@@ -5,7 +5,7 @@ import useDataFetching from "@/hooks/useDataFetching";
 
 const Footer = () => {
   const urlToFetch =
-    "http://localhost:1337/api/site-footer?populate[FooterSocials][populate][SocialsRepeatable][populate]=*";
+    "https://not-cool.onrender.com/api/site-footer?populate[FooterSocials][populate][SocialsRepeatable][populate]=*";
   const { completeDataJSON: footerData } = useDataFetching(urlToFetch);
 
   const linksData = [
@@ -65,7 +65,7 @@ const Footer = () => {
                       >
                         <Image
                           className="w-full h-[20px]"
-                          src={`http://localhost:1337${mapItem.Icon.data.attributes.url}`}
+                          src={`https://not-cool.onrender.com${mapItem.Icon.data.attributes.url}`}
                           alt={mapItem.ImageAlternativeTextForAccesibility}
                           width="0"
                           height="0"

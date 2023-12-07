@@ -4,7 +4,7 @@ import useDataFetching from "@/hooks/useDataFetching";
 
 const HiringSection = () => {
   const urlToFetch =
-    "http://localhost:1337/api/content-media?populate[JoinUs][populate]=*";
+    "https://not-cool.onrender.com/api/content-media?populate[JoinUs][populate]=*";
   const { completeDataJSON: joinUsData } = useDataFetching(urlToFetch);
 
   return (
@@ -20,7 +20,7 @@ const HiringSection = () => {
       {joinUsData.data && (
         <div
           style={{
-            backgroundImage: `url(http://localhost:1337${joinUsData.data.attributes.JoinUs.BackgroundImage.data.attributes.formats.small.url})`,
+            backgroundImage: `url(https://not-cool.onrender.com${joinUsData.data.attributes.JoinUs.BackgroundImage.data.attributes.formats.small.url})`,
           }}
           className="bg-cover bg-center relative bg-fixed"
         >

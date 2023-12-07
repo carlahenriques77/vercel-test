@@ -4,7 +4,7 @@ import React from "react";
 
 const History = () => {
   const urlToFetch =
-    "http://localhost:1337/api/about-page?populate[YourHistory][populate][RepeatableFields][populate]=*";
+    "https://not-cool.onrender.com/api/about-page?populate[YourHistory][populate][RepeatableFields][populate]=*";
   const { completeDataJSON: ourHistoryData } = useDataFetching(urlToFetch);
 
   return (
@@ -48,7 +48,7 @@ const History = () => {
                 <div>
                   <Image
                     className="block w-full h-full rounded-[12px]"
-                    src={`http://localhost:1337${mapItem.Image.data.attributes.formats.small.url}`}
+                    src={`https://not-cool.onrender.com${mapItem.Image.data.attributes.formats.small.url}`}
                     alt={mapItem.ImageAlternativeTextForAccesibility}
                     width="0"
                     height="0"

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 
 const AboutHero = () => {
   const urlToFetch =
-    "http://localhost:1337/api/about-page?populate[AboutHero][populate]=*";
+    "https://not-cool.onrender.com/api/about-page?populate[AboutHero][populate]=*";
   const { completeDataJSON: heroData } = useDataFetching(urlToFetch);
 
   return (
@@ -19,7 +19,7 @@ const AboutHero = () => {
         <div className="relative after:content-[''] after:absolute after:bg-[length:28px] after:w-full after:h-[8px] after:bg-[url(/vector-hill.svg)] after:bg-repeat-x after:-bottom-[2px]">
           <div
             style={{
-              backgroundImage: `url(http://localhost:1337${heroData.data.attributes.AboutHero.BackgroundImage.data.attributes.formats.small.url}`,
+              backgroundImage: `url(https://not-cool.onrender.com${heroData.data.attributes.AboutHero.BackgroundImage.data.attributes.formats.small.url}`,
               backgroundPosition: `${heroData.data.attributes.AboutHero.BackgroundPosition}`,
             }}
             className="mb-[72px] bg-midnightBlack h-[70vh] bg-cover bg-no-repeat"
