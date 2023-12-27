@@ -6,8 +6,7 @@
 
 @font-face {
   font-family: "Inter";
-  src: url("../../public../../public/fonts/Inter-Regular.ttf")
-    format("truetype");
+  src: url("../../public/fonts/Inter-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -277,7 +276,7 @@ table {
   outline: 4px solid #6a4caf; /* Change the color as needed */
   transition: outline 0.2s ease-in-out; /* Adjust the duration and timing function as needed */
   position: relative;
-  z-index: 4000;
+  z-index: 1500;
 }
 
 .invisble-text-screen-reader-only {
@@ -309,18 +308,138 @@ table {
   background-color: rgba(0, 0, 0, 0) !important;
 }
 
-@keyframes pulsate {
-  0% {
-    opacity: 0.8;
-  }
-  50% {
-    opacity: 0.5;
-  }
+.hover-effect {
+  transition: transform 0.18s ease-in-out;
+}
+
+.hover-effect:hover p {
+  color: rgba(255, 255, 255, 0.753) !important;
+}
+
+.hover-effect:hover .hover-continuation {
+  background-color: black !important;
+}
+
+.hover-effect:hover {
+  transform: translateY(-5px) translateX(5px);
+  transition: transform 0.18s ease-in-out;
+}
+
+.hover-effect01:hover {
+  transform: translateY(-5px) translateX(5px);
+}
+
+.example_a:hover {
+  box-shadow: 0px 6px 11px 0px rgba(0, 0, 0, 0.4);
+  transition: all 0.15s ease 0s;
+}
+
+.hover-bg:hover .hover-bg {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  filter: brightness(80%);
+}
+
+.experimental {
+  top: 50%;
+  left: 64%;
+  transform: translate(-50%, -50%);
+  color: #1c1c1c;
+}
+
+.gradient-blue-red {
+  background: linear-gradient(to right, #3bb1f9, #d62839);
+}
+
+.gradient-blue-red-test {
+  background-image: linear-gradient(#3bb1f9, #d62839);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+
+.fixed-background {
+  /* Your existing styles for the fixed background */
+
+  /* Add a box-shadow for the depth effect */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Adjust values as needed */
+}
+
+.blob-shape {
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70% !important;
+}
+
+.grid-cols-test {
+  grid-template-columns: 1.25fr 1fr 0.75fr;
+}
+
+.hero-shadow {
+  box-shadow: 0px 2px 14px 0px rgba(0, 0, 0, 0.543);
+}
+
+.text-limit {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%,
   100% {
-    opacity: 0.8;
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
   }
 }
 
-.pulsate {
-  animation: pulsate 1.5s ease-in-out infinite;
+.leaflet-div-icon {
+  background: none !important;
+  border: none !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background-color: #0f0f0f !important;
+  color: white !important;
+  border: 2px solid #3bb1f9;
+}
+
+.transform-translate-50-50 {
+  transform: translate(-50%, -50%);
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.your-button-class {
+  animation: bounce 2s 1; /* 2s duration, 1 iteration */
 }

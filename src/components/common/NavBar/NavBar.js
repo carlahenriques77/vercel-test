@@ -42,7 +42,7 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className="text-[white] z-[400] top-0 sticky">
+      <nav className="text-[white] z-[2000] top-0 sticky">
         <div className="px-[24px] h-full py-[8px] lg:px-[48px] bg-[black] border-b-8 border-b-skyBlue border-solid w-full flex justify-between items-center">
           <div className="w-fit h-fit relative after:bg-[url(/logo-arc.png)] after:z-20 after:content-[''] after:absolute after:w-[73px] after:h-[20px] after:bg-no-repeat after:bg-contain after:mt-[8px] after:right-[82px] after:block lg:after:mt-[11px]">
             <Link className="block" href={"/"}>

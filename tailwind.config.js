@@ -9,6 +9,7 @@ module.exports = {
     colors: {
       primaryBlue: "#247CB2",
       crimsonRed: "#D62839",
+      lightRed: "#FFD8D9",
       skyBlue: "#3BB1F9",
       deepMaroon: "#9E1F2B",
       lightBlue: "#D8F0FF",
@@ -21,6 +22,7 @@ module.exports = {
       black50: "rgba(0, 0, 0, 0.50)",
       black25: "rgba(0, 0, 0, 0.25)",
       white90: "rgba(255,255,255,0.90)",
+      white85: "rgba(255,255,255,0.85)",
       white75: "rgba(255,255,255,0.75)",
       white50: "rgba(255,255,255,0.50)",
       white25: "rgba(255,255,255,0.25)",

@@ -4,7 +4,7 @@ import useDataFetching from "@/hooks/useDataFetching";
 import Image from "next/image";
 import React from "react";
 
-const LongText = () => {
+const LongText = ({ handleImageClick }) => {
   const urlToFetch =
     "https://not-cool.onrender.com/api/content-media?populate[LongTextDescription][populate]=*";
   const { completeDataJSON: textData } = useDataFetching(urlToFetch);
@@ -15,55 +15,24 @@ const LongText = () => {
 
   return (
     <>
-      {!textData.data && (
-        <div className="pulsate px-[24px] lg:px-[48px] mt-[72px] flex flex-col gap-12">
-          <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2">
-            <div className="flex flex-col gap-4 xl:gap-5">
-              <h1 className="text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1.5rem] xl:text-[1.625rem]">
-                Lorem ipsum dolor sit amet.
-              </h1>
-
-              <p className="text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1rem] xl:text-[1.125rem]">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Doloribus aliquid quisquam ad distinctio animi error delectus
-                quae illo labore, saepe odio mollitia ipsum a, reprehenderit
-                consectetur excepturi facere officia nihil.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-4 xl:gap-5">
-              <h1 className="text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1.5rem] xl:text-[1.625rem]">
-                Lorem ipsum dolor sit amet.
-              </h1>
-
-              <p className="text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1rem] xl:text-[1.125rem]">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Doloribus aliquid quisquam ad distinctio animi error delectus
-                quae illo labore, saepe odio mollitia ipsum a, reprehenderit
-                consectetur excepturi facere officia nihil.
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
-
-      <div className="px-[24px] lg:px-[48px] mt-[72px]">
-        {textData.data && (
-          <>
+      {/* Content */}
+      {textData.data ? (
+        <>
+          <div className="px-[24px] lg:px-[48px] mt-[72px]">
             <div className="flex flex-col gap-12">
               <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2">
                 <div className="flex flex-col gap-4 xl:gap-5">
                   <h1 className="text-blueForText font-bold text-[1.5rem] xl:text-[1.625rem]">
                     {
-                      textData.data.attributes.LongTextDescription
-                        .FirstTextGroup.Title
+                      textData.data.attributes.LongTextDescription.FirstText
+                        .Title
                     }
                   </h1>
 
                   <p className="text-[1rem] xl:text-[1.125rem]">
                     {
-                      textData.data.attributes.LongTextDescription
-                        .FirstTextGroup.Description[0].children[0].text
+                      textData.data.attributes.LongTextDescription.FirstText
+                        .Description[0].children[0].text
                     }
                   </p>
                 </div>
@@ -71,15 +40,15 @@ const LongText = () => {
                 <div className="flex flex-col gap-4 xl:gap-5">
                   <h1 className="text-blueForText font-bold text-[1.5rem] xl:text-[1.625rem]">
                     {
-                      textData.data.attributes.LongTextDescription
-                        .SecondTextGroup.Title
+                      textData.data.attributes.LongTextDescription.SecondText
+                        .Title
                     }
                   </h1>
 
                   <p className="text-[1rem] xl:text-[1.125rem]">
                     {
-                      textData.data.attributes.LongTextDescription
-                        .SecondTextGroup.Description[0].children[0].text
+                      textData.data.attributes.LongTextDescription.SecondText
+                        .Description[0].children[0].text
                     }
                   </p>
                 </div>
@@ -90,7 +59,7 @@ const LongText = () => {
                   {imageData.data && textData.data && (
                     <>
                       <Image
-                        className="w-full"
+                        className="w-full cursor-zoom-in hover:scale-[1.2] transition-all"
                         src={`https://not-cool.onrender.com${imageData.data.attributes.LongTextDescription.ThirdTextGroup.IllustrationImage.data.attributes.formats.small.url}`}
                         alt={
                           imageData.data.attributes.LongTextDescription
@@ -99,18 +68,7 @@ const LongText = () => {
                         width="0"
                         height="0"
                         unoptimized
-                      />
-
-                      <Attribution
-                        sourceHref={
-                          textData.data.attributes.LongTextDescription
-                            .ThirdTextGroup.SourceLinkIfAny
-                        }
-                        attributionText={
-                          textData.data.attributes.LongTextDescription
-                            .ThirdTextGroup.AttributionIfAny
-                        }
-                        classNamesAndTextColor="text-black75 mt-[8px]"
+                        onClick={() => handleImageClick(0)}
                       />
                     </>
                   )}
@@ -143,9 +101,39 @@ const LongText = () => {
                 </div>
               </div>
             </div>
-          </>
-        )}
-      </div>
+          </div>
+        </>
+      ) : (
+        <div className="px-[24px] lg:px-[48px] mt-[72px] flex flex-col gap-12">
+          <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2">
+            <div className="flex flex-col gap-4 xl:gap-5">
+              <h1 className="text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1.5rem] xl:text-[1.625rem]">
+                Lorem ipsum dolor sit amet.
+              </h1>
+
+              <p className="text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1rem] xl:text-[1.125rem]">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Doloribus aliquid quisquam ad distinctio animi error delectus
+                quae illo labore, saepe odio mollitia ipsum a, reprehenderit
+                consectetur excepturi facere officia nihil.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-4 xl:gap-5">
+              <h1 className="text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1.5rem] xl:text-[1.625rem]">
+                Lorem ipsum dolor sit amet.
+              </h1>
+
+              <p className="text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1rem] xl:text-[1.125rem]">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Doloribus aliquid quisquam ad distinctio animi error delectus
+                quae illo labore, saepe odio mollitia ipsum a, reprehenderit
+                consectetur excepturi facere officia nihil.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

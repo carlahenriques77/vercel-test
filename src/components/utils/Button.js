@@ -12,7 +12,7 @@ const Button = ({
 }) => {
   return (
     <Link
-      className={`bg-crimsonRed text-[white] font-bold w-[72%] p-[16px] mt-[32px] rounded hover:brightness-[80%] text-center flex flex-row gap-3 justify-center items-center xl:text-[1.125rem] ${buttonClassName}`}
+      className={`cursor-pointer transition-all bg-crimsonRed px-[32px] py-[16px] rounded-lg border-deepMaroon border-b-[4px] border-solid hover:brightness-90 active:border-b-[2px] active:brightness-60 active:translate-y-[2px] text-[white] font-bold md:max-w-[600px] flex flex-row gap-[16px] justify-center items-center ${buttonClassName}`}
       href={pageHref}
     >
       {buttonText}
@@ -20,7 +20,7 @@ const Button = ({
       {iconSrc && (
         <Image
           aria-hidden={true}
-          className="w-[16px] xl:w-[18px]"
+          className="w-[16px]"
           src={iconSrc}
           alt={altText}
           width={0}

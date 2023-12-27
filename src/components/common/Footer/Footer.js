@@ -18,6 +18,10 @@ const Footer = () => {
       href: "/sobre",
     },
     {
+      text: "Serviços",
+      href: "/servicos",
+    },
+    {
       text: "Contato",
       href: "/sobre",
     },
@@ -26,18 +30,38 @@ const Footer = () => {
       href: "/sobre",
     },
     {
-      text: "Reservarção",
-      href: "/sobre",
+      text: "Reservar",
+      href: "/reservar",
     },
     {
       text: "Localizações",
       href: "/sobre",
     },
+    {
+      text: "Depoimentos",
+      href: "/depoimentos",
+    },
+    {
+      text: "Perguntas Frequentes",
+      href: "/faq",
+    },
+    {
+      text: "Política de Privacidade",
+      href: "/política-de-privacidade",
+    },
+    {
+      text: "Termos e Condições",
+      href: "/termos-e-condicoes",
+    },
+    {
+      text: "Mapa do Site",
+      href: "/mapa-do-site",
+    },
   ];
 
   return (
-    <div>
-      <div className="px-[24px] lg:px-[48px] flex flex-col text-[white] z-[200] pt-[8px] pb-[32px] border-t-8 border-t-skyBlue border-solid bg-[black]">
+    <div className="z-[200] relative">
+      <div className="px-[24px] lg:px-[48px] flex flex-col text-[white] pt-[8px] pb-[32px] border-t-8 border-t-skyBlue border-solid bg-[black]">
         <div className="w-full flex flex-col">
           <div className="sm:flex sm:items-center sm:justify-between">
             <div className="w-fit h-fit relative after:bg-[url(/logo-arc.png)] after:z-20 after:content-[''] after:absolute after:w-[73px] after:h-[20px] after:bg-no-repeat after:bg-contain after:mt-[-78px] after:right-[82px] after:block after:scale-y-[-1]">

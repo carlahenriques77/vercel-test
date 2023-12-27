@@ -21,36 +21,7 @@ const Faq = () => {
 
   return (
     <>
-      {!faqData.data && (
-        <div className="px-[24px] lg:px-[48px] mt-[72px] mb-[72px] flex flex-col gap-4">
-          <h1 className="w-fit text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1.75rem]">
-            Lorem ipsum dolor sit amet consectetur
-          </h1>
-
-          <hr aria-hidden="true" className="border-skeletonLoading" />
-
-          <ul className="flex flex-col gap-2">
-            {Array.from({ length: 3 }, (_, itemIndex) => (
-              <li key={itemIndex}>
-                <div
-                  className={`text-skeletonLoading bg-skeletonLoading rounded-[12px]  w-full text-left pl-[16px] pr-[16px] pt-[12px] pb-[12px] flex flex-row gap-3 items-center xl:text-[1.125rem]`}
-                >
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit
-                </div>
-              </li>
-            ))}
-          </ul>
-
-          <hr aria-hidden="true" className="border-black25" />
-
-          <p className="w-fit text-skeletonLoading bg-skeletonLoading rounded-[12px] xl:text-[1.125rem]">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem
-            necessitatibus aut accusantium totam quibusdam ut provident sed.
-          </p>
-        </div>
-      )}
-
-      {faqData.data && (
+      {faqData.data ? (
         <div className="px-[24px] lg:px-[48px] mt-[72px] mb-[72px] flex flex-col gap-4">
           <h1 className="text-primaryBlue font-bold text-[1.75rem]">
             {faqData.data.attributes.FrequentlyAskedQuestions.SectionTitle}
@@ -114,12 +85,39 @@ const Faq = () => {
           <p className="font-bold xl:text-[1.125rem]">
             {faqData.data.attributes.FrequentlyAskedQuestions.ContactUsText}
             {"  "}
-            <Link className="text-primaryBlue" href="/">
+            <Link className="text-primaryBlue hover:underline" href="/contato">
               {
                 faqData.data.attributes.FrequentlyAskedQuestions
                   .ContactUsLinkOutlinedText
               }
             </Link>
+          </p>
+        </div>
+      ) : (
+        <div className="px-[24px] lg:px-[48px] mt-[72px] mb-[72px] flex flex-col gap-4">
+          <h1 className="w-fit text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1.75rem]">
+            Lorem ipsum dolor sit amet consectetur
+          </h1>
+
+          <hr aria-hidden="true" className="border-skeletonLoading" />
+
+          <ul className="flex flex-col gap-2">
+            {Array.from({ length: 3 }, (_, itemIndex) => (
+              <li key={itemIndex}>
+                <div
+                  className={`text-skeletonLoading bg-skeletonLoading rounded-[12px] w-full text-left pl-[16px] pr-[16px] pt-[12px] pb-[12px] flex flex-row gap-3 items-center xl:text-[1.125rem]`}
+                >
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <hr aria-hidden="true" className="border-black25" />
+
+          <p className="w-fit text-skeletonLoading bg-skeletonLoading rounded-[12px] xl:text-[1.125rem]">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem
+            necessitatibus aut accusantium totam quibusdam ut provident sed.
           </p>
         </div>
       )}

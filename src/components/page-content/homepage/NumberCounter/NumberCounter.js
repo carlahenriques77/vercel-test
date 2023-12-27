@@ -20,33 +20,13 @@ const NumberCounter = () => {
   if (numberCounterData.data) {
     const imageSize = numberCounterData.data.attributes.NumberCounter.ImageSize;
 
-    backgroundImageUrl = `https://not-cool.onrender.com${numberCounterData.data.attributes.NumberCounter.CounterBackgroundImage.data.attributes.formats[imageSize].url}`;
+    backgroundImageUrl = `https://not-cool.onrender.com${numberCounterData.data.attributes.NumberCounter.CounterBackgroundImage.data.attributes.url}`;
   }
 
   return (
-    <div>
-      {!numberCounterData.data && (
-        <div className="pulsate bg-skeletonLoading relative bg-fixed">
-          <div className="px-[24px] lg:px-[48px] mt-[72px] flex flex-col gap-2 items-center justify-center py-[12%] w-[100%] h-[100%] md:gap-[16px] md:py-[4%] lg:grid lg:grid-cols-3">
-            {Array.from({ length: 3 }, (_, index) => (
-              <div
-                key={index}
-                className="w-full flex gap-1 flex-col items-center p-4 bg-white50 rounded-[12px]"
-              >
-                <span className="text-skeletonLoading bg-skeletonLoading rounded-[12px] w-fit font-black text-[1.5rem] xl:text-[1.625rem]">
-                  Lorem
-                </span>
-
-                <span className="text-skeletonLoading bg-skeletonLoading rounded-[12px] w-fit xl:text-[1.125rem]">
-                  Lorem ipsum
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {numberCounterData.data && (
+    <>
+      {/* Content */}
+      {numberCounterData.data ? (
         <div
           style={{
             backgroundImage: `url(${backgroundImageUrl})`,
@@ -57,7 +37,7 @@ const NumberCounter = () => {
             style={{
               backgroundColor: `rgba(0, 0, 0, 0.${numberCounterData.data.attributes.NumberCounter.GlassOverlayTransparency})`,
             }}
-            className="px-[24px] lg:px-[48px] mt-[72px] flex flex-col gap-2 items-center justify-center py-[12%] w-[100%] h-[100%] md:gap-[16px] md:py-[4%] lg:grid lg:grid-cols-3"
+            className="px-[24px] lg:px-[48px] mt-[72px] flex flex-col gap-2 items-center justify-center py-[12%] w-[100%] h-[100%] md:gap-[16px] md:py-[4%] lg:grid lg:grid-cols-3 border-solid border-[black] border-y-[4px]"
           >
             {numberCounterData.data.attributes.NumberCounter.NumberCounterRepetable.map(
               (mapItem) => (
@@ -81,8 +61,27 @@ const NumberCounter = () => {
             )}
           </div>
         </div>
+      ) : (
+        <div className="bg-skeletonLoading relative bg-fixed">
+          <div className="px-[24px] lg:px-[48px] mt-[72px] flex flex-col gap-2 items-center justify-center py-[12%] w-[100%] h-[100%] md:gap-[16px] md:py-[4%] lg:grid lg:grid-cols-3">
+            {Array.from({ length: 3 }, (_, index) => (
+              <div
+                key={index}
+                className="w-full flex gap-1 flex-col items-center p-4 bg-white50 rounded-[12px]"
+              >
+                <span className="text-skeletonLoading bg-skeletonLoading rounded-[12px] w-fit font-black text-[1.5rem] xl:text-[1.625rem]">
+                  Lorem
+                </span>
+
+                <span className="text-skeletonLoading bg-skeletonLoading rounded-[12px] w-fit xl:text-[1.125rem]">
+                  Lorem ipsum
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 
