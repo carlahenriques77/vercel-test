@@ -92,6 +92,7 @@ const Contact = () => {
           console.log("Form submitted successfully!");
 
           await router.push("/sucesso");
+          
           setSubmitting(false);
         } else {
           const errorDetails = await response.json(); // Parse the error response

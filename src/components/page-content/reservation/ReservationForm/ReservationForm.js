@@ -10,6 +10,8 @@ const ReservationForm = () => {
 
   const [numberOfDogs, setNumberOfDogs] = useState("");
   const [agreeToTerms, setAgreeToTerms] = useState(false);
+  
+  const router = useRouter();
 
   const [formData, setFormData] = useState({
     FirstName: "",
@@ -156,6 +158,8 @@ const ReservationForm = () => {
 
         if (response.ok) {
           console.log("Form submitted successfully!");
+
+          await router.push("/sucesso");
 
           setSubmitting(false);
         } else {
