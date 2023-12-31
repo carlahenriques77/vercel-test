@@ -1,6 +1,7 @@
 import Footer from "@/components/common/Footer/Footer";
 import NavBar from "@/components/common/NavBar/NavBar";
 import Faq from "@/components/page-content/homepage/Faq/Faq";
+import Head from "next/head";
 import React from "react";
 
 const FaqPage = () => {
