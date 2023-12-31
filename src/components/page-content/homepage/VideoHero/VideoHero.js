@@ -24,11 +24,11 @@ const VideoHero = () => {
               className="w-full object-cover h-[70vh] bg-midnightBlack"
             >
               <source
-                src={`https://not-cool.onrender.com${videoData.data.attributes.HeroSection.HeroVideosFormats.MP4VideoForTheHeroSection.data.attributes.url}`}
+                src={`https://not-cool.onrender.com${videoData?.data.attributes.HeroSection.HeroVideosFormats.MP4VideoForTheHeroSection.data.attributes.url}`}
                 type="video/mp4"
               />
               <source
-                src={`https://not-cool.onrender.com${videoData.data.attributes.HeroSection.HeroVideosFormats.WebmVideoForTheHeroSection.data.attributes.url}`}
+                src={`https://not-cool.onrender.com${videoData?.data.attributes.HeroSection.HeroVideosFormats.WebmVideoForTheHeroSection.data.attributes.url}`}
                 type="video/webm"
               />
               Your browser does not support the video tag.
