@@ -27,8 +27,11 @@ const Servicos = () => {
   return (
     <div className="bg-[#F5F5F5]">
       <Head>
-        <title>Serviços | Doggy Daycare</title>
-        <meta name="description" content="" />
+        <title>Serviços | Creche para Cães</title>
+        <meta
+          name="description"
+          content="Descubra os serviços oferecidos na nossa Creche para Cães e proporcione ao seu pet uma experiência incrível. Conheça nossos cuidados, atividades e mimos para os amigões de quatro patas."
+        />
       </Head>
 
       <NavBar />

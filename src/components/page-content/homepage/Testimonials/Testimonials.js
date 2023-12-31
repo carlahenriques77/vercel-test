@@ -43,16 +43,14 @@ const Testimonials = ({
             </div>
 
             <Link
-              href={"/testimonial"}
+              aria-hidden={true}
+              href={"/depoimentos"}
               className="block relative rounded-[12px] mx-auto sm:max-w-[600px] border-solid border-skyBlue border-[4px]"
             >
               <Image
                 className="w-full rounded-[12px]"
                 src={`https://not-cool.onrender.com${testimonialsData.data.attributes.Testimonials.Image.data.attributes.formats.small.url}`}
-                alt={
-                  testimonialsData.data.attributes.Testimonials
-                    .ImageAlternativeTextForAccesibility
-                }
+                alt="Depoimentos Illustração"
                 width="0"
                 height="0"
                 unoptimized

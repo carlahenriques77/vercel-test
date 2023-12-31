@@ -82,16 +82,22 @@ const Faq = () => {
 
           <hr aria-hidden="true" className="border-black25" />
 
-          <p className="font-bold xl:text-[1.125rem]">
-            {faqData.data.attributes.FrequentlyAskedQuestions.ContactUsText}
-            {"  "}
-            <Link className="text-primaryBlue hover:underline" href="/contato">
-              {
-                faqData.data.attributes.FrequentlyAskedQuestions
-                  .ContactUsLinkOutlinedText
-              }
-            </Link>
-          </p>
+          <div className="font-bold xl:text-[1.125rem]">
+            <p className="flex gap-[4px]">
+              {faqData.data.attributes.FrequentlyAskedQuestions.ContactUsText}
+              {"  "}
+
+              <Link
+                className="text-primaryBlue hover:underline"
+                href="/contato"
+              >
+                {
+                  faqData.data.attributes.FrequentlyAskedQuestions
+                    .ContactUsLinkOutlinedText
+                }
+              </Link>
+            </p>
+          </div>
         </div>
       ) : (
         <div className="px-[24px] lg:px-[48px] mt-[72px] mb-[72px] flex flex-col gap-4">

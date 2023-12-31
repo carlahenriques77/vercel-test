@@ -48,27 +48,29 @@ const LoadingScreen = () => {
   return (
     <>
       <Head>
-        <title>Carregando...</title>
+        <title>Carregando... | Doggy Daycare</title>
       </Head>
 
       <div className="w-[100vw] fixed bg-[black] z-[500] px-[24px] lg:px-[48px] flex flex-col gap-4 justify-center items-center h-[100vh]">
-        <video
-          className="w-[100px] bg-[black] p-[12px] rounded-[12px] border-solid border-white75 border-[2px]"
-          autoPlay
-          loop
-          muted
-          speed="0.5"
-        >
-          <source src="/loading-animation.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <div className="loader">
+          <div className="loader__bar"></div>
+          <div className="loader__bar"></div>
+          <div className="loader__bar"></div>
+          <div className="loader__bar"></div>
+          <div className="loader__bar"></div>
+          <div className="loader__ball"></div>
+        </div>
 
         <div className="flex flex-col gap-3 text-center">
-          <h1 className="font-bold text-[1.5rem] xl:text-[1.625rem] text-white75">
+          <h1
+            role="alert"
+            aria-live="assertive"
+            className="font-bold text-[1.5rem] xl:text-[1.625rem] text-crimsonRed"
+          >
             Carregando Conteúdo do Strapi<span className="loading-dots"></span>
           </h1>
 
-          <p className="font-bold text-white75">{randomMessage}</p>
+          <p className="font-bold text-primaryBlue">{randomMessage}</p>
         </div>
       </div>
     </>

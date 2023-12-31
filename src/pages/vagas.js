@@ -30,8 +30,11 @@ const Vagas = () => {
   return (
     <div>
       <Head>
-        <title>Vagas | Doggy Daycare</title>
-        <meta name="description" content="" />
+        <title>Vagas | Creche para Cães</title>
+        <meta
+          name="description"
+          content="Explore oportunidades de emprego na Creche para Cães. Junte-se à nossa equipe dedicada e apaixonada por cuidar dos melhores amigos peludos. Consulte as vagas disponíveis e candidate-se hoje!"
+        />
       </Head>
 
       <NavBar />

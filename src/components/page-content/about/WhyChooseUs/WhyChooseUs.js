@@ -10,24 +10,24 @@ const WhyChooseUs = () => {
   return (
     <>
       {whyUsData.data ? (
-        <div className="px-[24px] lg:px-[48px] mb-[124px]">
+        <div className="px-[24px] lg:px-[48px] mb-[72px]">
           <h1 className="text-center text-primaryBlue font-bold text-[1.75rem] mb-[36px]">
             {whyUsData.data.attributes.WhyUs.Title}
           </h1>
 
-          <div className="md:columns-2 lg:columns-3">
+          <div className="grid gap-[16px]">
             {whyUsData.data.attributes.WhyUs.RepeatableFields.map(
               (mapItem, itemIndex) => (
                 <div
                   key={mapItem.id}
-                  className="mb-[16px] gradient-blue-red p-[4px] break-inside-avoid rounded-[12px]"
+                  className="gradient-blue-red p-[4px] break-inside-avoid rounded-[12px]"
                 >
                   <div className="flex flex-col rounded-[12px] gap-2 md:gap-3 bg-[black] p-[24px] text-[white]">
-                    <h3 className="text-skyBlue text-[1.5rem] font-bold xl:text-[1.625rem] w-full">
+                    <h2 className="text-skyBlue text-[1.5rem] font-bold xl:text-[1.625rem] w-full">
                       {mapItem.Title}
-                    </h3>
+                    </h2>
 
-                    <p className="text-white85 xl:text-[1.125rem]">
+                    <p className="text-[white] xl:text-[1.125rem]">
                       {mapItem.Description[0].children[0].text}
                     </p>
                   </div>
@@ -37,7 +37,7 @@ const WhyChooseUs = () => {
           </div>
         </div>
       ) : (
-        <div className=" px-[24px] lg:px-[48px] mb-[124px]">
+        <div className="px-[24px] lg:px-[48px] mb-[124px]">
           <h1 className="w-fit rounded-[8px] text-skeletonLoading bg-skeletonLoading text-center font-bold text-[1.75rem] mb-[36px] mx-auto">
             Lorem ipsum dolor
           </h1>

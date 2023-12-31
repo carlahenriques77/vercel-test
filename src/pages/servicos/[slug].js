@@ -14,6 +14,8 @@ import LazyLoadComponent from "@/components/common/LazyLoadComponent/LazyLoadCom
 import useCheckFetch from "@/hooks/useCheckFetch";
 import LoadingScreen from "@/components/common/LoadingScreen/LoadingScreen";
 import ServerDown from "@/components/common/ServerDown/ServerDown";
+import useDataFetching from "@/hooks/useDataFetching";
+import ImageCarousel from "@/components/utils/ImageCarousel";
 
 const IndividualServices = () => {
   const router = useRouter();
@@ -23,6 +25,16 @@ const IndividualServices = () => {
   const [videoData, setVideoData] = useState(null);
   const [secondData, setSecondData] = useState(null);
   const [thirdData, setThirdData] = useState(null);
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(null);
+
+  const handleImageClick = (index) => {
+    setCurrentImageIndex(index);
+  };
+
+  const handleClose = () => {
+    setCurrentImageIndex(null);
+  };
 
   const urlToFetch01 = `https://not-cool.onrender.com/api/services-collections?filters[slug]=${slug}&populate=*`;
   const { completeDataJSON: completeDataJSON01 } = useDataFetchSlug(
@@ -58,6 +70,19 @@ const IndividualServices = () => {
     fetchData();
   }, [slug, completeDataJSON01, completeDataJSON02, completeDataJSON03]);
 
+  const generateImagePaths = () => {
+    const videoImagePaths = videoData.data?.flatMap((videoItem) =>
+      videoItem.attributes.ImageSlideshow.data.map(
+        (imageItem) =>
+          `https://not-cool.onrender.com${imageItem.attributes.formats.small.url}`
+      )
+    );
+
+    const allImagePaths = [...videoImagePaths];
+
+    return allImagePaths;
+  };
+
   const apiUrl =
     "https://not-cool.onrender.com/api/services-collections?populate=*";
   const { loading: checkLoading, error } = useCheckFetch(apiUrl);
@@ -73,6 +98,14 @@ const IndividualServices = () => {
   return (
     <div>
       <NavBar />
+
+      {currentImageIndex !== null && (
+        <ImageCarousel
+          imagesArray={generateImagePaths()}
+          closeModal={handleClose}
+          initialIndex={currentImageIndex} // Pass the correct initial index
+        />
+      )}
 
       {videoData &&
       videoData.data &&
@@ -97,7 +130,12 @@ const IndividualServices = () => {
           />
 
           <LazyLoadComponent
-            lazyComponent={<ServiceGallery videoData={videoData} />}
+            lazyComponent={
+              <ServiceGallery
+                videoData={videoData}
+                handleImageClick={handleImageClick}
+              />
+            }
           />
 
           <LazyLoadComponent

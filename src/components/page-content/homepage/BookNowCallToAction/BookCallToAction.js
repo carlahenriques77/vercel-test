@@ -30,7 +30,7 @@ const BookNowCallToAction = () => {
             </p>
           </div>
 
-          <div className="px-[24px] mt-[12px] lg:px-[48px] grid grid-cols-2 gap-2 sm:gap-[16px] sm:mx-auto md:w-[60%] lg:w-[50%]">
+          <div className="px-[24px] mt-[12px] lg:px-[48px] grid sm:grid-cols-2 gap-[16px] sm:mx-auto md:w-[60%] lg:w-[50%]">
             <Button
               pageHref="/reservar"
               buttonText="Reservar Agora"

@@ -24,11 +24,12 @@ const Quote = () => {
               }}
               className="w-[100%] h-[100%] px-[24px] lg:px-[48px]"
             >
-              <h1 className="text-center text-shadow-black text-[1.5rem] xl:text-[1.625rem] my-[12%] font-bold text-[white]">
-                {quoteData.data.attributes.QuoteDivider.Quote}
-              </h1>
+              <blockquote className="text-center text-shadow-black text-[1.5rem] xl:text-[1.625rem] my-[12%] font-bold text-[white]">
+                {quoteData.data.attributes.QuoteDivider.Quote}{" "}
+              </blockquote>
 
               <Image
+                aria-hidden={true}
                 style={{
                   top: "100%",
                   left: "50%",

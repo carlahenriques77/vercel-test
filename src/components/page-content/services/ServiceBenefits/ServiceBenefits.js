@@ -7,15 +7,17 @@ const ServiceBenefits = ({ videoData, secondData }) => {
   return (
     <>
       {videoData.data && secondData.data && (
-        <>
+        <div>
           {videoData.data?.map((mapItem, itemIndex) => (
             <div key={mapItem.id}>
               <div className="px-[24px] lg:px-[48px] grid gap-[48px]">
                 <Link
+                  id="main-content"
                   href={"/servicos"}
                   className="text-deepMaroon font-bold flex gap-2 items-center hover:underline "
                 >
                   <Image
+                    aria-hidden={true}
                     className="rounded-[8px] w-[20px] h-[20px]"
                     src={`/left-arrow-icon-red.svg`}
                     alt="Flecha Apontando para a Esquerda Icone"
@@ -46,9 +48,11 @@ const ServiceBenefits = ({ videoData, secondData }) => {
                               (mapItem, itemIndex) => (
                                 <li
                                   key={mapItem.id}
-                                  className="flex items-start gap-[8px] font-medium before:content-['⚫']"
+                                  className="flex items-start gap-[8px] font-medium "
                                 >
-                                  {mapItem.Item}
+                                  <span aria-hidden={true}>⚫</span>
+
+                                  <p>{mapItem.Item}</p>
                                 </li>
                               )
                             )}
@@ -61,7 +65,7 @@ const ServiceBenefits = ({ videoData, secondData }) => {
               </div>
             </div>
           ))}
-        </>
+        </div>
       )}
     </>
   );

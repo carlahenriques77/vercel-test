@@ -11,6 +11,7 @@ const History = ({ handleImageClick }) => {
   return (
     <div className="mb-[72px]">
       <Image
+        aria-hidden={true}
         className="w-full block"
         src="/wave.svg"
         alt="Onda"
@@ -48,9 +49,10 @@ const History = ({ handleImageClick }) => {
 
                 <div className="overflow-hidden">
                   <Image
+                    aria-hidden={true}
                     className="block w-full h-full rounded-[12px] cursor-zoom-in hover:scale-[1.2] transition-all"
                     src={`https://not-cool.onrender.com${mapItem.Image.data.attributes.formats.medium.url}`}
-                    alt={mapItem.ImageAlternativeTextForAccesibility}
+                    alt={`Illustração ${itemIndex}`}
                     width="0"
                     height="0"
                     unoptimized
@@ -99,6 +101,7 @@ const History = ({ handleImageClick }) => {
       )}
 
       <Image
+        aria-hidden={true}
         className="w-full block scale-y-[-1.02]"
         src="/wave.svg"
         alt="Onda"

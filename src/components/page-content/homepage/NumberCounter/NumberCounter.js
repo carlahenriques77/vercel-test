@@ -33,7 +33,7 @@ const NumberCounter = () => {
           }}
           className="bg-cover bg-center relative bg-fixed"
         >
-          <div
+          <ul
             style={{
               backgroundColor: `rgba(0, 0, 0, 0.${numberCounterData.data.attributes.NumberCounter.GlassOverlayTransparency})`,
             }}
@@ -41,25 +41,28 @@ const NumberCounter = () => {
           >
             {numberCounterData.data.attributes.NumberCounter.NumberCounterRepetable.map(
               (mapItem) => (
-                <div
+                <li
                   key={mapItem.id}
-                  className="w-full flex gap-1 flex-col text-center p-4 border-4 border-solid border-deepMaroon bg-midnightBlack"
+                  className="w-full text-center p-4 border-4 border-solid border-deepMaroon bg-midnightBlack"
                 >
                   <Waypoint onEnter={handleEnter} />
 
-                  <CountUp
-                    className="text-crimsonRed font-black text-[1.5rem] xl:text-[1.625rem]"
-                    duration={mapItem.DurationInSeconds}
-                    end={mapItem.CounterAmount}
-                    start={startAnimation}
-                  />
-                  <span className="font-semibold text-white75 xl:text-[1.125rem]">
-                    {mapItem.CounterSubtitle}
-                  </span>
-                </div>
+                  <h2 className="flex gap-1 flex-col">
+                    <CountUp
+                      className="text-crimsonRed font-black text-[1.5rem] xl:text-[1.625rem]"
+                      duration={mapItem.DurationInSeconds}
+                      end={mapItem.CounterAmount}
+                      start={startAnimation}
+                    />
+
+                    <span className="font-semibold text-white75 xl:text-[1.125rem]">
+                      {mapItem.CounterSubtitle}
+                    </span>
+                  </h2>
+                </li>
               )
             )}
-          </div>
+          </ul>
         </div>
       ) : (
         <div className="bg-skeletonLoading relative bg-fixed">

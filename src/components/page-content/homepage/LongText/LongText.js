@@ -59,12 +59,10 @@ const LongText = ({ handleImageClick }) => {
                   {imageData.data && textData.data && (
                     <>
                       <Image
+                        aria-hidden={true}
                         className="w-full cursor-zoom-in hover:scale-[1.2] transition-all"
                         src={`https://not-cool.onrender.com${imageData.data.attributes.LongTextDescription.ThirdTextGroup.IllustrationImage.data.attributes.formats.small.url}`}
-                        alt={
-                          imageData.data.attributes.LongTextDescription
-                            .ThirdTextGroup.ImageAlternativeTextForAccesibility
-                        }
+                        alt="Ilustração"
                         width="0"
                         height="0"
                         unoptimized

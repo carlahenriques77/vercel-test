@@ -2,62 +2,14 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import useDataFetching from "@/hooks/useDataFetching";
+import NewSharedData from "@/components/utils/NewSharedData";
 
 const Footer = () => {
+  const linksData = NewSharedData();
+
   const urlToFetch =
     "https://not-cool.onrender.com/api/site-footer?populate[FooterSocials][populate][SocialsRepeatable][populate]=*";
   const { completeDataJSON: footerData } = useDataFetching(urlToFetch);
-
-  const linksData = [
-    {
-      text: "Home",
-      href: "/",
-    },
-    {
-      text: "Sobre",
-      href: "/sobre",
-    },
-    {
-      text: "Serviços",
-      href: "/servicos",
-    },
-    {
-      text: "Contato",
-      href: "/sobre",
-    },
-    {
-      text: "Vagas",
-      href: "/sobre",
-    },
-    {
-      text: "Reservar",
-      href: "/reservar",
-    },
-    {
-      text: "Localizações",
-      href: "/sobre",
-    },
-    {
-      text: "Depoimentos",
-      href: "/depoimentos",
-    },
-    {
-      text: "Perguntas Frequentes",
-      href: "/faq",
-    },
-    {
-      text: "Política de Privacidade",
-      href: "/política-de-privacidade",
-    },
-    {
-      text: "Termos e Condições",
-      href: "/termos-e-condicoes",
-    },
-    {
-      text: "Mapa do Site",
-      href: "/mapa-do-site",
-    },
-  ];
 
   return (
     <div className="z-[200] relative">
@@ -103,16 +55,18 @@ const Footer = () => {
           </div>
 
           <ul className="flex flex-col gap-1 justify-center items-center mt-[28px] pb-[16px] md:flex-row md:flex-wrap">
-            {linksData.map((mapItem, itemIndex) => (
-              <li key={itemIndex}>
-                <Link
-                  className="block font-bold underline text-skyBlue p-4 text-[1.25rem] hover:text-primaryBlue"
-                  href={mapItem.href}
-                >
-                  {mapItem.text}
-                </Link>
-              </li>
-            ))}
+            {linksData.allLinks
+              .reduce((acc, section) => acc.concat(section.links), [])
+              .map((mapItem, itemIndex) => (
+                <li key={itemIndex}>
+                  <Link
+                    className="block font-bold underline text-skyBlue p-4 text-[1.25rem] hover:text-primaryBlue"
+                    href={mapItem.href}
+                  >
+                    {mapItem.text}
+                  </Link>
+                </li>
+              ))}
           </ul>
         </div>
       </div>

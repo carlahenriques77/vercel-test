@@ -54,8 +54,10 @@ const Services = ({ handleImageClick }) => {
 
                   <div className="overflow-hidden rounded-[8px] border-solid border-[black] border-[4px]">
                     <Image
+                      aria-hidden={true}
                       className="w-full cursor-zoom-in hover:scale-[1.2] transition-all"
                       src={`https://not-cool.onrender.com${mapItem.attributes.Image.data.attributes.formats.small.url}`}
+                      alt={`Illustração Serviço ${itemIndex}`}
                       width="0"
                       height="0"
                       unoptimized

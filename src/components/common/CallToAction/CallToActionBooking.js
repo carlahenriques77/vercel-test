@@ -28,7 +28,7 @@ const CallToActionBooking = () => {
               </p>
 
               <Button
-                pageHref="/sobre"
+                pageHref="/mapa"
                 iconSrc="/map-icon.svg"
                 altText="Mapa Icone"
                 buttonText="Encontrar Localizações Próximas"

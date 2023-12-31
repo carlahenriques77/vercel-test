@@ -7,20 +7,64 @@ import {
   Popup,
   useMapEvents,
   useMap,
+  Tooltip,
 } from "react-leaflet";
 
 import { Icon, divIcon, point } from "leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import Image from "next/image";
 import Button from "@/components/utils/Button";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useDataFetching from "@/hooks/useDataFetching";
+import ImageCarousel from "@/components/utils/ImageCarousel";
 
-function Map() {
+const Map = () => {
+  const [selectedMarker, setSelectedMarker] = useState(null);
+  const [imageIndex, setImageIndex] = useState(null);
+  const [selectedGallery, setSelectedGallery] = useState(null);
+
+  const [cursorCoordinates, setCursorCoordinates] = useState({
+    lat: 0,
+    lng: 0,
+  });
+
+  const [showPopup, setShowPopup] = useState(false);
+
+  console.log("showPopup:", showPopup);
+
+  const MapEvent = () => {
+    const map = useMap();
+
+    useMapEvents({
+      click: (event) => {
+        const { lat, lng } = event.latlng;
+        setCursorCoordinates({ lat, lng });
+        map.openPopup(
+          `Lat: ${lat.toFixed(6)}, Lng: ${lng.toFixed(6)}`,
+          [lat, lng],
+          { autoClose: false }
+        );
+      },
+    });
+
+    return null;
+  };
+
   const urlToFetch01 = `https://not-cool.onrender.com/api/locations-maps?populate=*`;
   const { completeDataJSON: servicesData } = useDataFetching(urlToFetch01);
 
-  const [selectedMarker, setSelectedMarker] = useState(null);
+  const handleImageClick = (index) => {
+    setImageIndex(index);
+  };
+
+  const handleMarkerClick = (marker) => {
+    setSelectedMarker(marker);
+    setSelectedGallery(marker.attributes.ImageGallery);
+  };
+
+  const handleClose = () => {
+    setImageIndex(null);
+  };
 
   const targetElementRef = useRef(null);
 
@@ -48,24 +92,21 @@ function Map() {
     });
   };
 
-  const MapEvent = () => {
-    useMapEvents({
-      click(clickEvent) {
-        console.log(clickEvent.latlng.lat);
-        console.log(clickEvent.latlng.lng);
-      },
-    });
-    return false;
-  };
-
-  const handleMarkerClick = (marker) => {
-    setSelectedMarker(marker);
-  };
-
   return (
     <>
       {servicesData.data ? (
-        <div className="grid">
+        <div id="main-content" className="grid">
+          {imageIndex !== null && selectedGallery && (
+            <ImageCarousel
+              imagesArray={selectedGallery.data.map(
+                (innerMapItem) =>
+                  `https://not-cool.onrender.com${innerMapItem.attributes.formats.small.url}`
+              )}
+              closeModal={handleClose}
+              initialIndex={imageIndex}
+            />
+          )}
+
           <div className="sm:px-[24px] bg-midnightBlack relative">
             <MapContainer
               className="!h-[100vh] md:!h-[80vh] !relative border-solid sm:border-x-[8px] border-skyBlue"
@@ -78,20 +119,34 @@ function Map() {
                 onClick={scrollToTarget}
               >
                 <Image
+                  aria-hidden={true}
                   className="w-[16px] h-[16px]"
                   src={`/arrow-down.svg`}
+                  alt="Flecha apontando para baixo"
                   width="0"
                   height="0"
                   unoptimized
                 />
               </button>
 
+              {showPopup && (
+                <Popup
+                  position={[cursorCoordinates.lat, cursorCoordinates.lng]}
+                  autoClose={false}
+                  closeButton={false}
+                  minWidth={140}
+                >
+                  {`Lat: ${cursorCoordinates.lat.toFixed(
+                    6
+                  )}, Lng: ${cursorCoordinates.lng.toFixed(6)}`}
+                </Popup>
+              )}
+
               <TileLayer
                 attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}{r}.png"
               />
-              {/* For Dev Only. Will Show the Map Cordinates on Click, making Inserting
-        Precise Markers to be Extremely Easy */}
+
               <MapEvent />
 
               <MarkerClusterGroup
@@ -102,6 +157,7 @@ function Map() {
                 {servicesData.data &&
                   servicesData.data.map((mapItem, itemIndex) => (
                     <Marker
+                      key={mapItem.id}
                       position={mapItem.attributes.MarkerLocation}
                       icon={customMarkerIcon}
                       eventHandlers={{
@@ -115,9 +171,10 @@ function Map() {
 
                         <div className="overflow-hidden border-solid border-skyBlue border-[2px] rounded-[100px] w-fit h-fit mt-[8px]">
                           <Image
-                            className="w-[70px] h-[70px] lg:w-[90px] lg:h-[90px] object-cover hover:scale-[1.2] transition-all"
+                            aria-hidden={true}
+                            className="w-[70px] h-[70px] lg:w-[90px] lg:h-[90px] object-cover cursor-zoom-in hover:scale-[1.2] transition-all"
                             src={`https://not-cool.onrender.com${mapItem.attributes.Thumbnail.data.attributes.formats.small.url}`}
-                            alt="Imagem do Local"
+                            alt={`Thumbnail do Local`}
                             width="0"
                             height="0"
                             unoptimized
@@ -243,33 +300,35 @@ function Map() {
                         key={mapItem.id}
                       >
                         <Image
-                          className="hover:scale-[1.2] transition-all  block w-full h-full "
+                          aria-hidden={true}
+                          className="cursor-zoom-in hover:scale-[1.2] transition-all block w-full h-full "
                           src={`https://not-cool.onrender.com${mapItem.attributes.formats.small.url}`}
-                          alt="Galeria do Local"
+                          alt={`Illustração do Local número: ${itemIndex}`}
                           width="0"
                           height="0"
                           unoptimized
+                          onClick={() => handleImageClick(itemIndex)}
                         />
                       </div>
                     )
                   )}
                 </div>
 
-                <div className="grid gap-[16px] mt-[32px]">
+                <div className="w-full grid gap-[16px] mt-[32px]">
                   <Button
-                    pageHref="/formulario-reservar"
+                    pageHref="/reservar"
                     buttonText="Reservar Agora"
                     iconSrc="/calendar-icon.svg"
                     altText="Calendario Icone"
-                    buttonClassName="!w-full  !border-primaryBlue"
+                    buttonClassName="!w-full !max-w-[100%] !border-primaryBlue"
                   />
 
                   <Button
                     pageHref={selectedMarker.attributes.GoogleMapsLink}
                     buttonText="Local no Google Maps"
-                    iconSrc="/calendar-icon.svg"
-                    altText="Calendario Icone"
-                    buttonClassName="!w-full !border-deepMaroon bg-primaryBlue"
+                    iconSrc="/map-icon.svg"
+                    altText="Mapa Icone"
+                    buttonClassName="!w-full !max-w-[100%] !border-deepMaroon bg-primaryBlue"
                   />
                 </div>
               </div>
@@ -279,10 +338,10 @@ function Map() {
           )}
         </div>
       ) : (
-        <div className="mb-[72px] bg-black75 h-[70vh]"></div>
+        <div className="bg-black75 !h-[100vh] md:!h-[80vh]"></div>
       )}
     </>
   );
-}
+};
 
 export default Map;

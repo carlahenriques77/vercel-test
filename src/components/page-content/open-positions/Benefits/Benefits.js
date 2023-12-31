@@ -11,6 +11,7 @@ const Benefits = () => {
   return (
     <div className="my-[72px]">
       <Image
+        aria-hidden={true}
         className="w-full block"
         src="/wave.svg"
         alt="Onda"
@@ -28,7 +29,7 @@ const Benefits = () => {
             </h1>
 
             <div
-              className={`grid gap-8 sm:items-center sm:mx-auto sm:grid-cols-2 lg:grid-cols-3 lg:!max-w-fit lg:mx-none`}
+              className={`grid gap-8 sm:items-center sm:mx-auto sm:grid-cols-2 lg:!max-w-fit lg:mx-none`}
             >
               {ourHistoryData.data.attributes.Benefits.RepeatableFields.map(
                 (mapItem, itemIndex) => (
@@ -82,6 +83,7 @@ const Benefits = () => {
       )}
 
       <Image
+        aria-hidden={true}
         className="w-full block scale-y-[-1.02]"
         src="/wave.svg"
         alt="Onda"

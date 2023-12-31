@@ -18,7 +18,7 @@ const MeetOurTeam = () => {
   return (
     <>
       {teamData.data ? (
-        <div className="my-[72px] px-[24px] lg:px-[48px]">
+        <div className="my-[72px] px-[24px] lg:px-[48px]" aria-hidden={true}>
           <h1 className="text-center text-[black] font-bold text-[1.75rem]">
             {teamData.data.attributes.YourTeam.Title}
           </h1>
@@ -34,7 +34,7 @@ const MeetOurTeam = () => {
                   <Image
                     className="object-cover block w-[300px] h-[300px] sm:w-full"
                     src={`https://not-cool.onrender.com${mapItem.WorkerImage.data.attributes.formats.small.url}`}
-                    alt="Trabalhado da Creche Imagem"
+                    alt={`Trabalhador da Creche Illustração ${itemIndex}`}
                     width={300}
                     height={300}
                     unoptimized

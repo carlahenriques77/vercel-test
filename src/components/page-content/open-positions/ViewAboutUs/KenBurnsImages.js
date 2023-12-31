@@ -46,9 +46,10 @@ const KenBurnsSlideshow = () => {
           <div>
             {images?.map((image, i) => (
               <animated.img
+                aria-hidden={true}
                 key={i}
                 src={`${image}`} // Assuming your images are in the 'public/images' folder
-                alt={`Slide ${i}`}
+                alt={`Ken Burns Illustração ${i}`}
                 className="w-full h-full absolute object-cover"
                 style={{
                   zIndex: i === index ? 1 : 0,

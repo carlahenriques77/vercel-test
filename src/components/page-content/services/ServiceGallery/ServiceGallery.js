@@ -1,6 +1,6 @@
 import React from "react";
 
-const ServiceGallery = ({ videoData }) => {
+const ServiceGallery = ({ videoData, handleImageClick }) => {
   const animationSpeed = "40s";
 
   return (
@@ -39,13 +39,17 @@ const ServiceGallery = ({ videoData }) => {
                       mapItem.attributes.ImageSlideshow.data.map(
                         (mapItem, itemIndex) => (
                           <div
+                            className="overflow-hidden"
                             key={`${mapItem.id}_${repetitionIndex}_${itemIndex}`}
                           >
                             <img
-                              className="w-full h-full object-cover"
+                              aria-hidden={true}
+                              className="cursor-zoom-in hover:scale-[1.2] transition-all w-full h-full object-cover"
                               src={`https://not-cool.onrender.com${mapItem.attributes.formats.small.url}`}
+                              alt={`Illustração: ${itemIndex}`}
                               height="0"
                               width="0"
+                              onClick={() => handleImageClick(itemIndex)}
                             />
                           </div>
                         )

@@ -78,6 +78,7 @@ const Home = () => {
     <main>
       <Head>
         <title>Seja bem-vindo! | Doggy Daycare</title>
+
         <meta
           name="description"
           content="Oferecemos uma creche para cães onde eles desfrutam de diversão, cuidado e companhia. Proporcionamos um ambiente seguro e alegre para o bem-estar do seu melhor amigo, independente da sua raça."

@@ -11,8 +11,9 @@ const SiteFeatures = () => {
     <>
       {featuresData.data ? (
         <>
-          <div className="px-[24px] lg:px-[48px] gap-11 grid relative md:justify-items-center lg:grid-cols-3 lg:gap-7">
+          <ul className="px-[24px] lg:px-[48px] gap-11 grid relative md:justify-items-center lg:grid-cols-3 lg:gap-7">
             <Image
+              aria-hidden={true}
               className="!absolute w-full md:!w-[50%]"
               src="/dog-paws.webp"
               alt="Marcas de patas de cachorro"
@@ -23,20 +24,30 @@ const SiteFeatures = () => {
             />
 
             {featuresData.data.attributes.SiteFeatures.FeaturesRepetable.map(
-              (mapItem) => (
-                <div
+              (mapItem, itemIndex) => (
+                <li
                   className="grid justify-items-center text-center gap-2 z-[100] h-fit md:gap-3"
                   key={mapItem.id}
                 >
-                  <h3 className="text-primaryBlue text-2xl font-bold uppercase xl:text-[1.625rem]">
-                    {mapItem.FeatureTitle}
-                  </h3>
+                  {itemIndex === 0 ? (
+                    <h2
+                      id="main-content"
+                      className="text-primaryBlue text-2xl font-bold uppercase xl:text-[1.625rem]"
+                    >
+                      {mapItem.FeatureTitle}
+                    </h2>
+                  ) : (
+                    <h2 className="text-primaryBlue text-2xl font-bold uppercase xl:text-[1.625rem]">
+                      {mapItem.FeatureTitle}
+                    </h2>
+                  )}
 
                   <div className="p-4 rounded-[100%] border-[3px] border-solid border-primaryBlue bg-midnightBlack">
                     <Image
+                      aria-hidden={true}
                       className="h-[48px] w-[48px] xl:h-[60px] xl:w-[60px]"
                       src={`https://not-cool.onrender.com${mapItem.FeatureIcon.data.attributes.url}`}
-                      alt={mapItem.ImageAlternativeTextForAccesibility}
+                      alt={`Icone ${itemIndex}`}
                       width="48"
                       height="48"
                       unoptimized
@@ -46,10 +57,10 @@ const SiteFeatures = () => {
                   <p className="font-medium xl:text-[1.125rem]">
                     {mapItem.FeatureDescription}
                   </p>
-                </div>
+                </li>
               )
             )}
-          </div>
+          </ul>
         </>
       ) : (
         <div className=" px-[24px] lg:px-[48px] gap-11 grid relative md:justify-items-center lg:grid-cols-3 lg:gap-7">

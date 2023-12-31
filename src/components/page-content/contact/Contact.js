@@ -91,8 +91,12 @@ const Contact = () => {
         if (response.ok) {
           console.log("Form submitted successfully!");
 
-          await router.push("/sucesso");
-          
+          // Get the current route
+          const currentPath = router.asPath;
+
+          // Redirect to the success page by manipulating the current route
+          router.push(`${currentPath}/sucesso`);
+
           setSubmitting(false);
         } else {
           const errorDetails = await response.json(); // Parse the error response
@@ -178,13 +182,16 @@ const Contact = () => {
     <>
       <div className="px-[24px] lg:px-[48px] my-[72px] grid">
         <div className="flex flex-col gap-[12px]">
-          <h1 className="font-bold text-[1.75rem] uppercase">
+          <h1 id="main-content" className="font-bold text-[1.75rem] uppercase">
             ENTRE EM CONTATO
           </h1>
 
           <p className="font-medium xl:text-[1.125rem]">
             Se você tiver alguma dúvida que não está respondida em nossa{" "}
-            <Link className="text-primaryBlue underline" href={"/faq"}>
+            <Link
+              className="text-primaryBlue underline"
+              href={"/perguntas-frequentes"}
+            >
               seção de Perguntas Frequentes (FAQ)
             </Link>
             , se tiver alguma sugestão, desejar relatar um erro em nosso site,
@@ -202,7 +209,10 @@ const Contact = () => {
               <div className="flex flex-col gap-[24px]">
                 <div className="flex gap-[4px] flex-col">
                   <label className="font-bold uppercase" htmlFor="FirstName">
-                    Primeiro Nome: <span className="text-crimsonRed">*</span>
+                    Primeiro Nome:
+                    <span aria-hidden={true} className="text-crimsonRed">
+                      *
+                    </span>
                   </label>
 
                   <input
@@ -216,10 +226,15 @@ const Contact = () => {
                     placeholder="Digite seu primeiro nome"
                     value={formData.FirstName}
                     onChange={handleChange}
+                    aria-live="assertive"
+                    aria-required="true"
                   />
 
                   {formErrors.FirstName && (
-                    <span className="font-bold text-crimsonRed">
+                    <span
+                      aria-hidden={true}
+                      className="font-bold text-crimsonRed"
+                    >
                       {formErrors.FirstName}
                     </span>
                   )}
@@ -227,7 +242,10 @@ const Contact = () => {
 
                 <div className="flex gap-[4px] flex-col">
                   <label className="font-bold uppercase" htmlFor="LastName">
-                    Sobrenome: <span className="text-crimsonRed">*</span>
+                    Sobrenome:
+                    <span aria-hidden={true} className="text-crimsonRed">
+                      *
+                    </span>
                   </label>
 
                   <input
@@ -241,10 +259,15 @@ const Contact = () => {
                     placeholder="Digite seu sobrenome"
                     value={formData.LastName}
                     onChange={handleChange}
+                    aria-live="assertive"
+                    aria-required="true"
                   />
 
                   {formErrors.LastName && (
-                    <span className="font-bold text-crimsonRed">
+                    <span
+                      aria-hidden={true}
+                      className="font-bold text-crimsonRed"
+                    >
                       {formErrors.LastName}
                     </span>
                   )}
@@ -252,7 +275,10 @@ const Contact = () => {
 
                 <div className="flex gap-[4px] flex-col">
                   <label className="font-bold uppercase" htmlFor="Email">
-                    Email: <span className="text-crimsonRed">*</span>
+                    Email:
+                    <span aria-hidden={true} className="text-crimsonRed">
+                      *
+                    </span>
                   </label>
 
                   <input
@@ -266,10 +292,15 @@ const Contact = () => {
                     placeholder="Digite seu endereço de email"
                     value={formData.Email}
                     onChange={handleChange}
+                    aria-live="assertive"
+                    aria-required="true"
                   />
 
                   {formErrors.Email && (
-                    <span className="font-bold text-crimsonRed">
+                    <span
+                      aria-hidden={true}
+                      className="font-bold text-crimsonRed"
+                    >
                       {formErrors.Email}
                     </span>
                   )}
@@ -277,7 +308,10 @@ const Contact = () => {
 
                 <div className="flex gap-[4px] flex-col">
                   <label className="font-bold uppercase" htmlFor="Message">
-                    Mensagem: <span className="text-crimsonRed">*</span>
+                    Mensagem:
+                    <span aria-hidden={true} className="text-crimsonRed">
+                      *
+                    </span>
                   </label>
 
                   <textarea
@@ -291,10 +325,15 @@ const Contact = () => {
                     placeholder="Digite sua mensagem"
                     value={formData.Message}
                     onChange={handleChange}
+                    aria-live="assertive"
+                    aria-required="true"
                   ></textarea>
 
                   {formErrors.Message && (
-                    <span className="font-bold text-crimsonRed">
+                    <span
+                      aria-hidden={true}
+                      className="font-bold text-crimsonRed"
+                    >
                       {formErrors.Message}
                     </span>
                   )}
@@ -308,7 +347,10 @@ const Contact = () => {
                     <Link className="text-primaryBlue" href={"/"}>
                       [Veja o Mapa]
                     </Link>
-                    : <span className="text-crimsonRed">*</span>
+                    :
+                    <span aria-hidden={true} className="text-crimsonRed">
+                      *
+                    </span>
                   </label>
 
                   <select
@@ -319,9 +361,15 @@ const Contact = () => {
                     id="Location"
                     name="Location"
                     onChange={handleChange}
+                    aria-live="assertive"
+                    aria-required="true"
                     value={formData.Location}
                   >
-                    <option value="" hidden>
+                    <option
+                      aria-label="Selecione a Localização para onde você deseja enviar uma Mensagem"
+                      value=""
+                      disabled
+                    >
                       ⚠️ Selecione uma Localização ⚠️
                     </option>
 
@@ -346,26 +394,38 @@ const Contact = () => {
 
                   {formErrors.Location ? (
                     <>
-                      <span className="font-bold text-crimsonRed">
+                      <span
+                        aria-hidden={true}
+                        className="font-bold text-crimsonRed"
+                      >
                         {formErrors.Location}
                       </span>
 
-                      <p className="mt-[4px] text-crimsonRed font-bold brightness-75">
-                        *Selecione a Localização para onde deseja enviar a
-                        Mensagem
+                      <p
+                        aria-hidden="true"
+                        className="mt-[4px] text-crimsonRed font-bold brightness-75"
+                      >
+                        <span className="text-crimsonRed">*</span>Selecione a
+                        Localização para onde deseja enviar a Mensagem
                       </p>
                     </>
                   ) : (
-                    <p className="mt-[4px] text-black75 font-bold">
-                      *Selecione a Localização para onde deseja enviar a
-                      Mensagem
+                    <p
+                      aria-hidden="true"
+                      className="mt-[4px] text-black75 font-bold"
+                    >
+                      <span className="text-crimsonRed">*</span>Selecione a
+                      Localização para onde deseja enviar a Mensagem
                     </p>
                   )}
                 </div>
 
                 <div className="flex gap-[4px] flex-col">
                   <label className="font-bold uppercase" htmlFor="InquiryType">
-                    Tipo de Contato : <span className="text-crimsonRed">*</span>
+                    Tipo de Contato :
+                    <span aria-hidden={true} className="text-crimsonRed">
+                      *
+                    </span>
                   </label>
 
                   <select
@@ -376,9 +436,15 @@ const Contact = () => {
                     id="InquiryType"
                     name="InquiryType"
                     onChange={handleChange}
+                    aria-live="assertive"
+                    aria-required="true"
                     value={formData.InquiryType}
                   >
-                    <option value="" disabled>
+                    <option
+                      aria-label="Selecione o tipo de Consulta que deseja fazer"
+                      value=""
+                      disabled
+                    >
                       ⚠️ Selecione o Tipo de Consulta ⚠️
                     </option>
 
@@ -389,7 +455,10 @@ const Contact = () => {
                   </select>
 
                   {formErrors.InquiryType && (
-                    <span className="font-bold text-crimsonRed">
+                    <span
+                      aria-hidden={true}
+                      className="font-bold text-crimsonRed"
+                    >
                       {formErrors.InquiryType}
                     </span>
                   )}
@@ -401,8 +470,12 @@ const Contact = () => {
 
             <div className="flex flex-col gap-[16px]">
               <div>
-                <p className="text-black50 font-bold xl:text-[1.125rem]">
-                  *As informações pessoais fornecidas por meio deste formulário
+                <p className="text-[black] font-bold xl:text-[1.125rem]">
+                  <span aria-hidden={true} className="text-crimsonRed">
+                    *
+                  </span>
+                  <span className="visually-hidden">Mensagem Importante:</span>
+                  As informações pessoais fornecidas por meio deste formulário
                   serão utilizadas exclusivamente para responder à sua pergunta
                   ou preocupação e não serão utilizadas para fins de marketing.
                   É necessário ter 16 anos ou mais para enviar este formulário.
@@ -426,6 +499,21 @@ const Contact = () => {
                   unoptimized
                 />
               </button>
+
+              <div aria-live="assertive" role="alert">
+                {formFieldsHasError && (
+                  <p className="visually-hidden">
+                    Houve um erro ao enviar o formulário. Por favor, corrija os
+                    seguintes campos e tente novamente:{" "}
+                    {formErrors.FirstName && ` ${formErrors.FirstName},`}
+                    {formErrors.LastName && ` ${formErrors.LastName},`}
+                    {formErrors.Email && ` ${formErrors.Email},`}
+                    {formErrors.Message && ` ${formErrors.Message},`}
+                    {formErrors.Location && ` ${formErrors.Location},`}
+                    {formErrors.InquiryType && ` ${formErrors.InquiryType}.`}
+                  </p>
+                )}
+              </div>
             </div>
           </form>
         </div>

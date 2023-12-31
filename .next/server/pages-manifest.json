@@ -1,1 +1,10 @@
-{"/_app":"pages/_app.js","/_document":"pages/_document.js","/api/hello":"pages/api/hello.js","/contato":"pages/contato.html","/depoimentos":"pages/depoimentos.html","/":"pages/index.html","/mapa":"pages/mapa.html","/reservar":"pages/reservar.html","/servicos":"pages/servicos.html","/servicos/[slug]":"pages/servicos/[slug].html","/sobre":"pages/sobre.html","/sucesso":"pages/sucesso.html","/vagas":"pages/vagas.html","/vagas/[slug]":"pages/vagas/[slug].html","/_error":"pages/_error.js","/404":"pages/404.html"}
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/": "pages/index.js",
+  "/reservar": "pages/reservar.js",
+  "/test": "pages/test.js",
+  "/sobre": "pages/sobre.js",
+  "/mapa": "pages/mapa.js"
+}

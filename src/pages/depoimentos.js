@@ -3,97 +3,57 @@ import CallToActionBooking from "@/components/common/CallToAction/CallToActionBo
 import Footer from "@/components/common/Footer/Footer";
 import NavBar from "@/components/common/NavBar/NavBar";
 import useDataFetching from "@/hooks/useDataFetching";
+import Head from "next/head";
 import Image from "next/image";
 import { useRef, useState } from "react";
+import YouTube from "react-youtube";
 
 const TestimonialsPage = () => {
   const urlToFetch01 =
     "https://not-cool.onrender.com/api/testimonials-page?populate[TestimonialsRepeatable][populate]=*";
   const { completeDataJSON: videoData } = useDataFetching(urlToFetch01);
 
-  // State to track whether each video is playing or paused
-  const [videoStates, setVideoStates] = useState(
-    Array.from({ length: 3 }, () => false)
-  );
-
-  // Function to toggle play/pause for a specific video index
-  const togglePlay = (index) => {
-    const newVideoStates = [...videoStates];
-    const video = document.getElementById(`myVideo${index}`);
-
-    if (newVideoStates[index]) {
-      video.pause();
-    } else {
-      video.play();
-    }
-
-    newVideoStates[index] = !newVideoStates[index];
-    setVideoStates(newVideoStates);
-  };
-
   return (
     <div>
+      <Head>
+        <title>Depoimentos | Doggy Daycare</title>
+        <meta
+          name="description"
+          content="Veja os depoimentos de clientes satisfeitos com os serviços incríveis da Doggy Daycare. Descubra por que somos a escolha perfeita para o cuidado do seu cão."
+        />
+
+        <style>{`
+          iframe {
+            width: 100%;
+
+          }
+        `}</style>
+      </Head>
+
       <NavBar />
 
       {videoData.data ? (
-        <div className="px-[24px] lg:px-[48px] w-full overflow-hidden text-[black] py-[72px]">
+        <div className="px-[24px] lg:px-[48px] w-full overflow-hidden text-[black] py-[72px] bg-[black]">
           <div className="relative z-10 grid gap-[8px]">
-            <h1 className="text-[28px] font-bold uppercase">
+            <h1
+              id="main-content"
+              className="text-[white] text-[28px] font-bold uppercase"
+            >
               {videoData.data.attributes.Title}
             </h1>
 
-            <p className="text-[18px] font-medium">
+            <p className="text-white75 text-[18px] font-bold">
               {videoData.data.attributes.Description}
             </p>
           </div>
 
-          <div className="relative z-10 grid grid-cols-3 gap-[12px] mt-[24px]">
+          <ul className="relative z-10 grid md:grid-cols-2 lg:grid-cols-3 gap-[12px] mt-[24px]">
             {videoData.data.attributes.TestimonialsRepeatable.map(
               (mapItem, itemIndex) => (
-                <div
-                  className="w-full text-[white] bg-[black] rounded-[8px] grid gap-[24px]"
+                <li
+                  className="w-full h-fit text-[white] bg-[black] rounded-[8px] grid gap-[24px]"
                   key={mapItem.id}
                 >
-                  <div className="gradient-blue-red px-[4px] pt-[4px] rounded-t-[8px]">
-                    <div
-                      className={`relative w-full h-[300px] object-cover rounded-t-[8px] overflow-hidden`}
-                    >
-                      <video
-                        id={`myVideo${itemIndex}`}
-                        controls={videoStates[itemIndex]}
-                        className={`w-full h-full object-cover bg-midnightBlack`}
-                      >
-                        <source
-                          src={`https://not-cool.onrender.com${mapItem.VideoMP4.data.attributes.url}`}
-                          type="video/mp4"
-                        />
-                      </video>
-
-                      {!videoStates[itemIndex] && (
-                        <div
-                          style={{
-                            backgroundColor: `rgba(0, 0, 0, 0.8)`,
-                          }}
-                          className="absolute top-0 flex flex-col gap-2 items-center justify-center w-full h-full"
-                        >
-                          <button
-                            className="hover-effect01"
-                            onClick={() => togglePlay(itemIndex)}
-                          >
-                            <Image
-                              className="block h-[80px] w-full"
-                              src={`/play-button.svg`}
-                              alt="Botão de Video Play"
-                              width="0"
-                              height="0"
-                              unoptimized
-                            />
-                          </button>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
                   <div className="gradient-blue-red px-[4px] pb-[4px] rounded-b-[8px]">
                     <div className="px-[16px] pb-[16px] pt-[12px] grid gap-[12px] bg-[black] rounded-b-[8px]">
                       <h2 className="gradient-blue-red-test text-[20px] font-bold flex items-center gap-[8px]">
@@ -115,13 +75,51 @@ const TestimonialsPage = () => {
                       </p>
                     </div>
                   </div>
-                </div>
+
+                  <div className="gradient-blue-red px-[4px] pt-[4px] rounded-t-[8px] order-[-1]">
+                    <div
+                      className={`relative w-full h-[300px] object-cover rounded-t-[8px] overflow-hidden`}
+                    >
+                      <YouTube
+                        id={`myVideo${itemIndex}`}
+                        className={`w-full h-full object-cover bg-midnightBlack`}
+                        videoId={mapItem.YoutubeVideoID}
+                        opts={{
+                          playerVars: {
+                            autoplay: 0,
+                            controls: 1,
+                          },
+                        }}
+                      />
+                    </div>
+                  </div>
+                </li>
               )
             )}
-          </div>
+          </ul>
         </div>
       ) : (
-        <></>
+        <div className="px-[24px] lg:px-[48px] my-[72px]">
+          <h1 className="w-fit rounded-[8px] text-skeletonLoading bg-skeletonLoading text-center font-bold text-[1.75rem]">
+            Lorem ipsum dolor
+          </h1>
+
+          <p className="w-fit rounded-[8px] text-skeletonLoading bg-skeletonLoading text-center font-bold mt-[12px] mb-[36px]">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint ex
+            dicta numquam quisquam minus hic dolor nobis minima voluptas magnam.
+          </p>
+
+          <div className="md:columns-2 lg:columns-3">
+            {Array.from({ length: 3 }, (_, itemIndex) => (
+              <div
+                key={itemIndex}
+                className="mb-[16px] p-[4px] break-inside-avoid rounded-[12px]"
+              >
+                <div className="flex flex-col rounded-[12px] gap-2 md:gap-3 bg-skeletonLoading p-[24px] text-[white] h-[400px]"></div>
+              </div>
+            ))}
+          </div>
+        </div>
       )}
 
       <CallToActionBooking />

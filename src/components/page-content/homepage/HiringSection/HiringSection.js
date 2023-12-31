@@ -38,7 +38,7 @@ const HiringSection = () => {
 
             <div>
               <Button
-                pageHref="/vagas-disponiveis"
+                pageHref="/vagas"
                 iconSrc="/double-paw-icon.svg"
                 altText="Duas Patas Icone"
                 buttonText="Junte-se a nós!"

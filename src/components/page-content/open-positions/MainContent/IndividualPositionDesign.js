@@ -70,6 +70,7 @@ const IndividualPositionDesign = () => {
               <div className="flex flex-col gap-[32px]">
                 <div className="flex flex-col gap-[16px]">
                   <Link
+                    id="main-content"
                     href={"/vagas"}
                     className="text-primaryBlue font-bold flex gap-2 items-center hover:underline "
                   >
@@ -96,29 +97,31 @@ const IndividualPositionDesign = () => {
 
                 <div className="flex flex-col gap-[62px] lg:grid md-grid-cols-2fr-1fr">
                   <div className="h-fit text-[black] px-[16px] py-[24px] rounded-[8px] shadow-xl border-primaryBlue bg-[white] border-[2px] border-solid flex flex-col gap-[16px] md:max-w-[400px] lg:order-1 lg:max-w-full">
-                    <div className="flex flex-col gap-1">
-                      <p className="text-[black] font-bold"> Postado em:</p>
-
-                      <p className="text-black75">
-                        {formatDate(mapItem.attributes.publishedAt)}
+                    <div>
+                      <p className="text-[black] font-bold flex flex-col gap-1">
+                        {" "}
+                        Postado em:{" "}
+                        <span className="font-normal text-black75">
+                          {formatDate(mapItem.attributes.publishedAt)}
+                        </span>
                       </p>
                     </div>
 
-                    <div className="flex flex-col gap-1">
-                      <p className="text-[black] font-bold">
-                        Tipo de Trabalho:
-                      </p>
-
-                      <p className="text-black75">
-                        {mapItem.attributes.EmploymentType}
+                    <div>
+                      <p className="text-[black] font-bold flex flex-col gap-1">
+                        Tipo de Trabalho:{" "}
+                        <span className="font-normal text-black75">
+                          {mapItem.attributes.EmploymentType}
+                        </span>
                       </p>
                     </div>
 
-                    <div className="flex flex-col gap-1">
-                      <p className="text-[black] font-bold">Experiencia:</p>
-
-                      <p className="text-black75">
-                        {mapItem.attributes.Experience}
+                    <div>
+                      <p className="text-[black] font-bold flex flex-col gap-1">
+                        Experiencia:{" "}
+                        <span className="font-normal text-black75">
+                          {mapItem.attributes.Experience}
+                        </span>
                       </p>
                     </div>
 
@@ -152,12 +155,13 @@ const IndividualPositionDesign = () => {
                       </ul>
                     </div>
 
-                    <div className="flex flex-col gap-1">
-                      <p className="text-[black] font-bold">Localidade:</p>
-
-                      <span className="mt-[4px] uppercase py-[6px] px-[16px] bg-skyBlue rounded-[8px] text-[white] font-bold w-fit border-solid border-skyBlue border-[2px]">
-                        {mapItem.attributes.JobLocation}
-                      </span>
+                    <div>
+                      <p className="text-[black] font-bold flex flex-col gap-1">
+                        Localidade:{" "}
+                        <span className="mt-[4px] uppercase py-[6px] px-[16px] bg-skyBlue rounded-[8px] text-[white] font-bold w-fit border-solid border-skyBlue border-[2px]">
+                          {mapItem.attributes.JobLocation}
+                        </span>
+                      </p>
                     </div>
 
                     <Button

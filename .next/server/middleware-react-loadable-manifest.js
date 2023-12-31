@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST='{"mapa.js -> @/components/page-content/map/Map":{"id":3859,"files":["static/chunks/0b7b90cd.06e0bebe93569038.js","static/chunks/934.2074993beb984d96.js","static/css/3f4986a4531cb045.css","static/chunks/924.1fe7423ac1958b74.js"]}}';
+self.__REACT_LOADABLE_MANIFEST="{\"mapa.js -> @/components/page-content/map/Map\":{\"id\":\"mapa.js -> @/components/page-content/map/Map\",\"files\":[\"static/chunks/src_components_page-content_map_Map_js.js\"]}}"

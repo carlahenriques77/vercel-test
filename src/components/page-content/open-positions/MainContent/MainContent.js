@@ -31,7 +31,10 @@ const MainContent = () => {
       {heroData.data && videoData.data ? (
         <div className="flex flex-col gap-[48px] px-[24px] lg:px-[48px]">
           <div className="relative flex flex-col gap-[16px]">
-            <h1 className="text-primaryBlue font-bold text-[1.75rem]">
+            <h1
+              id="main-content"
+              className="text-primaryBlue font-bold text-[1.75rem]"
+            >
               {heroData.data.attributes.MainContent.Title}
             </h1>
 
@@ -44,6 +47,7 @@ const MainContent = () => {
             </p>
 
             <Image
+              aria-hidden={true}
               className="!absolute w-full md:!w-[50%] scale-y-[-1] -z-20 sm:px-[48px]"
               src="/dog-paws.webp"
               alt="Marcas de patas de cachorro"
@@ -54,7 +58,7 @@ const MainContent = () => {
             />
           </div>
 
-          <div className="grid gap-[16px]">
+          <ul className="grid gap-[16px]">
             {videoData.data
               .sort(
                 (itemA, itemB) =>
@@ -62,10 +66,11 @@ const MainContent = () => {
                   new Date(itemA.attributes.publishedAt)
               )
               .map((mapItem, itemIndex) => (
-                <div key={mapItem.id}>
+                <li key={mapItem.id}>
                   <Link
                     className="hover-effect flex flex-col gap-[24px] p-[24px] rounded-[8px] border-[3px] border-solid border-primaryBlue shadow-2xl bg-[white] hover:bg-midnightBlack hover:text-[white]"
                     href={`/vagas/${mapItem.attributes.slug}`}
+                    aria-label={`Veja Detalhes sobre o Trabalho: ${mapItem.attributes.JobTitle}`}
                   >
                     <div className="flex flex-col gap-[8px]">
                       <h3 className="text-[18px] font-medium">
@@ -98,9 +103,9 @@ const MainContent = () => {
                       {mapItem.attributes.JobLocation}
                     </span>
                   </Link>
-                </div>
+                </li>
               ))}
-          </div>
+          </ul>
         </div>
       ) : (
         <>

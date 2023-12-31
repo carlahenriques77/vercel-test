@@ -26,7 +26,7 @@ const ServicePricing = ({ thirdData }) => {
 
           <div>
             <div className="flex flex-col shadow-xl">
-              <ul className="rounded-t-[8px] bg-midnightBlack font-semibold text-[white] grid grid-cols-test justify-items-start overflow-x-auto">
+              <ul aria-hidden={true} className="rounded-t-[8px] bg-midnightBlack font-semibold text-[white] grid grid-cols-test justify-items-start overflow-x-auto">
                 <li className="rounded-t-[8px] px-[24px] py-[16px] w-full text-start border-solid border-black25 border-[1px]">
                   Nome
                 </li>
@@ -55,12 +55,13 @@ const ServicePricing = ({ thirdData }) => {
                               {mapItem.Name}
                             </div>
 
-                            <div className="flex justify-start items-center h-full text-shadow-black-light px-[24px] py-[16px] w-full text-start border-solid border-black25 border-[1px]">
+                            <div aria-label="Reais" className="flex justify-start items-center h-full text-shadow-black-light px-[24px] py-[16px] w-full text-start border-solid border-black25 border-[1px]">
                               {mapItem.Price}
                             </div>
 
                             <div className="flex justify-start items-center h-full">
                               <button
+                              aria-label="Descrição"
                                 className={`h-full px-[24px] py-[16px] w-full text-start border-solid border-black25 border-[1px]`}
                                 aria-expanded={openQuestions.includes(
                                   mapItem.id

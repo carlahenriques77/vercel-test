@@ -18,6 +18,7 @@ const ImageCarousel = ({ imagesArray, closeModal, initialIndex }) => {
 
   return (
     <div
+      aria-hidden="true"
       style={{
         backgroundColor: `rgba(0, 0, 0, 0.8)`,
       }}
@@ -25,6 +26,7 @@ const ImageCarousel = ({ imagesArray, closeModal, initialIndex }) => {
       onClick={closeModal}
     >
       <span
+        role="button"
         className="z-[50000] absolute top-[0px] right-[24px] text-[40px] text-[white] cursor-pointer"
         onClick={closeModal}
       >
@@ -71,6 +73,9 @@ const ImageCarousel = ({ imagesArray, closeModal, initialIndex }) => {
               className="max-w-[100%] max-h-[80vh]"
               src={imageUrl}
               alt={`Slide ${index}`}
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
             />
           </div>
         ))}

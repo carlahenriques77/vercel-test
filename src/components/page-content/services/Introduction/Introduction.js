@@ -11,7 +11,10 @@ const Introduction = () => {
       {introductionData.data && (
         <>
           <div className="flex flex-col gap-4 xl:gap-5">
-            <h1 className="w-fit text-primaryBlue font-bold text-[1.75rem]">
+            <h1
+              id="main-content"
+              className="w-fit text-primaryBlue font-bold text-[1.75rem]"
+            >
               {introductionData.data.attributes.Introduction.Title}
             </h1>
 
