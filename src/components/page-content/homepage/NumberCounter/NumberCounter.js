@@ -33,6 +33,8 @@ const NumberCounter = () => {
           }}
           className="bg-cover bg-center relative bg-fixed"
         >
+          <h2 className="visually-hidden">Estatísticas do Nosso Sucesso</h2>
+
           <ul
             style={{
               backgroundColor: `rgba(0, 0, 0, 0.${numberCounterData.data.attributes.NumberCounter.GlassOverlayTransparency})`,
@@ -47,7 +49,7 @@ const NumberCounter = () => {
                 >
                   <Waypoint onEnter={handleEnter} />
 
-                  <h2 className="flex gap-1 flex-col">
+                  <h3 className="flex gap-1 flex-col">
                     <CountUp
                       className="text-crimsonRed font-black text-[1.5rem] xl:text-[1.625rem]"
                       duration={mapItem.DurationInSeconds}
@@ -58,14 +60,17 @@ const NumberCounter = () => {
                     <span className="font-semibold text-white75 xl:text-[1.125rem]">
                       {mapItem.CounterSubtitle}
                     </span>
-                  </h2>
+                  </h3>
                 </li>
               )
             )}
           </ul>
         </div>
       ) : (
-        <div className="bg-skeletonLoading relative bg-fixed">
+        <div
+          aria-hidden="true"
+          className="bg-skeletonLoading relative bg-fixed"
+        >
           <div className="px-[24px] lg:px-[48px] mt-[72px] flex flex-col gap-2 items-center justify-center py-[12%] w-[100%] h-[100%] md:gap-[16px] md:py-[4%] lg:grid lg:grid-cols-3">
             {Array.from({ length: 3 }, (_, index) => (
               <div

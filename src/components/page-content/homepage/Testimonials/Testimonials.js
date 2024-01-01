@@ -22,9 +22,9 @@ const Testimonials = ({
             className={`mt-[72px] bg-[url(/pattern.webp)] bg-repeat text-[white] flex flex-col py-[8%] gap-9 px-[24px] md:py-[4%] lg:px-[48px] lg:grid lg:grid-cols-2 lg:items-center ${extraClassName}`}
           >
             <div className="flex flex-col gap-4 xl:gap-5 sm:text-center sm:items-center lg:text-start lg:items-start">
-              <h1 className="font-bold text-[1.75rem]">
+              <h2 className="font-bold text-[1.75rem]">
                 {testimonialsData.data.attributes.Testimonials.Title}
-              </h1>
+              </h2>
 
               <p className="font-semibold xl:text-[1.125rem] sm:max-w-[600px]">
                 {
@@ -69,12 +69,13 @@ const Testimonials = ({
         </>
       ) : (
         <div
+          aria-hidden="true"
           className={`bg-black25 mt-[72px] text-[white] flex flex-col py-[8%] gap-9 px-[24px] md:py-[4%] lg:px-[48px] lg:grid lg:grid-cols-2 lg:items-center ${skeletonClassName}`}
         >
           <div className="flex flex-col gap-4 xl:gap-5 sm:text-center sm:items-center lg:text-start lg:items-start">
-            <h1 className="text-skeletonLoading bg-skeletonLoading rounded-[12px] w-fit text-[1.75rem]">
+            <h2 className="text-skeletonLoading bg-skeletonLoading rounded-[12px] w-fit text-[1.75rem]">
               Lorem ipsum, dolor sit amet.
-            </h1>
+            </h2>
 
             <p className="text-skeletonLoading bg-skeletonLoading rounded-[12px] xl:text-[1.125rem] sm:max-w-[600px]">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque

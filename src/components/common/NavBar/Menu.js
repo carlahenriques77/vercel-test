@@ -23,7 +23,7 @@ const Menu = ({ menuOpen, isLinkActive }) => {
       }`}
     >
       <ul
-        className={`max-h-[420px] flex flex-col items-center gap-3 text-[1.25rem] overflow-auto py-[24px] lg:flex-row lg:py-[0px] lg:h-auto lg:gap-[6px] xl:gap-[12px]`}
+        className={`max-h-[420px] flex flex-col items-center gap-3 text-[1.25rem] overflow-auto py-[24px] lg:flex-row lg:py-[0px] lg:h-auto lg:gap-[6px] lg:overflow-visible xl:gap-[12px]`}
       >
         {linksData.allLinks[0].links.map((mapItem, itemIndex) => (
           <li key={itemIndex} className="w-full lg:w-fit">

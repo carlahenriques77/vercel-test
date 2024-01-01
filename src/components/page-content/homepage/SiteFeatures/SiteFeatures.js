@@ -11,6 +11,8 @@ const SiteFeatures = () => {
     <>
       {featuresData.data ? (
         <>
+          <h2 id="main-content" class="visually-hidden">Recursos Especiais do nosso Site</h2>
+
           <ul className="px-[24px] lg:px-[48px] gap-11 grid relative md:justify-items-center lg:grid-cols-3 lg:gap-7">
             <Image
               aria-hidden={true}
@@ -30,16 +32,13 @@ const SiteFeatures = () => {
                   key={mapItem.id}
                 >
                   {itemIndex === 0 ? (
-                    <h2
-                      id="main-content"
-                      className="text-primaryBlue text-2xl font-bold uppercase xl:text-[1.625rem]"
-                    >
+                    <h3 className="text-primaryBlue text-2xl font-bold uppercase xl:text-[1.625rem]">
                       {mapItem.FeatureTitle}
-                    </h2>
+                    </h3>
                   ) : (
-                    <h2 className="text-primaryBlue text-2xl font-bold uppercase xl:text-[1.625rem]">
+                    <h3 className="text-primaryBlue text-2xl font-bold uppercase xl:text-[1.625rem]">
                       {mapItem.FeatureTitle}
-                    </h2>
+                    </h3>
                   )}
 
                   <div className="p-4 rounded-[100%] border-[3px] border-solid border-primaryBlue bg-midnightBlack">
@@ -63,7 +62,10 @@ const SiteFeatures = () => {
           </ul>
         </>
       ) : (
-        <div className=" px-[24px] lg:px-[48px] gap-11 grid relative md:justify-items-center lg:grid-cols-3 lg:gap-7">
+        <div
+          aria-hidden="true"
+          className=" px-[24px] lg:px-[48px] gap-11 grid relative md:justify-items-center lg:grid-cols-3 lg:gap-7"
+        >
           {Array.from({ length: 3 }, (_, index) => (
             <div
               key={index}

@@ -137,6 +137,9 @@ const IndividualPositionDesign = () => {
                               <Link
                                 className="block bg-[black] pt-[6px] pb-[6px] pr-1 pl-1 rounded-[4px] w-[32px] hover:brightness-[80%]"
                                 href={mapItem.Link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={`Abrir ${mapItem.ImageAlternativeTextForAccesibility} em uma nova página`}
                               >
                                 <Image
                                   className="w-full h-[20px]"

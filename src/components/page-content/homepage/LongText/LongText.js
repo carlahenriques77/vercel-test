@@ -22,12 +22,12 @@ const LongText = ({ handleImageClick }) => {
             <div className="flex flex-col gap-12">
               <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2">
                 <div className="flex flex-col gap-4 xl:gap-5">
-                  <h1 className="text-blueForText font-bold text-[1.5rem] xl:text-[1.625rem]">
+                  <h2 className="text-blueForText font-bold text-[1.5rem] xl:text-[1.625rem]">
                     {
                       textData.data.attributes.LongTextDescription.FirstText
                         .Title
                     }
-                  </h1>
+                  </h2>
 
                   <p className="text-[1rem] xl:text-[1.125rem]">
                     {
@@ -38,12 +38,12 @@ const LongText = ({ handleImageClick }) => {
                 </div>
 
                 <div className="flex flex-col gap-4 xl:gap-5">
-                  <h1 className="text-blueForText font-bold text-[1.5rem] xl:text-[1.625rem]">
+                  <h2 className="text-blueForText font-bold text-[1.5rem] xl:text-[1.625rem]">
                     {
                       textData.data.attributes.LongTextDescription.SecondText
                         .Title
                     }
-                  </h1>
+                  </h2>
 
                   <p className="text-[1rem] xl:text-[1.125rem]">
                     {
@@ -74,12 +74,12 @@ const LongText = ({ handleImageClick }) => {
 
                 <div className="mt-[12px] flex flex-col gap-[32px] lg:mt-[0px]">
                   <div className="flex flex-col gap-4 xl:gap-5">
-                    <h1 className="text-blueForText font-bold text-[1.5rem] xl:text-[1.625rem]">
+                    <h2 className="text-blueForText font-bold text-[1.5rem] xl:text-[1.625rem]">
                       {
                         textData.data.attributes.LongTextDescription
                           .ThirdTextGroup.Title
                       }
-                    </h1>
+                    </h2>
 
                     <p className="text-[1rem] xl:text-[1.125rem]">
                       {
@@ -102,12 +102,12 @@ const LongText = ({ handleImageClick }) => {
           </div>
         </>
       ) : (
-        <div className="px-[24px] lg:px-[48px] mt-[72px] flex flex-col gap-12">
+        <div aria-hidden="true" className="px-[24px] lg:px-[48px] mt-[72px] flex flex-col gap-12">
           <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2">
             <div className="flex flex-col gap-4 xl:gap-5">
-              <h1 className="text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1.5rem] xl:text-[1.625rem]">
+              <h2 className="text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1.5rem] xl:text-[1.625rem]">
                 Lorem ipsum dolor sit amet.
-              </h1>
+              </h2>
 
               <p className="text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1rem] xl:text-[1.125rem]">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -118,9 +118,9 @@ const LongText = ({ handleImageClick }) => {
             </div>
 
             <div className="flex flex-col gap-4 xl:gap-5">
-              <h1 className="text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1.5rem] xl:text-[1.625rem]">
+              <h2 className="text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1.5rem] xl:text-[1.625rem]">
                 Lorem ipsum dolor sit amet.
-              </h1>
+              </h2>
 
               <p className="text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1rem] xl:text-[1.125rem]">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.

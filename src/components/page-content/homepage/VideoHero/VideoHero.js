@@ -46,7 +46,7 @@ const VideoHero = () => {
           </div>
         </div>
       ) : (
-        <div className="relative">
+        <div aria-hidden="true" className="relative">
           <div className="mb-[72px] bg-black75 h-[70vh]">
             <div
               style={{

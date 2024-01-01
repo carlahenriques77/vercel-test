@@ -15,9 +15,9 @@ const Services = ({ handleImageClick }) => {
     <>
       {servicesData.data && pageData.data ? (
         <div className="px-[24px] lg:px-[48px] mt-[72px] flex flex-col gap-4 md:gap-8">
-          <h1 className="text-primaryBlue font-bold text-[1.75rem]">
+          <h2 className="text-primaryBlue font-bold text-[1.75rem]">
             {pageData.data.attributes.ServicesSection.SectionTitle}
-          </h1>
+          </h2>
 
           <hr aria-hidden="true" className="border-black25" />
 
@@ -37,9 +37,9 @@ const Services = ({ handleImageClick }) => {
                       itemIndex % 2 === 0 ? "md:order-[1]" : "md:order-[0]"
                     }`}
                   >
-                    <h2 className="text-primaryBlue font-bold text-[1.5rem] xl:text-[1.625rem]">
+                    <h3 className="text-primaryBlue font-bold text-[1.5rem] xl:text-[1.625rem]">
                       {mapItem.attributes.Title}
-                    </h2>
+                    </h3>
 
                     <p className="font-medium xl:text-[1.125rem]">
                       {mapItem.attributes.Description[0].children[0].text}
@@ -71,10 +71,10 @@ const Services = ({ handleImageClick }) => {
           </div>
         </div>
       ) : (
-        <div className=" px-[24px] lg:px-[48px] mt-[72px] flex flex-col gap-4 md:gap-8">
-          <h1 className="text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1.75rem]">
+        <div aria-hidden="true" className=" px-[24px] lg:px-[48px] mt-[72px] flex flex-col gap-4 md:gap-8">
+          <h2 className="text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1.75rem]">
             Lorem ipsum dolor
-          </h1>
+          </h2>
 
           <div className="flex flex-col gap-8 md:gap-12">
             {Array.from({ length: 3 }, (_, itemIndex) => (

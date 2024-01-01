@@ -24,9 +24,9 @@ const HiringSection = () => {
             className="px-[24px] lg:px-[48px] mt-[72px] flex flex-col gap-2 py-[12%] w-[100%] h-[100%] sm:py-[8%] border-solid border-[black] border-t-[4px]"
           >
             <div className="flex flex-col gap-3 text-center sm:gap-[20px]">
-              <h1 className="text-[1.5rem] xl:text-[1.625rem] text-skyBlue font-bold">
+              <h2 className="text-[1.5rem] xl:text-[1.625rem] text-skyBlue font-bold">
                 {joinUsData.data.attributes.JoinUs.Title}
-              </h1>
+              </h2>
 
               <p className="text-[white] font-semibold max-w-[600px] mx-auto xl:text-[1.125rem]">
                 {
@@ -48,10 +48,10 @@ const HiringSection = () => {
           </div>
         </div>
       ) : (
-        <div className=" bg-black25 mt-[72px] text-skeletonLoading bg-black50 flex flex-col justify-center items-center relative gap-[16px] p-[32px]">
-          <h1 className="text-skeletonLoading bg-skeletonLoading text-center text-[1.5rem] xl:text-[1.625rem] rounded-[8px]">
+        <div aria-hidden="true" className=" bg-black25 mt-[72px] text-skeletonLoading bg-black50 flex flex-col justify-center items-center relative gap-[16px] p-[32px]">
+          <h2 className="text-skeletonLoading bg-skeletonLoading text-center text-[1.5rem] xl:text-[1.625rem] rounded-[8px]">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          </h1>
+          </h2>
 
           <p className="rounded-[8px] text-skeletonLoading bg-skeletonLoading font-semibold max-w-[600px] mx-auto xl:text-[1.125rem]">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita

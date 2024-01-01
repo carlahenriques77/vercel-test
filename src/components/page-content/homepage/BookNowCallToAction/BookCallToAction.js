@@ -17,9 +17,9 @@ const BookNowCallToAction = () => {
                 "relative pt-3 pb-3 after:bg-[url(/dog-walking-paws.webp)] after:content-[''] after:absolute after:w-full after:h-full after:bg-repeat-x after:-z-10 after:bg-center after:left-0 after:top-0"
               }
             >
-              <h1 className="text-primaryBlue font-bold text-[1.75rem] px-[24px] lg:px-[48px] ">
+              <h2 className="text-primaryBlue font-bold text-[1.75rem] px-[24px] lg:px-[48px] ">
                 {bookNowData.data.attributes.BookNow.Title}
-              </h1>
+              </h2>
             </div>
 
             <p className="font-bold px-[24px] md:mx-auto md:w-[80%] lg:px-[48px] xl:text-[1.125rem]">
@@ -49,12 +49,12 @@ const BookNowCallToAction = () => {
           </div>
         </div>
       ) : (
-        <div className=" px-[24px] lg:px-[48px] mt-[72px] flex flex-col gap-7">
+        <div aria-hidden="true" className=" px-[24px] lg:px-[48px] mt-[72px] flex flex-col gap-7">
           <div className="flex flex-col gap-[12px] text-center">
             <div className="flex justify-center relative py-3">
-              <h1 className="w-fit text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1.75rem] px-[24px] lg:px-[48px] ">
+              <h2 className="w-fit text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1.75rem] px-[24px] lg:px-[48px] ">
                 Lorem ipsum dolor sit
-              </h1>
+              </h2>
             </div>
 
             <p className="text-skeletonLoading bg-skeletonLoading rounded-[12px] px-[24px] md:mx-auto md:w-[80%] lg:px-[48px] xl:text-[1.125rem]">

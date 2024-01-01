@@ -24,7 +24,7 @@ const Quote = () => {
               }}
               className="w-[100%] h-[100%] px-[24px] lg:px-[48px]"
             >
-              <blockquote className="text-center text-shadow-black text-[1.5rem] xl:text-[1.625rem] my-[12%] font-bold text-[white]">
+              <blockquote aria-hidden="true" className="text-center text-shadow-black text-[1.5rem] xl:text-[1.625rem] my-[12%] font-bold text-[white]">
                 {quoteData.data.attributes.QuoteDivider.Quote}{" "}
               </blockquote>
 
@@ -46,10 +46,10 @@ const Quote = () => {
           </div>
         </div>
       ) : (
-        <div className=" bg-black25 rounded-[12px] mt-[72px] text-skeletonLoading bg-skeletonLoading rounded-[12px] flex justify-center items-center relative">
-          <h1 className="text-skeletonLoading bg-skeletonLoading text-center text-[1.5rem] xl:text-[1.625rem] my-[12%] text-[white] rounded-[12px]">
+        <div aria-hidden="true" className=" bg-black25 rounded-[12px] mt-[72px] text-skeletonLoading bg-skeletonLoading rounded-[12px] flex justify-center items-center relative">
+          <h2 className="text-skeletonLoading bg-skeletonLoading text-center text-[1.5rem] xl:text-[1.625rem] my-[12%] text-[white] rounded-[12px]">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          </h1>
+          </h2>
         </div>
       )}
     </>

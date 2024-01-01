@@ -23,9 +23,9 @@ const Faq = () => {
     <>
       {faqData.data ? (
         <div className="px-[24px] lg:px-[48px] mt-[72px] mb-[72px] flex flex-col gap-4">
-          <h1 className="text-primaryBlue font-bold text-[1.75rem]">
+          <h2 className="text-primaryBlue font-bold text-[1.75rem]">
             {faqData.data.attributes.FrequentlyAskedQuestions.SectionTitle}
-          </h1>
+          </h2>
 
           <hr aria-hidden="true" className="border-black25" />
 
@@ -100,10 +100,10 @@ const Faq = () => {
           </div>
         </div>
       ) : (
-        <div className="px-[24px] lg:px-[48px] mt-[72px] mb-[72px] flex flex-col gap-4">
-          <h1 className="w-fit text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1.75rem]">
+        <div aria-hidden="true" className="px-[24px] lg:px-[48px] mt-[72px] mb-[72px] flex flex-col gap-4">
+          <h2 className="w-fit text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1.75rem]">
             Lorem ipsum dolor sit amet consectetur
-          </h1>
+          </h2>
 
           <hr aria-hidden="true" className="border-skeletonLoading" />
 
