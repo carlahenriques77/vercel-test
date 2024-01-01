@@ -31,11 +31,11 @@ const ServiceBenefits = ({ videoData, secondData }) => {
                 <div className="gap-[24px] flex flex-col">
                   <div className="gap-[12px] flex flex-col">
                     <div>
-                      <h1 className="font-bold text-[28px]">
+                      <h1 className="font-bold text-[1.75rem]">
                         {mapItem.attributes.Title}
                       </h1>
 
-                      <p className="text-[18px] font-bold text-primaryBlue">
+                      <p className="text-[1.125rem] font-bold text-primaryBlue">
                         Benefícios deste Serviço:
                       </p>
                     </div>

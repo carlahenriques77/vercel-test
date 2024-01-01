@@ -35,11 +35,11 @@ const ServicesHero = () => {
               }}
               className="absolute text-skeletonLoading text-center flex flex-col gap-[12px] bg-skeletonLoading rounded-[8px] border-solid border-skeletonLoading border-[2px] p-[16px] select-none"
             >
-              <h1 className="text-[18px] md:text-[20px] lg:text-[24px] text-skeletonLoading">
+              <h1 className="text-[1.125rem] md:text-[1.25rem] lg:text-[1.5rem] text-skeletonLoading">
                 Lorem ipsum
               </h1>
 
-              <p className="hidden lg:block text-[16px] text-skeletonLoading">
+              <p className="hidden lg:block text-[1rem] text-skeletonLoading">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 Sapiente tempore perferendis consectetur unde ad velit nisi
                 necessitatibus

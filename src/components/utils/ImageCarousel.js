@@ -16,25 +16,30 @@ const ImageCarousel = ({ imagesArray, closeModal, initialIndex }) => {
     );
   };
 
+  useEffect(() => {
+    document.getElementById("close-button").focus();
+  }, []);
+
   return (
     <div
-      aria-hidden="true"
       style={{
         backgroundColor: `rgba(0, 0, 0, 0.8)`,
       }}
       className="z-[4000] fixed top-0 left-0 w-full h-full flex justify-center items-center"
       onClick={closeModal}
     >
-      <span
-        role="button"
-        className="z-[50000] absolute top-[0px] right-[24px] text-[40px] text-[white] cursor-pointer"
+      <button
+        aria-label="Fechar o Modal"
+        id="close-button"
+        className="z-[50000] absolute top-[0px] right-[24px] text-[2.5rem] text-[white] cursor-pointer"
         onClick={closeModal}
       >
         &times;
-      </span>
+      </button>
 
       <button
-        className="z-[50000] absolute top-[50%] text-[30px] text-[white] cursor-pointer left-[15px] px-[24px]"
+        aria-label="Mover Slide para a Imagem anterior"
+        className="z-[50000] absolute top-[50%] text-[1.875rem] text-[white] cursor-pointer left-[15px] px-[24px]"
         onClick={(e) => {
           e.stopPropagation();
           handlePrev();
@@ -44,7 +49,8 @@ const ImageCarousel = ({ imagesArray, closeModal, initialIndex }) => {
       </button>
 
       <button
-        className="z-[50000] absolute top-[50%] text-[30px] text-[white] cursor-pointer right-[15px] px-[24px]"
+        aria-label="Mover Slide para a Proxima Imagem"
+        className="z-[50000] absolute top-[50%] text-[1.875rem] text-[white] cursor-pointer right-[15px] px-[24px]"
         onClick={(e) => {
           e.stopPropagation();
           handleNext();

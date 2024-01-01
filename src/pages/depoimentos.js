@@ -37,12 +37,12 @@ const TestimonialsPage = () => {
           <div className="relative z-10 grid gap-[8px]">
             <h1
               id="main-content"
-              className="text-[white] text-[28px] font-bold uppercase"
+              className="text-[white] text-[1.75rem] font-bold uppercase"
             >
               {videoData.data.attributes.Title}
             </h1>
 
-            <p className="text-white75 text-[18px] font-bold">
+            <p className="text-white75 text-[1.125rem] font-bold">
               {videoData.data.attributes.Description}
             </p>
           </div>
@@ -56,7 +56,7 @@ const TestimonialsPage = () => {
                 >
                   <div className="gradient-blue-red px-[4px] pb-[4px] rounded-b-[8px]">
                     <div className="px-[16px] pb-[16px] pt-[12px] grid gap-[12px] bg-[black] rounded-b-[8px]">
-                      <h2 className="gradient-blue-red-test text-[20px] font-bold flex items-center gap-[8px]">
+                      <h2 className="gradient-blue-red-test text-[1.25rem] font-bold flex items-center gap-[8px]">
                         <Image
                           aria-hidden={true}
                           className="border-solid border-crimsonRed border-[2px] w-[40px] h-[40px] block rounded-[100%] object-cover"
@@ -69,9 +69,13 @@ const TestimonialsPage = () => {
                       </h2>
 
                       <p className="">
-                        <span className="text-primaryBlue text-[18px]">❝</span>
+                        <span className="text-primaryBlue text-[1.125rem]">
+                          ❝
+                        </span>
                         {mapItem.TestimonialText}
-                        <span className="text-primaryBlue text-[18px]">❞</span>
+                        <span className="text-primaryBlue text-[1.125rem]">
+                          ❞
+                        </span>
                       </p>
                     </div>
                   </div>

@@ -64,7 +64,7 @@ const WorkersTestimonials = () => {
               className="flex flex-col gap-2 items-center justify-center w-[100%] h-[70vh]"
             >
               <button className="hover-effect01" onClick={playVideo}>
-                <h1 className="text-[white] text-center font-bold text-[28px]">
+                <h1 className="text-[white] text-center font-bold text-[1.75rem]">
                   <span className="text-crimsonRed">Escute</span> dos nossos{" "}
                   <br aria-hidden="true" />{" "}
                   <span className="text-skyBlue">Trabalhadores</span>!

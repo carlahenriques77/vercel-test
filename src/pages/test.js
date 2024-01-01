@@ -1,68 +1,96 @@
-// pages/AccessibleRadioPage.js
+// pages/index.js
 
-import { useState } from "react";
+import { useState, useEffect } from 'react';
 
-const AccessibleRadioPage = () => {
-  const [selectedOption, setSelectedOption] = useState("option1");
+const IndexPage = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
 
-  const handleRadioChange = (e) => {
-    setSelectedOption(e.target.value);
+  const openModal = () => {
+    setModalOpen(true);
   };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  const handleKeyDown = (e) => {
+    // Check if the 'Esc' key is pressed to close the modal
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  };
+
+  useEffect(() => {
+    // Focus the link inside the modal when it opens
+    if (isModalOpen) {
+      document.getElementById('modal-link').focus();
+    }
+  }, [isModalOpen]);
 
   return (
     <div>
-      <h1>Accessible Radio Buttons</h1>
-      <form>
-        <fieldset>
-          <legend>Choose an option:</legend>
+      <style jsx>{`
+        .hamburger {
+          cursor: pointer;
+          font-size: 24px;
+          margin: 20px;
+        }
 
-          <div>
-            <label htmlFor="option1">
-              <input
-                type="radio"
-                id="option1"
-                name="options"
-                value="option1"
-                checked={selectedOption === "option1"}
-                onChange={handleRadioChange}
-              />
-              Option 1
-            </label>
-          </div>
+        .modal {
+          display: ${isModalOpen ? 'block' : 'none'};
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.5);
+          z-index: 1;
+        }
 
-          <div>
-            <label htmlFor="option2">
-              <input
-                type="radio"
-                id="option2"
-                name="options"
-                value="option2"
-                checked={selectedOption === "option2"}
-                onChange={handleRadioChange}
-              />
-              Option 2
-            </label>
-          </div>
+        .modal-content {
+          background: white;
+          padding: 20px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      `}</style>
 
-          <div>
-            <label htmlFor="option3">
-              <input
-                type="radio"
-                id="option3"
-                name="options"
-                value="option3"
-                checked={selectedOption === "option3"}
-                onChange={handleRadioChange}
-              />
-              Option 3
-            </label>
-          </div>
-        </fieldset>
-      </form>
+      <div
+        className="hamburger"
+        role="button"
+        tabIndex="0"
+        id="hamburger-button"
+        onClick={openModal}
+        onKeyDown={(e) => e.key === 'Enter' && openModal()}
+      >
+        ☰
+      </div>
 
-      <p>Selected option: {selectedOption}</p>
+      <div
+        className="modal"
+        onClick={closeModal}
+        onKeyDown={handleKeyDown}
+        tabIndex="-1" // This makes the modal focusable
+      >
+        <div className="modal-content">
+          {/* Link or Button inside the modal */}
+          <a
+            href="#"
+            id="modal-link"
+            onClick={(e) => {
+              e.preventDefault();
+              // Handle link click inside the modal
+              alert('Link inside modal clicked!');
+            }}
+          >
+            Click me inside modal
+          </a>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default AccessibleRadioPage;
+export default IndexPage;

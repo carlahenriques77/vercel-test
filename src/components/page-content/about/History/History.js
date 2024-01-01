@@ -35,7 +35,7 @@ const History = ({ handleImageClick }) => {
                   }`}
                 >
                   <h1
-                    className={`font-bold text-[24px] xl:text-[1.625rem] ${
+                    className={`font-bold text-[1.5rem] xl:text-[1.625rem] ${
                       itemIndex % 2 === 0 ? "text-crimsonRed" : "text-skyBlue"
                     }`}
                   >

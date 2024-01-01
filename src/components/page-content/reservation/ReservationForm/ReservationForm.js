@@ -731,7 +731,7 @@ const ReservationForm = () => {
               <h2
                 tabIndex="0"
                 aria-label="Instruções: Insira as Informações do Proprietário nos Campos abaixo. (Pressione Tab para navegar)"
-                className="text-[24px] font-bold"
+                className="text-[1.5rem] font-bold"
               >
                 Informações do Proprietário:
               </h2>
@@ -805,7 +805,7 @@ const ReservationForm = () => {
                 <h2
                   aria-label="Instruções: Insira as Informações do Contato de Emergência nos Campos abaixo. (Pressione Tab para navegar)"
                   tab-index="0"
-                  className="text-[24px] font-bold"
+                  className="text-[1.5rem] font-bold"
                 >
                   Contato de Emergência:
                 </h2>
@@ -873,7 +873,7 @@ const ReservationForm = () => {
           <div className="px-[24px] lg:px-[48px] grid gap-[32px] md:grid-cols-2 items-center">
             <div className="grid gap-[32px]">
               <div>
-                <h2 className="text-[24px] font-bold">
+                <h2 className="text-[1.5rem] font-bold">
                   Sobre seu Animal de Estimação:
                 </h2>
               </div>
@@ -974,7 +974,7 @@ const ReservationForm = () => {
                           index + 1
                         } nos Campos abaixo. (Pressione Tab para navegar)`}
                         tabIndex="0"
-                        className="text-[20px] font-bold uppercase"
+                        className="text-[1.25rem] font-bold uppercase"
                       >
                         Cachorro #{index + 1}:
                       </h3>

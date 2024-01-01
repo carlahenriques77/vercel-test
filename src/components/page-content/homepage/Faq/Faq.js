@@ -35,7 +35,7 @@ const Faq = () => {
                 <li key={mapItem.id}>
                   <button
                     aria-expanded={openQuestions.includes(mapItem.id)}
-                    className={`text-shadow-black-light bg-primaryBlue text-white90 font-bold  w-full text-left pl-[16px] pr-[16px] pt-[12px] pb-[12px] flex flex-row gap-3 items-center justify-between hover:text-[white] xl:text-[1.125rem]`}
+                    className={`text-shadow-black-light bg-primaryBlue text-[white] font-bold  w-full text-left pl-[16px] pr-[16px] pt-[12px] pb-[12px] flex flex-row gap-3 items-center justify-between hover:text-white90 xl:text-[1.125rem]`}
                     onClick={() => toggleQuestion(mapItem.id)}
                   >
                     {mapItem.Question}

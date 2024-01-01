@@ -54,7 +54,7 @@ const MeetOurTeam = () => {
                       unoptimized
                     />
 
-                    <p className="text-[18px]">{mapItem.Name}</p>
+                    <p className="text-[1.125rem]">{mapItem.Name}</p>
 
                     <div className="text-white75 flex flex-col gap-[4px]">
                       <span>{mapItem.Role}</span>

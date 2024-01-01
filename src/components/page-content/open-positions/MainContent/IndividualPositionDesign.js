@@ -87,7 +87,7 @@ const IndividualPositionDesign = () => {
 
                   <div className="flex flex-col gap-[12px]">
                     <div>
-                      <h1 className="text-crimsonRed text-[28px] font-bold">
+                      <h1 className="text-crimsonRed text-[1.75rem] font-bold">
                         {mapItem.attributes.JobTitle}{" "}
                         {mapItem.attributes.TitleAddonText}
                       </h1>
@@ -180,7 +180,7 @@ const IndividualPositionDesign = () => {
                           className="flex flex-col gap-[12px]"
                           key={contentItem.id}
                         >
-                          <h2 className="text-skyBlue text-[24px] font-bold">
+                          <h2 className="text-skyBlue text-[1.5rem] font-bold">
                             {contentItem.Title}
                           </h2>
 
@@ -221,7 +221,7 @@ const IndividualPositionDesign = () => {
 
                 <div className="flex flex-col gap-[12px]">
                   <div>
-                    <h1 className="bg-skeletonLoading text-skeletonLoading w-fit text-[28px]">
+                    <h1 className="bg-skeletonLoading text-skeletonLoading w-fit text-[1.75rem]">
                       Lorem ipsum dolor sit amet
                     </h1>
                   </div>
@@ -249,7 +249,7 @@ const IndividualPositionDesign = () => {
                 <div className="flex flex-col gap-[28px]">
                   {Array.from({ length: 4 }, (_, itemIndex) => (
                     <div className="flex flex-col gap-[12px]" key={itemIndex}>
-                      <h2 className="text-[24px] bg-skeletonLoading text-skeletonLoading w-fit">
+                      <h2 className="text-[1.5rem] bg-skeletonLoading text-skeletonLoading w-fit">
                         Lorem ipsum dolor sit
                       </h2>
 

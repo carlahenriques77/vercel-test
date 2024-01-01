@@ -72,11 +72,11 @@ const PrivacyPolicy = () => {
 
       <div className="px-[24px] lg:px-[48px] my-[72px]">
         <div>
-          <h1 className="text-[28px] font-bold">
+          <h1 className="text-[1.75rem] font-bold">
             {privacyPolicyContent.title}
           </h1>
 
-          <p className="mt-[12px] text-[22px] font-medium">
+          <p className="mt-[12px] text-[1.375rem] font-medium">
             {privacyPolicyContent.description}
           </p>
         </div>
@@ -85,12 +85,12 @@ const PrivacyPolicy = () => {
 
         {privacyPolicyContent.sections.map((section, index) => (
           <div key={index}>
-            <h2 className="text-[24px] font-semibold">{section.heading}</h2>
+            <h2 className="text-[1.5rem] font-semibold">{section.heading}</h2>
 
             <ul className="grid gap-[8px] mt-[12px]">
               {section.content.map((item, itemIndex) => (
                 <li key={itemIndex}>
-                  <p className="text-[18px]">{item}</p>
+                  <p className="text-[1.125rem]">{item}</p>
                 </li>
               ))}
             </ul>

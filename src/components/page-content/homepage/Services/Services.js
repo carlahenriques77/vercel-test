@@ -19,7 +19,9 @@ const Services = ({ handleImageClick }) => {
             {pageData.data.attributes.ServicesSection.SectionTitle}
           </h1>
 
-          <div className="flex flex-col gap-8 md:gap-12">
+          <hr aria-hidden="true" className="border-black25" />
+
+          <div className="flex flex-col gap-[60px] md:gap-12">
             {servicesData.data &&
               servicesData.data.map((mapItem, itemIndex) => (
                 <div
@@ -35,7 +37,7 @@ const Services = ({ handleImageClick }) => {
                       itemIndex % 2 === 0 ? "md:order-[1]" : "md:order-[0]"
                     }`}
                   >
-                    <h2 className="text-skyBlue font-black text-[1.5rem] xl:text-[1.625rem]">
+                    <h2 className="text-primaryBlue font-bold text-[1.5rem] xl:text-[1.625rem]">
                       {mapItem.attributes.Title}
                     </h2>
 
@@ -52,7 +54,7 @@ const Services = ({ handleImageClick }) => {
                     />
                   </div>
 
-                  <div className="overflow-hidden rounded-[8px] border-solid border-[black] border-[4px]">
+                  <div className="overflow-hidden rounded-[8px]">
                     <Image
                       aria-hidden={true}
                       className="w-full cursor-zoom-in hover:scale-[1.2] transition-all"

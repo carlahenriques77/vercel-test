@@ -24,7 +24,7 @@ const Benefits = () => {
       {ourHistoryData.data ? (
         <>
           <div className="py-[12%] sm:py-[8%] md:py-[4%] lg:py-[2%] grid gap-[24px] bg-midnightBlack text-[white] px-[24px] lg:px-[48px]">
-            <h1 className="text-skyBlue font-bold text-[28px]">
+            <h1 className="text-skyBlue font-bold text-[1.75rem]">
               {ourHistoryData.data.attributes.Benefits.Title}
             </h1>
 
@@ -37,7 +37,9 @@ const Benefits = () => {
                     className={`flex flex-col gap-3 xl:gap-4`}
                     key={mapItem.id}
                   >
-                    <h2 className={`font-bold text-[22px] xl:text-[24px]`}>
+                    <h2
+                      className={`font-bold text-[1.375rem] xl:text-[1.5rem]`}
+                    >
                       {mapItem.Title}
                     </h2>
 

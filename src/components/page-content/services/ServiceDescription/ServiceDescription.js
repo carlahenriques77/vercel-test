@@ -8,7 +8,7 @@ const ServiceDescription = ({ videoData }) => {
         <>
           {videoData.data?.map((mapItem, itemIndex) => (
             <div className="flex flex-col gap-[12px]" key={mapItem.id}>
-              <h2 className="w-fit text-[black] font-bold text-[24px]">
+              <h2 className="w-fit text-[black] font-bold text-[1.5rem]">
                 Descrição:
               </h2>
 

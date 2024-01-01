@@ -9,11 +9,11 @@ const SuccessMessage = () => {
           role="alert"
           aria-live="assertive"
           id="main-content"
-          className="font-bold text-primaryBlue text-[28px]"
+          className="font-bold text-primaryBlue text-[1.75rem]"
         >
           Mensagem Enviada com Sucesso! <br aria-hidden="true" /> Entraremos em
           contato o mais rapido possível. <br aria-hidden="true" />{" "}
-          <span className="text-[20px] text-deepMaroon">
+          <span className="text-[1.25rem] text-deepMaroon">
             Por favor, check seu Email
           </span>
         </h1>

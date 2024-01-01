@@ -18,7 +18,7 @@ const ViewAboutUs = () => {
           >
             <div className={`flex flex-col gap-4 xl:gap-5`}>
               <h1
-                className={`text-skyBlue font-black text-[24px] xl:text-[1.625rem]`}
+                className={`text-skyBlue font-black text-[1.5rem] xl:text-[1.625rem]`}
               >
                 {ourHistoryData.data.attributes.SeeAboutUs.Title}
               </h1>
@@ -63,7 +63,7 @@ const ViewAboutUs = () => {
             >
               <div className={`flex flex-col gap-4 xl:gap-5`}>
                 <h1
-                  className={`text-skeletonLoading bg-skeletonLoading  rounded-[8px] text-[24px] xl:text-[1.625rem]`}
+                  className={`text-skeletonLoading bg-skeletonLoading  rounded-[8px] text-[1.5rem] xl:text-[1.625rem]`}
                 >
                   Lorem ipsum
                 </h1>

@@ -29,7 +29,7 @@ const Sitemap = () => {
                 <div className="w-full rounded-l-[8px] bg-skyBlue h-full"></div>
 
                 <div className="rounded-r-[8px] bg-[black] p-[24px] grid gap-[16px]">
-                  <h2 className="font-bold text-[22px]">{section.title}</h2>
+                  <h2 className="font-bold text-[1.375rem]">{section.title}</h2>
 
                   <ul className="font-medium px-[8px] grid gap-[12px]">
                     {section.links.map((link, linkIndex) => (
@@ -38,7 +38,7 @@ const Sitemap = () => {
                           <span className="text-primaryBlue">*</span>
 
                           <Link
-                            className="text-[18px] hover:underline"
+                            className="text-[1.125rem] hover:underline"
                             href={link.href}
                           >
                             {link.text}
@@ -53,7 +53,7 @@ const Sitemap = () => {
                                   <span className="text-lightBlue">*</span>
 
                                   <Link
-                                    className="text-[18px] hover:underline"
+                                    className="text-[1.125rem] hover:underline"
                                     href={sublink.href}
                                   >
                                     {sublink.text}

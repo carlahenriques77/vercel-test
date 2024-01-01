@@ -73,7 +73,7 @@ const MainContent = () => {
                     aria-label={`Veja Detalhes sobre o Trabalho: ${mapItem.attributes.JobTitle}`}
                   >
                     <div className="flex flex-col gap-[8px]">
-                      <h3 className="text-[18px] font-medium">
+                      <h3 className="text-[1.125rem] font-medium">
                         {mapItem.attributes.JobTitle}
                       </h3>
 
@@ -99,7 +99,7 @@ const MainContent = () => {
                       </p>
                     </div>
 
-                    <span className="hover-continuation uppercase text-[16px] py-[6px] px-[16px] bg-skyBlue rounded-[8px] text-[white] font-bold text-center max-w-[300px] border-solid border-skyBlue border-[2px]">
+                    <span className="hover-continuation uppercase text-[1rem] py-[6px] px-[16px] bg-skyBlue rounded-[8px] text-[white] font-bold text-center max-w-[300px] border-solid border-skyBlue border-[2px]">
                       {mapItem.attributes.JobLocation}
                     </span>
                   </Link>
@@ -130,7 +130,7 @@ const MainContent = () => {
               <div key={itemIndex}>
                 <div className="flex flex-col gap-[24px] p-[24px] rounded-[8px] bg-black25">
                   <div className="flex flex-col gap-[8px]">
-                    <h3 className="w-fit  rounded-[8px]  bg-skeletonLoading text-[18px] font-medium">
+                    <h3 className="w-fit  rounded-[8px]  bg-skeletonLoading text-[1.125rem] font-medium">
                       Lorem, ipsum dolor sit
                     </h3>
 
@@ -147,7 +147,7 @@ const MainContent = () => {
                     </p>
                   </div>
 
-                  <span className="w-fit bg-skeletonLoading text-[16px] py-[6px] px-[16px] rounded-[8px] text-[white]text-center max-w-[300px]">
+                  <span className="w-fit bg-skeletonLoading text-[1rem] py-[6px] px-[16px] rounded-[8px] text-[white]text-center max-w-[300px]">
                     Lorem ipsum dolor
                   </span>
                 </div>
