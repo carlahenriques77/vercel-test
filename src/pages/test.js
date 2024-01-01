@@ -1,96 +1,88 @@
-// pages/index.js
+import React from "react";
 
-import { useState, useEffect } from 'react';
-
-const IndexPage = () => {
-  const [isModalOpen, setModalOpen] = useState(false);
-
-  const openModal = () => {
-    setModalOpen(true);
+const YourComponent = () => {
+  const openDialog = (dialogId, trigger) => {
+    // Placeholder function for opening dialog
+    console.log(`Opening dialog ${dialogId} from trigger`, trigger);
   };
 
-  const closeModal = () => {
-    setModalOpen(false);
+  const replaceDialog = (dialogId, trigger, descriptionId) => {
+    // Placeholder function for replacing dialog
+    console.log(`Replacing dialog ${dialogId} from trigger`, trigger);
   };
 
-  const handleKeyDown = (e) => {
-    // Check if the 'Esc' key is pressed to close the modal
-    if (e.key === 'Escape') {
-      closeModal();
-    }
+  const closeDialog = (trigger) => {
+    // Placeholder function for closing dialog
+    console.log(`Closing dialog from trigger`, trigger);
   };
-
-  useEffect(() => {
-    // Focus the link inside the modal when it opens
-    if (isModalOpen) {
-      document.getElementById('modal-link').focus();
-    }
-  }, [isModalOpen]);
 
   return (
-    <div>
-      <style jsx>{`
-        .hamburger {
-          cursor: pointer;
-          font-size: 24px;
-          margin: 20px;
-        }
+    <>
+      <button type="button" onClick={() => openDialog("dialog1", this)}>
+        Add Delivery Address
+      </button>
+      <div className="dialogs">
+        {/* Dialog 1 */}
+        <div
+          role="dialog"
+          id="dialog1"
+          aria-labelledby="dialog1_label"
+          aria-modal="true"
+          className=""
+        >
+          <h2 id="dialog1_label" className="dialog_label">
+            Add Delivery Address
+          </h2>
+          {/* Rest of the dialog 1 content */}
+        </div>
 
-        .modal {
-          display: ${isModalOpen ? 'block' : 'none'};
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(0, 0, 0, 0.5);
-          z-index: 1;
-        }
+        {/* Dialog 2 */}
+        <div
+          role="dialog"
+          id="dialog2"
+          aria-labelledby="dialog2_label"
+          aria-describedby="dialog2_desc"
+          aria-modal="true"
+          className=""
+        >
+          <h2 id="dialog2_label" className="dialog_label">
+            Verification Result
+          </h2>
+          {/* Rest of the dialog 2 content */}
+        </div>
 
-        .modal-content {
-          background: white;
-          padding: 20px;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        }
-      `}</style>
+        {/* Dialog 3 */}
+        <div
+          role="dialog"
+          id="dialog3"
+          aria-labelledby="dialog3_label"
+          aria-describedby="dialog3_desc"
+          aria-modal="true"
+          className=""
+        >
+          <h2 id="dialog3_label" className="dialog_label">
+            Address Added
+          </h2>
+          {/* Rest of the dialog 3 content */}
+        </div>
 
-      <div
-        className="hamburger"
-        role="button"
-        tabIndex="0"
-        id="hamburger-button"
-        onClick={openModal}
-        onKeyDown={(e) => e.key === 'Enter' && openModal()}
-      >
-        ☰
-      </div>
-
-      <div
-        className="modal"
-        onClick={closeModal}
-        onKeyDown={handleKeyDown}
-        tabIndex="-1" // This makes the modal focusable
-      >
-        <div className="modal-content">
-          {/* Link or Button inside the modal */}
-          <a
-            href="#"
-            id="modal-link"
-            onClick={(e) => {
-              e.preventDefault();
-              // Handle link click inside the modal
-              alert('Link inside modal clicked!');
-            }}
-          >
-            Click me inside modal
-          </a>
+        {/* Dialog 4 */}
+        <div
+          role="dialog"
+          id="dialog4"
+          aria-labelledby="dialog4_label"
+          aria-describedby="dialog4_desc"
+          aria-modal="true"
+          className=""
+        >
+          <h2 id="dialog4_label" className="dialog_label">
+            End of the Road!
+          </h2>
+          {/* Rest of the dialog 4 content */}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default IndexPage;
+export default YourComponent;

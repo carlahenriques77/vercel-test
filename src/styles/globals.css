@@ -273,7 +273,7 @@ table {
 }
 
 :focus-visible {
-  outline: 4px solid #6a4caf; /* Change the color as needed */
+  outline: 4px solid #007BFF; /* Change the color as needed */
   transition: outline 0.2s ease-in-out; /* Adjust the duration and timing function as needed */
   /* position: relative; */ 
   z-index: 1500;

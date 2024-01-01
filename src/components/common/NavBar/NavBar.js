@@ -63,7 +63,7 @@ const NavBar = () => {
           </div>
 
           {isScreen1024Px ? (
-            <Menu menuOpen={menuOpen} isLinkActive={isLinkActive} />
+            <Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen} isScreen1024Px={isScreen1024Px} isLinkActive={isLinkActive} />
           ) : (
             <button
               aria-label={menuOpen ? "Fechar Menu" : "Abrir Menu"}
@@ -91,7 +91,7 @@ const NavBar = () => {
         </div>
 
         {!isScreen1024Px && (
-          <Menu menuOpen={menuOpen} isLinkActive={isLinkActive} />
+          <Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen} isScreen1024Px={isScreen1024Px} isLinkActive={isLinkActive} />
         )}
       </nav>
     </>

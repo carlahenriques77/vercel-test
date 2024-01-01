@@ -66,11 +66,12 @@ const LoadingScreen = () => {
             role="alert"
             aria-live="assertive"
             className="font-bold text-[1.5rem] xl:text-[1.625rem] text-crimsonRed"
+            aria-label="Carregando Conteúdo do Strapi, por favor, aguarde..."
           >
             Carregando Conteúdo do Strapi<span className="loading-dots"></span>
           </h1>
 
-          <p className="font-bold text-primaryBlue">{randomMessage}</p>
+          <p aria-hidden="true" className="font-bold text-primaryBlue">{randomMessage}</p>
         </div>
       </div>
     </>

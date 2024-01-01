@@ -24,54 +24,59 @@ const Services = ({ handleImageClick }) => {
           <div className="flex flex-col gap-[60px] md:gap-12">
             {servicesData.data &&
               servicesData.data.map((mapItem, itemIndex) => (
-                <div
-                  className={`flex flex-col gap-8 md:grid md:gap-8 md:items-center ${
-                    itemIndex % 2 === 0
-                      ? "md-grid-cols-2fr-1fr"
-                      : "md-grid-cols-1fr-2fr"
-                  }`}
-                  key={mapItem.id}
-                >
+                <div key={mapItem.id}>
                   <div
-                    className={`flex flex-col gap-3 md:order-1 xl:gap-4 ${
-                      itemIndex % 2 === 0 ? "md:order-[1]" : "md:order-[0]"
+                    className={`flex flex-col gap-8 md:grid md:gap-8 md:items-center ${
+                      itemIndex % 2 === 0
+                        ? "md-grid-cols-2fr-1fr"
+                        : "md-grid-cols-1fr-2fr"
                     }`}
                   >
-                    <h3 className="text-primaryBlue font-bold text-[1.5rem] xl:text-[1.625rem]">
-                      {mapItem.attributes.Title}
-                    </h3>
+                    <div
+                      className={`flex flex-col gap-3 md:order-1 xl:gap-4 ${
+                        itemIndex % 2 === 0 ? "md:order-[1]" : "md:order-[0]"
+                      }`}
+                    >
+                      <h3 className="text-primaryBlue font-bold text-[1.5rem] xl:text-[1.625rem]">
+                        {mapItem.attributes.Title}
+                      </h3>
 
-                    <p className="font-medium xl:text-[1.125rem]">
-                      {mapItem.attributes.Description[0].children[0].text}
-                    </p>
+                      <p className="font-medium xl:text-[1.125rem]">
+                        {mapItem.attributes.Description[0].children[0].text}
+                      </p>
 
-                    <Button
-                      pageHref={`/servicos/${mapItem.attributes.slug}`}
-                      buttonText="Veja mais sobre"
-                      iconSrc="/paw-icon.svg"
-                      altText="Pata de cachorro Icone"
-                      buttonClassName="xl:mt-[24px]"
-                    />
+                      <Button
+                        pageHref={`/servicos/${mapItem.attributes.slug}`}
+                        buttonText="Veja mais sobre"
+                        iconSrc="/paw-icon.svg"
+                        altText="Pata de cachorro Icone"
+                        buttonClassName="xl:mt-[24px]"
+                      />
+                    </div>
+
+                    <div className="overflow-hidden rounded-[8px]">
+                      <Image
+                        aria-hidden={true}
+                        className="w-full cursor-zoom-in hover:scale-[1.2] transition-all"
+                        src={`https://not-cool.onrender.com${mapItem.attributes.Image.data.attributes.formats.small.url}`}
+                        alt={`Illustração Serviço ${itemIndex}`}
+                        width="0"
+                        height="0"
+                        unoptimized
+                        onClick={() => handleImageClick(itemIndex + 2)}
+                      />
+                    </div>
                   </div>
-
-                  <div className="overflow-hidden rounded-[8px]">
-                    <Image
-                      aria-hidden={true}
-                      className="w-full cursor-zoom-in hover:scale-[1.2] transition-all"
-                      src={`https://not-cool.onrender.com${mapItem.attributes.Image.data.attributes.formats.small.url}`}
-                      alt={`Illustração Serviço ${itemIndex}`}
-                      width="0"
-                      height="0"
-                      unoptimized
-                      onClick={() => handleImageClick(itemIndex + 2)}
-                    />
-                  </div>
+                  <hr aria-hidden="true" className="border-black25" />
                 </div>
               ))}
           </div>
         </div>
       ) : (
-        <div aria-hidden="true" className=" px-[24px] lg:px-[48px] mt-[72px] flex flex-col gap-4 md:gap-8">
+        <div
+          aria-hidden="true"
+          className=" px-[24px] lg:px-[48px] mt-[72px] flex flex-col gap-4 md:gap-8"
+        >
           <h2 className="text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1.75rem]">
             Lorem ipsum dolor
           </h2>

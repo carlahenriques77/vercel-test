@@ -1,5 +1,6 @@
 // components/ImageSlider.js
 import React, { useState, useEffect } from "react";
+import { useRef } from "react";
 
 const ImageCarousel = ({ imagesArray, closeModal, initialIndex }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(initialIndex);
@@ -27,6 +28,8 @@ const ImageCarousel = ({ imagesArray, closeModal, initialIndex }) => {
       }}
       className="z-[4000] fixed top-0 left-0 w-full h-full flex justify-center items-center"
       onClick={closeModal}
+      role="dialog"
+      aria-modal={currentImageIndex ? "true" : "false"}
     >
       <button
         aria-label="Fechar o Modal"
@@ -60,6 +63,7 @@ const ImageCarousel = ({ imagesArray, closeModal, initialIndex }) => {
       </button>
 
       <div
+        aria-hidden="true"
         style={{
           display: "flex",
           transform: `translateX(${-currentImageIndex * 100}%)`,

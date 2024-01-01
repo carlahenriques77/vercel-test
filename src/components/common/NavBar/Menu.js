@@ -1,10 +1,10 @@
 // Menu.js
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import NewSharedData from "@/components/utils/NewSharedData";
 
-const Menu = ({ menuOpen, isLinkActive }) => {
+const Menu = ({ menuOpen, setMenuOpen, isScreen1024Px, isLinkActive }) => {
   const router = useRouter();
 
   const linksData = NewSharedData();
@@ -16,6 +16,18 @@ const Menu = ({ menuOpen, isLinkActive }) => {
     (item) => item.text === "Serviços"
   )?.href;
 
+  const ulRef = useRef(null);
+
+  useEffect(() => {
+    if (menuOpen && ulRef.current && !isScreen1024Px) {
+      ulRef.current.focus();
+    }
+  }, [menuOpen]);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <div
       className={`hidden bg-[black] ${
@@ -23,6 +35,10 @@ const Menu = ({ menuOpen, isLinkActive }) => {
       }`}
     >
       <ul
+        ref={ulRef}
+        role="dialog"
+        tabIndex="-1" // Make the ul focusable
+        aria-modal={menuOpen ? "true" : "false"}
         className={`max-h-[420px] flex flex-col items-center gap-3 text-[1.25rem] overflow-auto py-[24px] lg:flex-row lg:py-[0px] lg:h-auto lg:gap-[6px] lg:overflow-visible xl:gap-[12px]`}
       >
         {linksData.allLinks[0].links.map((mapItem, itemIndex) => (
@@ -48,6 +64,10 @@ const Menu = ({ menuOpen, isLinkActive }) => {
             </Link>
           </li>
         ))}
+
+        <button className="visually-hidden" onClick={toggleMenu}>
+          Fechar Modal
+        </button>
       </ul>
     </div>
   );
