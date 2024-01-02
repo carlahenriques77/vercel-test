@@ -1,7 +1,1 @@
-{
-  "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/sobre": "pages/sobre.js"
-}
+{"/_app":"pages/_app.js","/_document":"pages/_document.js","/api/hello":"pages/api/hello.js","/depoimentos":"pages/depoimentos.html","/contato":"pages/contato.html","/mapa-do-site":"pages/mapa-do-site.html","/contato/sucesso":"pages/contato/sucesso.html","/":"pages/index.html","/mapa":"pages/mapa.html","/politica-de-privacidade":"pages/politica-de-privacidade.html","/reservar/sucesso":"pages/reservar/sucesso.html","/perguntas-frequentes":"pages/perguntas-frequentes.html","/reservar":"pages/reservar.html","/servicos/[slug]":"pages/servicos/[slug].html","/sobre":"pages/sobre.html","/termos-e-condicoes":"pages/termos-e-condicoes.html","/_error":"pages/_error.js","/test":"pages/test.html","/vagas/[slug]":"pages/vagas/[slug].html","/vagas":"pages/vagas.html","/servicos":"pages/servicos.html","/404":"pages/404.html"}

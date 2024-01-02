@@ -20,12 +20,14 @@ const ServicesList = () => {
               >
                 <div className="overflow-hidden rounded-t-[12px]">
                   <Link
+                    tabIndex="-1"
                     aria-hidden={true}
                     href={`/servicos/${mapItem.attributes.slug}`}
                   >
                     <Image
                       className="w-full object-cover rounded-t-[12px] hover:scale-[1.2] transition-all"
                       src={`https://not-cool.onrender.com${mapItem.attributes.Image.data.attributes.formats.small.url}`}
+                      alt={`Serviços Illustração ${itemIndex + 1}`}
                       width="0"
                       height="0"
                       unoptimized
@@ -53,6 +55,7 @@ const ServicesList = () => {
                       aria-hidden={true}
                       className="w-[16px] h-[12px]"
                       src="right-arrow-icon.svg"
+                      alt="Flecha Apontando para a Direita Icone"
                       width={0}
                       height={0}
                       unoptimized
@@ -68,7 +71,7 @@ const ServicesList = () => {
           <div className="px-[24px] lg:px-[48px] mb-[72px]">
             <ul className="grid gap-x-[16px] gap-y-[32px] sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {Array.from({ length: 4 }, (_, index) => (
-                <li className="shadow-xl bg-black25 rounded-[12px]">
+                <li key={index} className="shadow-xl bg-black25 rounded-[12px]">
                   <div className="rounded-t-[12px]"></div>
 
                   <div className="py-[24px] px-[16px] flex flex-col gap-[12px]">

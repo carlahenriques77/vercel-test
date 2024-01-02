@@ -15,16 +15,18 @@ const ComponentWithLazyLoad = ({ lazyComponent }) => {
       { root: null, rootMargin: "0px", threshold: 0.9 }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    const currentRef = ref.current; // Store ref.current in a variable
+
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
-  }, []);
+  }, []); // Empty dependency array as we only want to run this effect once
 
   return (
     <div ref={ref}>

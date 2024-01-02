@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const ServiceGallery = ({ videoData, handleImageClick }) => {
@@ -42,13 +43,14 @@ const ServiceGallery = ({ videoData, handleImageClick }) => {
                             className="overflow-hidden"
                             key={`${mapItem.id}_${repetitionIndex}_${itemIndex}`}
                           >
-                            <img
+                            <Image
                               aria-hidden={true}
                               className="cursor-zoom-in hover:scale-[1.2] transition-all w-full h-full object-cover"
                               src={`https://not-cool.onrender.com${mapItem.attributes.formats.small.url}`}
                               alt={`Illustração: ${itemIndex}`}
                               height="0"
                               width="0"
+                              unoptimized
                               onClick={() => handleImageClick(itemIndex)}
                             />
                           </div>

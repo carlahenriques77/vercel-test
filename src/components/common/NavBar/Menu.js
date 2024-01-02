@@ -22,7 +22,7 @@ const Menu = ({ menuOpen, setMenuOpen, isScreen1024Px, isLinkActive }) => {
     if (menuOpen && ulRef.current && !isScreen1024Px) {
       ulRef.current.focus();
     }
-  }, [menuOpen]);
+  }, [menuOpen, isScreen1024Px]);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);

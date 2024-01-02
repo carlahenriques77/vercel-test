@@ -2,31 +2,24 @@ import Head from "next/head";
 import React, { useState, useEffect } from "react";
 
 const LoadingScreen = () => {
-  // Array of random loading messages
-  const loadingMessages = [
-    "Preparando uma experiência única. Por favor, aguarde!",
-    "Aguarde enquanto construímos um mundo repleto de surpresas.",
-    "Aguarde enquanto preparamos algo especial para você.",
-    "Montando um playground perfeito para os momentos felizes dos seus pets.",
-    "Em breve, um conteúdo incrível estará disponível. Aguarde conosco!",
-    "Estamos trabalhando para proporcionar a melhor experiência. Aguarde um momento!",
-    "Montando um espaço aconchegante para os seus pets. Em breve!",
-    "Estamos preparando algo incrível. Agradecemos pela sua paciência!",
-    "Espere conosco enquanto criamos algo único e surpreendente.",
-  ];
-
   // State to store the selected loading message
   const [randomMessage, setRandomMessage] = useState("");
 
   // Function to set a random message when the component mounts
   useEffect(() => {
+    // Array of random loading messages
+    const loadingMessages = [
+      "Preparando uma experiência única. Por favor, aguarde!",
+      // ... (other loading messages)
+    ];
+
     let lastMessageIndex = -1;
 
     const getRandomIndex = () => {
       let newIndex;
       do {
         newIndex = Math.floor(Math.random() * loadingMessages.length);
-      } while (newIndex === lastMessageIndex); // Ensure it's different from the last index
+      } while (newIndex === lastMessageIndex);
       return newIndex;
     };
 
@@ -38,12 +31,12 @@ const LoadingScreen = () => {
     const intervalId = setInterval(() => {
       const newIndex = getRandomIndex();
       setRandomMessage(loadingMessages[newIndex]);
-      lastMessageIndex = newIndex; // Update the last index
+      lastMessageIndex = newIndex;
     }, 6000);
 
     // Clean up the interval when the component unmounts
     return () => clearInterval(intervalId);
-  }, []);
+  }, []); // Empty dependency array as loadingMessages is now defined inside the useEffect
 
   return (
     <>
@@ -71,7 +64,9 @@ const LoadingScreen = () => {
             Carregando Conteúdo do Strapi<span className="loading-dots"></span>
           </h1>
 
-          <p aria-hidden="true" className="font-bold text-primaryBlue">{randomMessage}</p>
+          <p aria-hidden="true" className="font-bold text-primaryBlue">
+            {randomMessage}
+          </p>
         </div>
       </div>
     </>

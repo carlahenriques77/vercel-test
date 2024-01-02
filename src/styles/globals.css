@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 /* src/styles/global.css */
 
 @font-face {
@@ -273,9 +274,9 @@ table {
 }
 
 :focus-visible {
-  outline: 4px solid #007BFF; /* Change the color as needed */
+  outline: 4px solid #007bff; /* Change the color as needed */
   transition: outline 0.2s ease-in-out; /* Adjust the duration and timing function as needed */
-  /* position: relative; */ 
+  /* position: relative; */
   z-index: 1500;
 }
 
@@ -353,6 +354,9 @@ table {
 .gradient-blue-red-test {
   background-image: linear-gradient(#3bb1f9, #d62839);
   background-size: 100%;
+  background-clip: text; /* Standard property for compatibility */
+
+  /* Vendor-prefixed properties */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-background-clip: text;
@@ -810,5 +814,3 @@ table {
 .skip-to-content:focus {
   top: 0;
 }
-
-

@@ -61,6 +61,7 @@ const TestimonialsPage = () => {
                           aria-hidden={true}
                           className="border-solid border-crimsonRed border-[2px] w-[40px] h-[40px] block rounded-[100%] object-cover"
                           src={`https://not-cool.onrender.com${mapItem.ProfilePicture.data.attributes.formats.small.url}`}
+                          alt={`Perfil do Usuario ${itemIndex + 1}`}
                           width={0}
                           height={0}
                           unoptimized

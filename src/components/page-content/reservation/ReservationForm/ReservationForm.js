@@ -1097,7 +1097,7 @@ const ReservationForm = () => {
                               A informação sobre o estado de esterilização pode
                               nos ajudar a proporcionar a melhor experiência
                               para ele. Em caso do seu Cão ser muito jovem,
-                              então marque a opção 'Não se Aplica'.
+                              então marque a opção &apos;Não se Aplica&apos;.
                             </p>
                           </div>
 

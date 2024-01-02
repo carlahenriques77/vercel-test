@@ -1,4 +1,5 @@
 // components/ImageSlider.js
+import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { useRef } from "react";
 
@@ -79,13 +80,16 @@ const ImageCarousel = ({ imagesArray, closeModal, initialIndex }) => {
             style={{ flex: "0 0 100%" }}
             onClick={closeModal}
           >
-            <img
+            <Image
               className="max-w-[100%] max-h-[80vh]"
               src={imageUrl}
               alt={`Slide ${index}`}
               onClick={(e) => {
                 e.stopPropagation();
               }}
+              unoptimized
+              width={0}
+              height={0}
             />
           </div>
         ))}

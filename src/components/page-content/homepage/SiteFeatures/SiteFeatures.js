@@ -11,7 +11,7 @@ const SiteFeatures = () => {
     <>
       {featuresData.data ? (
         <>
-          <h2 id="main-content" class="visually-hidden">Recursos Especiais do nosso Site</h2>
+          <h2 id="main-content" className="visually-hidden">Recursos Especiais do nosso Site</h2>
 
           <ul className="px-[24px] lg:px-[48px] gap-11 grid relative md:justify-items-center lg:grid-cols-3 lg:gap-7">
             <Image

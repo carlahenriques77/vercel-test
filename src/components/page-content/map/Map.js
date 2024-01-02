@@ -77,7 +77,7 @@ const Map = () => {
 
   const customClusterIcon = (clusterItem) => {
     return new divIcon({
-      html: `<div class='bg-midnightBlack font-bold h-[3.4rem] w-[3.4rem] text-[white] flex items-center justify-center rounded-[50%] text-[1.5rem] shadow-xl border-solid border-skyBlue border-[2px]'>${clusterItem.getChildCount()}</div>`,
+      html: `<div className='bg-midnightBlack font-bold h-[3.4rem] w-[3.4rem] text-[white] flex items-center justify-center rounded-[50%] text-[1.5rem] shadow-xl border-solid border-skyBlue border-[2px]'>${clusterItem.getChildCount()}</div>`,
       iconSize: [38, 38],
     });
   };
@@ -97,7 +97,7 @@ const Map = () => {
               <ul>
                 {servicesData.data &&
                   servicesData.data.map((mapItem, itemIndex) => (
-                    <li>
+                    <li key={mapItem.id}>
                       <h2>Nome da Creche: {mapItem.attributes.Title}</h2>
 
                       <p>Localidade: {mapItem.attributes.SpecificLocation}</p>
