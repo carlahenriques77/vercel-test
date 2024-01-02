@@ -1,4 +1,3 @@
-import Attribution from "@/components/utils/Attribution";
 import HeroTextBox from "@/components/utils/HeroTextBox";
 import useDataFetching from "@/hooks/useDataFetching";
 import React, { useEffect, useState } from "react";
@@ -6,15 +5,15 @@ import React, { useEffect, useState } from "react";
 const VideoHero = () => {
   const urlToFetch01 =
     "https://not-cool.onrender.com/api/content-media?populate[HeroSection][populate][HeroVideosFormats][populate]=*";
-  const { completeDataJSON: videoData } = useDataFetching(urlToFetch01);
+  const { completeDataJSON: contentData01 } = useDataFetching(urlToFetch01);
 
   const urlToFetch02 =
     "https://not-cool.onrender.com/api/content-media?populate[HeroSection][populate]=*";
-  const { completeDataJSON: heroTextData } = useDataFetching(urlToFetch02);
+  const { completeDataJSON: contentData02 } = useDataFetching(urlToFetch02);
 
   return (
     <>
-      {videoData.data && heroTextData.data ? (
+      {contentData01.data && contentData02.data ? (
         <div className="mb-[72px]">
           <div className="relative border-b-[4px] border-solid border-[black]">
             <video
@@ -24,11 +23,11 @@ const VideoHero = () => {
               className="w-full object-cover h-[70vh] bg-midnightBlack"
             >
               <source
-                src={`https://not-cool.onrender.com${videoData?.data.attributes.HeroSection.HeroVideosFormats.MP4VideoForTheHeroSection.data.attributes.url}`}
+                src={`https://not-cool.onrender.com${contentData01?.data.attributes.HeroSection.HeroVideosFormats.MP4VideoForTheHeroSection.data.attributes.url}`}
                 type="video/mp4"
               />
               <source
-                src={`https://not-cool.onrender.com${videoData?.data.attributes.HeroSection.HeroVideosFormats.WebmVideoForTheHeroSection.data.attributes.url}`}
+                src={`https://not-cool.onrender.com${contentData01?.data.attributes.HeroSection.HeroVideosFormats.WebmVideoForTheHeroSection.data.attributes.url}`}
                 type="video/webm"
               />
               Your browser does not support the video tag.
@@ -36,10 +35,10 @@ const VideoHero = () => {
 
             <HeroTextBox
               title={
-                heroTextData.data.attributes.HeroSection.HeroTextVideo.Title
+                contentData02.data.attributes.HeroSection.HeroTextVideo.Title
               }
               description={
-                heroTextData.data.attributes.HeroSection.HeroTextVideo
+                contentData02.data.attributes.HeroSection.HeroTextVideo
                   .Description
               }
             />

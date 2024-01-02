@@ -6,7 +6,7 @@ import { useState } from "react";
 const Benefits = () => {
   const urlToFetch =
     "https://not-cool.onrender.com/api/open-positions-page?populate[Benefits][populate][RepeatableFields][populate]=*";
-  const { completeDataJSON: ourHistoryData } = useDataFetching(urlToFetch);
+  const { completeDataJSON: contentData } = useDataFetching(urlToFetch);
 
   return (
     <div className="my-[72px]">
@@ -21,41 +21,42 @@ const Benefits = () => {
         priority={true}
       />
 
-      {ourHistoryData.data ? (
+      {contentData.data ? (
         <>
-          <div className="py-[12%] sm:py-[8%] md:py-[4%] lg:py-[2%] grid gap-[24px] bg-midnightBlack text-[white] px-[24px] lg:px-[48px]">
-            <h1 className="text-skyBlue font-bold text-[1.75rem]">
-              {ourHistoryData.data.attributes.Benefits.Title}
-            </h1>
+          <div className="py-[12%] sm:py-[8%] md:py-[4%] lg:py-[2%] grid gap-[24px] bg-midnightBlack text-[rgb(138,117,117)] px-[24px] lg:px-[48px]">
+            <h2 className="text-skyBlue font-bold text-[1.75rem]">
+              {contentData.data.attributes.Benefits.Title}
+            </h2>
 
-            <div
+            <ul
               className={`grid gap-8 sm:items-center sm:mx-auto sm:grid-cols-2 lg:!max-w-fit lg:mx-none`}
             >
-              {ourHistoryData.data.attributes.Benefits.RepeatableFields.map(
+              {contentData.data.attributes.Benefits.RepeatableFields.map(
                 (mapItem, itemIndex) => (
-                  <div
+                  <li
                     className={`flex flex-col gap-3 xl:gap-4`}
                     key={mapItem.id}
                   >
-                    <h2
-                      className={`font-bold text-[1.375rem] xl:text-[1.5rem]`}
-                    >
+                    <h3 className={`text-[white] font-bold text-[1.375rem] `}>
                       {mapItem.Title}
-                    </h2>
+                    </h3>
 
-                    <p className="text-white75 font-medium xl:text-[1.125rem]">
+                    <p className="text-white75 font-medium ">
                       {mapItem.Description[0].children[0].text}
                     </p>
-                  </div>
+                  </li>
                 )
               )}
-            </div>
+            </ul>
           </div>
         </>
       ) : (
         <>
-          <div className="px-[24px] lg:px-[48px] grid gap-8 bg-midnightBlack py-[48px]">
-            <h1 className="text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1.5rem] xl:text-[1.625rem] w-fit">
+          <div
+            aria-hidden="true"
+            className="px-[24px] lg:px-[48px] grid gap-8 bg-midnightBlack py-[48px]"
+          >
+            <h1 className="text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1.5rem]  w-fit">
               Lorem ipsum
             </h1>
 
@@ -66,11 +67,11 @@ const Benefits = () => {
                   key={itemIndex}
                 >
                   <div className={`flex flex-col gap-3 md:order-1 xl:gap-4`}>
-                    <h2 className="text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1.5rem] xl:text-[1.625rem]">
+                    <h2 className="text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1.5rem] ">
                       Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     </h2>
 
-                    <p className="text-skeletonLoading bg-skeletonLoading rounded-[12px] xl:text-[1.125rem]">
+                    <p className="text-skeletonLoading bg-skeletonLoading rounded-[12px] ">
                       Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                       Similique est id voluptas laborum velit animi, rem commodi
                       exercitationem reprehenderit debitis, nam ab rerum magnam

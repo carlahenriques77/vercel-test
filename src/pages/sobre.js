@@ -30,31 +30,31 @@ const About = () => {
 
   const urlToFetchImage01 =
     "https://not-cool.onrender.com/api/about-page?populate[YourHistory][populate][RepeatableFields][populate]=*";
-  const { completeDataJSON: ourHistoryData } =
+  const { completeDataJSON: contentData01 } =
     useDataFetching(urlToFetchImage01);
 
   const urlToFetchImage02 =
     "https://not-cool.onrender.com/api/content-media?populate[Testimonials][populate]=*";
-  const { completeDataJSON: testimonialsData } =
+  const { completeDataJSON: contentData02 } =
     useDataFetching(urlToFetchImage02);
 
   const urlToFetchImage03 =
     "https://not-cool.onrender.com/api/about-page?populate[YourTeam][populate][WorkerInformation][populate]=*";
-  const { completeDataJSON: teamData } = useDataFetching(urlToFetchImage03);
+  const { completeDataJSON: contentData03 } = useDataFetching(urlToFetchImage03);
 
   const generateImagePaths = () => {
     // Replace this with the actual logic to extract image paths from servicesData.data
     const ourHistoryImagePaths =
-      ourHistoryData.data.attributes.YourHistory.RepeatableFields.map(
+      contentData01.data.attributes.YourHistory.RepeatableFields.map(
         (mapItem) => {
           return `https://not-cool.onrender.com${mapItem.Image.data.attributes.formats.medium.url}`;
         }
       );
 
-    const testimonialsImagePath = `https://not-cool.onrender.com${testimonialsData.data.attributes.Testimonials.Image.data.attributes.formats.small.url}`;
+    const testimonialsImagePath = `https://not-cool.onrender.com${contentData02.data.attributes.Testimonials.Image.data.attributes.formats.small.url}`;
 
     const workersImagePaths =
-      teamData.data.attributes.YourTeam.WorkerInformation.map((mapItem) => {
+      contentData03.data.attributes.YourTeam.WorkerInformation.map((mapItem) => {
         return `https://not-cool.onrender.com${mapItem.WorkerImage.data.attributes.formats.small.url}`;
       });
 

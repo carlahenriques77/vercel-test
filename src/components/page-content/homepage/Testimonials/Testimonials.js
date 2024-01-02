@@ -1,4 +1,3 @@
-import Attribution from "@/components/utils/Attribution";
 import Button from "@/components/utils/Button";
 import useDataFetching from "@/hooks/useDataFetching";
 import Image from "next/image";
@@ -12,23 +11,23 @@ const Testimonials = ({
 }) => {
   const urlToFetch =
     "https://not-cool.onrender.com/api/content-media?populate[Testimonials][populate]=*";
-  const { completeDataJSON: testimonialsData } = useDataFetching(urlToFetch);
+  const { completeDataJSON: contentData } = useDataFetching(urlToFetch);
 
   return (
     <>
-      {testimonialsData.data ? (
+      {contentData.data ? (
         <>
           <div
             className={`mt-[72px] bg-[url(/pattern.webp)] bg-repeat text-[white] flex flex-col py-[8%] gap-9 px-[24px] md:py-[4%] lg:px-[48px] lg:grid lg:grid-cols-2 lg:items-center ${extraClassName}`}
           >
             <div className="flex flex-col gap-4 xl:gap-5 sm:text-center sm:items-center lg:text-start lg:items-start">
               <h2 className="font-bold text-[1.75rem]">
-                {testimonialsData.data.attributes.Testimonials.Title}
+                {contentData.data.attributes.Testimonials.Title}
               </h2>
 
-              <p className="font-semibold xl:text-[1.125rem] sm:max-w-[600px]">
+              <p className="font-semibold  sm:max-w-[600px]">
                 {
-                  testimonialsData.data.attributes.Testimonials.Description[0]
+                  contentData.data.attributes.Testimonials.Description[0]
                     .children[0].text
                 }
               </p>
@@ -45,12 +44,12 @@ const Testimonials = ({
             <Link
               tabIndex={-1}
               href={"/depoimentos"}
-              className="block relative rounded-[12px] mx-auto sm:max-w-[600px] border-solid border-skyBlue border-[4px]"
+              className="block relative rounded-[12px] mx-auto sm:max-w-[600px] border-solid border-skyBlue border-[4px] xl:width-[88%] xl:max-w-[100%]"
             >
               <Image
                 aria-hidden="true"
                 className="w-full rounded-[12px]"
-                src={`https://not-cool.onrender.com${testimonialsData.data.attributes.Testimonials.Image.data.attributes.formats.small.url}`}
+                src={`https://not-cool.onrender.com${contentData.data.attributes.Testimonials.Image.data.attributes.formats.small.url}`}
                 alt="Depoimentos Illustração"
                 width="0"
                 height="0"
@@ -60,7 +59,7 @@ const Testimonials = ({
 
               <div
                 style={{
-                  backgroundColor: `rgba(0, 0, 0, 0.${testimonialsData.data.attributes.Testimonials.GlassOverlayTransparency})`,
+                  backgroundColor: `rgba(0, 0, 0, 0.${contentData.data.attributes.Testimonials.GlassOverlayTransparency})`,
                 }}
                 className="w-full h-full absolute top-0 rounded-[12px] bg-transparent-hover hover:scale-[1.2] transition-all"
               ></div>
@@ -77,7 +76,7 @@ const Testimonials = ({
               Lorem ipsum, dolor sit amet.
             </h2>
 
-            <p className="text-skeletonLoading bg-skeletonLoading rounded-[12px] xl:text-[1.125rem] sm:max-w-[600px]">
+            <p className="text-skeletonLoading bg-skeletonLoading rounded-[12px]  sm:max-w-[600px]">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque
               pariatur quod tempore fugit! Corrupti aliquid minus
               necessitatibus.

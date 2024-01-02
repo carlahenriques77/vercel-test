@@ -9,11 +9,11 @@ import useDataFetching from "@/hooks/useDataFetching";
 const WorkersTestimonials = () => {
   const urlToFetch01 =
     "https://not-cool.onrender.com/api/open-positions-page?populate[WokersTestimonials][populate][VideoFormat][populate]=*";
-  const { completeDataJSON: videoData } = useDataFetching(urlToFetch01);
+  const { completeDataJSON: contentData01 } = useDataFetching(urlToFetch01);
 
   const urlToFetch02 =
     "https://not-cool.onrender.com/api/open-positions-page?populate[WokersTestimonials][populate]=*";
-  const { completeDataJSON: backgroundImageData } =
+  const { completeDataJSON: contentData02 } =
     useDataFetching(urlToFetch02);
 
   const [player, setPlayer] = useState(null);
@@ -46,12 +46,12 @@ const WorkersTestimonials = () => {
           }
         `}</style>
       </Head>
-      {videoData.data && backgroundImageData.data ? (
+      {contentData01.data && contentData02.data ? (
         <div className="mt-[72px]">
           <div
             style={{
-              backgroundImage: `url(https://not-cool.onrender.com${backgroundImageData.data.attributes.WokersTestimonials.BackgroundImage.data.attributes.formats.small.url})`,
-              backgroundPosition: `${backgroundImageData.data.attributes.WokersTestimonials.BackgroundPosition}`,
+              backgroundImage: `url(https://not-cool.onrender.com${contentData02.data.attributes.WokersTestimonials.BackgroundImage.data.attributes.formats.small.url})`,
+              backgroundPosition: `${contentData02.data.attributes.WokersTestimonials.BackgroundPosition}`,
             }}
             className={`bg-midnightBlack bg-no-repeat bg-cover border-solid border-[black] border-t-[4px] ${
               isPlaying ? "hidden" : "block"
@@ -64,11 +64,11 @@ const WorkersTestimonials = () => {
               className="flex flex-col gap-2 items-center justify-center w-[100%] h-[70vh]"
             >
               <button className="hover-effect01" onClick={playVideo}>
-                <h1 className="text-[white] text-center font-bold text-[1.75rem]">
+                <h2 className="text-[white] text-center font-bold text-[1.75rem]">
                   <span className="text-crimsonRed">Escute</span> dos nossos{" "}
                   <br aria-hidden="true" />{" "}
                   <span className="text-skyBlue">Trabalhadores</span>!
-                </h1>
+                </h2>
 
                 <Image
                   aria-hidden={true}
@@ -89,7 +89,7 @@ const WorkersTestimonials = () => {
             }`}
           >
             <YouTube
-              videoId={`${videoData.data.attributes.WokersTestimonials.YoutubeVideoID}`}
+              videoId={`${contentData01.data.attributes.WokersTestimonials.YoutubeVideoID}`}
               opts={{
                 playerVars: {
                   autoplay: 0,
@@ -102,7 +102,7 @@ const WorkersTestimonials = () => {
         </div>
       ) : (
         <>
-          <div>
+          <div aria-hidden="true">
             <div className="bg-skeletonLoading h-[70vh]"></div>
           </div>
         </>

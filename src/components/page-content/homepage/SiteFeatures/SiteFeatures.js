@@ -5,13 +5,15 @@ import React, { useEffect, useState } from "react";
 const SiteFeatures = () => {
   const urlToFetch =
     "https://not-cool.onrender.com/api/content-media?populate[SiteFeatures][populate][FeaturesRepetable][populate]=*";
-  const { completeDataJSON: featuresData } = useDataFetching(urlToFetch);
+  const { completeDataJSON: contentData } = useDataFetching(urlToFetch);
 
   return (
     <>
-      {featuresData.data ? (
+      {contentData.data ? (
         <>
-          <h2 id="main-content" className="visually-hidden">Recursos Especiais do nosso Site</h2>
+          <h2 id="main-content" className="visually-hidden">
+            Recursos Especiais do nosso Site
+          </h2>
 
           <ul className="px-[24px] lg:px-[48px] gap-11 grid relative md:justify-items-center lg:grid-cols-3 lg:gap-7">
             <Image
@@ -25,18 +27,18 @@ const SiteFeatures = () => {
               priority={true}
             />
 
-            {featuresData.data.attributes.SiteFeatures.FeaturesRepetable.map(
+            {contentData.data.attributes.SiteFeatures.FeaturesRepetable.map(
               (mapItem, itemIndex) => (
                 <li
                   className="grid justify-items-center text-center gap-2 z-[100] h-fit md:gap-3"
                   key={mapItem.id}
                 >
                   {itemIndex === 0 ? (
-                    <h3 className="text-primaryBlue text-2xl font-bold uppercase xl:text-[1.625rem]">
+                    <h3 className="text-primaryBlue text-2xl font-bold uppercase ">
                       {mapItem.FeatureTitle}
                     </h3>
                   ) : (
-                    <h3 className="text-primaryBlue text-2xl font-bold uppercase xl:text-[1.625rem]">
+                    <h3 className="text-primaryBlue text-2xl font-bold uppercase ">
                       {mapItem.FeatureTitle}
                     </h3>
                   )}
@@ -53,9 +55,7 @@ const SiteFeatures = () => {
                     />
                   </div>
 
-                  <p className="font-medium xl:text-[1.125rem]">
-                    {mapItem.FeatureDescription}
-                  </p>
+                  <p className="font-medium ">{mapItem.FeatureDescription}</p>
                 </li>
               )
             )}
@@ -71,7 +71,7 @@ const SiteFeatures = () => {
               key={index}
               className="grid justify-items-center text-center gap-2 z-[100] h-fit md:gap-3"
             >
-              <h3 className="text-skeletonLoading bg-skeletonLoading rounded-[12px] text-2xl font-bold uppercase xl:text-[1.625rem]">
+              <h3 className="text-skeletonLoading bg-skeletonLoading rounded-[12px] text-2xl font-bold uppercase ">
                 Lorem ipsum dolor
               </h3>
 
@@ -79,7 +79,7 @@ const SiteFeatures = () => {
                 <div className="h-[48px] w-[48px] xl:h-[60px] xl:w-[60px]"></div>
               </div>
 
-              <p className="text-skeletonLoading bg-skeletonLoading rounded-[12px] font-medium xl:text-[1.125rem]">
+              <p className="text-skeletonLoading bg-skeletonLoading rounded-[12px] font-medium ">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 Suscipit officiis temporibus excepturi, doloremque quidem
                 recusandae.

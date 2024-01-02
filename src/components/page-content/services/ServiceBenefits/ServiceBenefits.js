@@ -3,12 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const ServiceBenefits = ({ videoData, secondData }) => {
+const ServiceBenefits = ({ contentData01, contentData02 }) => {
   return (
     <>
-      {videoData.data && secondData.data && (
+      {contentData01.data && contentData02.data && (
         <div>
-          {videoData.data?.map((mapItem, itemIndex) => (
+          {contentData01.data?.map((mapItem, itemIndex) => (
             <div key={mapItem.id}>
               <div className="px-[24px] lg:px-[48px] grid gap-[48px]">
                 <Link
@@ -42,7 +42,7 @@ const ServiceBenefits = ({ videoData, secondData }) => {
 
                     <div>
                       <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-                        {secondData.data?.map((mapItem, itemIndex) => (
+                        {contentData02.data?.map((mapItem, itemIndex) => (
                           <div key={mapItem.id}>
                             {mapItem.attributes.Benefits.BenefitsList.map(
                               (mapItem, itemIndex) => (

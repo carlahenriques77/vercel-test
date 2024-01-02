@@ -2,12 +2,12 @@ import HeroSection from "@/components/common/HeroSection/HeroSection";
 import useDataFetching from "@/hooks/useDataFetching";
 import React from "react";
 
-const IndividualServicesHero = ({ videoData }) => {
+const IndividualServicesHero = ({ contentData01 }) => {
   return (
     <>
-      {videoData.data && (
+      {contentData01.data && (
         <>
-          {videoData.data?.map((mapItem, itemIndex) => (
+          {contentData01.data?.map((mapItem, itemIndex) => (
             <div
               key={mapItem.id}
               style={{

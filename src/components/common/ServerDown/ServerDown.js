@@ -21,7 +21,7 @@ const ServerDown = () => {
         />
 
         <div className="flex flex-col gap-3 text-center">
-          <h1 className="text-crimsonRed font-bold text-[1.5rem] xl:text-[1.625rem] text-black50">
+          <h1 className="text-crimsonRed font-bold text-[1.5rem]  text-black50">
             Ops! Algo deu errado.
           </h1>
 
@@ -36,7 +36,7 @@ const ServerDown = () => {
           </p>
 
           <a
-            className={`text-[0.5rem] hover:underline sm:text-[0.75rem] xl:text-[0.875rem] text-black75`}
+            className={`text-[0.5rem] hover:underline sm:text-[0.75rem]  text-black75`}
             href="https://icons8.com.br/illustrations/illustration/3d-casual-life-lego-bricks-2"
             target="_blank"
             rel="noopener noreferrer"

@@ -5,11 +5,11 @@ import React from "react";
 const BookNowCallToAction = () => {
   const urlToFetch =
     "https://not-cool.onrender.com/api/content-media?populate[BookNow][populate]=*";
-  const { completeDataJSON: bookNowData } = useDataFetching(urlToFetch);
+  const { completeDataJSON: contentData } = useDataFetching(urlToFetch);
 
   return (
     <>
-      {bookNowData.data ? (
+      {contentData.data ? (
         <div className="mt-[72px] flex flex-col gap-7">
           <div className="flex flex-col gap-[12px] text-center">
             <div
@@ -18,13 +18,13 @@ const BookNowCallToAction = () => {
               }
             >
               <h2 className="text-primaryBlue font-bold text-[1.75rem] px-[24px] lg:px-[48px] ">
-                {bookNowData.data.attributes.BookNow.Title}
+                {contentData.data.attributes.BookNow.Title}
               </h2>
             </div>
 
-            <p className="font-bold px-[24px] md:mx-auto md:w-[80%] lg:px-[48px] xl:text-[1.125rem]">
+            <p className="font-bold px-[24px] md:mx-auto md:w-[80%] lg:px-[48px] ">
               {
-                bookNowData.data.attributes.BookNow.Description[0].children[0]
+                contentData.data.attributes.BookNow.Description[0].children[0]
                   .text
               }
             </p>
@@ -49,7 +49,10 @@ const BookNowCallToAction = () => {
           </div>
         </div>
       ) : (
-        <div aria-hidden="true" className=" px-[24px] lg:px-[48px] mt-[72px] flex flex-col gap-7">
+        <div
+          aria-hidden="true"
+          className=" px-[24px] lg:px-[48px] mt-[72px] flex flex-col gap-7"
+        >
           <div className="flex flex-col gap-[12px] text-center">
             <div className="flex justify-center relative py-3">
               <h2 className="w-fit text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1.75rem] px-[24px] lg:px-[48px] ">
@@ -57,7 +60,7 @@ const BookNowCallToAction = () => {
               </h2>
             </div>
 
-            <p className="text-skeletonLoading bg-skeletonLoading rounded-[12px] px-[24px] md:mx-auto md:w-[80%] lg:px-[48px] xl:text-[1.125rem]">
+            <p className="text-skeletonLoading bg-skeletonLoading rounded-[12px] px-[24px] md:mx-auto md:w-[80%] lg:px-[48px] ">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit.
               Excepturi nesciunt natus unde dolorem voluptas. Sit architecto,
               facere.

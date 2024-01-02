@@ -30,10 +30,10 @@ const MapPage = () => {
   };
 
   const urlToFetch01 = `https://not-cool.onrender.com/api/locations-maps?populate=*`;
-  const { completeDataJSON: servicesData } = useDataFetching(urlToFetch01);
+  const { completeDataJSON: contentData } = useDataFetching(urlToFetch01);
 
   const generateImagePaths = () => {
-    const ourHistoryImagePaths = servicesData.data?.map((mapItem) => {
+    const ourHistoryImagePaths = contentData.data?.map((mapItem) => {
       // Use flatMap to handle the nested arrays and flatten the result
       return mapItem.attributes.ImageGallery.data.flatMap((innerMapItem) => {
         // Return the full image path

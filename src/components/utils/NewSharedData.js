@@ -2,10 +2,10 @@ import useDataFetching from "@/hooks/useDataFetching";
 
 const NewSharedData = () => {
   const urlToFetch01 = `https://not-cool.onrender.com/api/services-collections?populate=*`;
-  const { completeDataJSON: heroData } = useDataFetching(urlToFetch01);
+  const { completeDataJSON: contentData01 } = useDataFetching(urlToFetch01);
 
   const urlToFetch02 = `https://not-cool.onrender.com/api/open-positions?populate=*`;
-  const { completeDataJSON: videoData } = useDataFetching(urlToFetch02);
+  const { completeDataJSON: contentData02 } = useDataFetching(urlToFetch02);
 
   return {
     allLinks: [
@@ -23,7 +23,7 @@ const NewSharedData = () => {
           {
             text: "Serviços",
             href: "/servicos",
-            sublinks: heroData.data?.map((mapItem) => ({
+            sublinks: contentData01.data?.map((mapItem) => ({
               text: mapItem.attributes.Title,
               href: `/servicos/${mapItem.attributes.slug}`,
             })),
@@ -35,7 +35,7 @@ const NewSharedData = () => {
           {
             text: "Vagas",
             href: "/vagas",
-            sublinks: videoData.data?.map((mapItem) => ({
+            sublinks: contentData02.data?.map((mapItem) => ({
               text: mapItem.attributes.JobTitle,
               href: `/vagas/${mapItem.attributes.slug}`,
             })),

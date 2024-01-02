@@ -5,15 +5,19 @@ import Link from "next/link";
 import React from "react";
 
 const ServicesList = () => {
-  const urlToFetch01 = `https://not-cool.onrender.com/api/services-collections?populate=*`;
-  const { completeDataJSON: heroData } = useDataFetching(urlToFetch01);
+  const urlToFetch = `https://not-cool.onrender.com/api/services-collections?populate=*`;
+  const { completeDataJSON: contentData } = useDataFetching(urlToFetch);
 
   return (
     <>
-      {heroData.data ? (
+      {contentData.data ? (
         <div className="px-[24px] lg:px-[48px] mb-[72px]">
+          <h2 className="visually-hidden">
+            Nossos Serviços de Cuidado para Cães
+          </h2>
+
           <ul className="grid gap-x-[16px] gap-y-[32px] sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {heroData.data.map((mapItem, itemIndex) => (
+            {contentData.data.map((mapItem, itemIndex) => (
               <li
                 className="shadow-xl bg-[white] rounded-[12px]"
                 key={mapItem.id}
@@ -37,9 +41,9 @@ const ServicesList = () => {
 
                 <div className="py-[24px] px-[16px] flex flex-col gap-[12px]">
                   <div className="flex flex-col gap-[8px]">
-                    <h2 className="font-bold text-[black]">
+                    <h3 className="font-bold text-[black]">
                       {mapItem.attributes.Title}
-                    </h2>
+                    </h3>
 
                     <p className="text-limit text-black75">
                       {mapItem.attributes.Description[0].children[0].text}
@@ -68,7 +72,7 @@ const ServicesList = () => {
         </div>
       ) : (
         <>
-          <div className="px-[24px] lg:px-[48px] mb-[72px]">
+          <div aria-hidden="true" className="px-[24px] lg:px-[48px] mb-[72px]">
             <ul className="grid gap-x-[16px] gap-y-[32px] sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {Array.from({ length: 4 }, (_, index) => (
                 <li key={index} className="shadow-xl bg-black25 rounded-[12px]">

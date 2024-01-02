@@ -7,25 +7,23 @@ import Image from "next/image";
 const ViewAboutUs = () => {
   const urlToFetch =
     "https://not-cool.onrender.com/api/open-positions-page?populate[SeeAboutUs][populate]=*";
-  const { completeDataJSON: ourHistoryData } = useDataFetching(urlToFetch);
+  const { completeDataJSON: contentData } = useDataFetching(urlToFetch);
 
   return (
     <>
-      {ourHistoryData.data ? (
+      {contentData.data ? (
         <div className="py-[12%] sm:py-[8%] md:py-[4%] grid gap-12  text-[white] px-[24px] lg:px-[48px]">
           <div
             className={`relative grid gap-8 items-center sm:max-w-[640px] sm:mx-auto lg:grid-cols-2 lg:gap-[48px] lg:!max-w-fit lg:mx-none`}
           >
             <div className={`flex flex-col gap-4 xl:gap-5`}>
-              <h1
-                className={`text-skyBlue font-black text-[1.5rem] xl:text-[1.625rem]`}
-              >
-                {ourHistoryData.data.attributes.SeeAboutUs.Title}
-              </h1>
+              <h2 className={`text-skyBlue font-black text-[1.5rem] `}>
+                {contentData.data.attributes.SeeAboutUs.Title}
+              </h2>
 
-              <p className="text-[black] font-medium xl:text-[1.125rem]">
+              <p className="text-[black] font-medium ">
                 {
-                  ourHistoryData.data.attributes.SeeAboutUs.Description[0]
+                  contentData.data.attributes.SeeAboutUs.Description[0]
                     .children[0].text
                 }
               </p>
@@ -57,18 +55,21 @@ const ViewAboutUs = () => {
         </div>
       ) : (
         <>
-          <div className="py-[12%] sm:py-[8%] md:py-[4%] grid gap-12 px-[24px] lg:px-[48px]">
+          <div
+            aria-hidden="true"
+            className="py-[12%] sm:py-[8%] md:py-[4%] grid gap-12 px-[24px] lg:px-[48px]"
+          >
             <div
               className={`grid gap-8 items-center sm:max-w-[640px] sm:mx-auto lg:grid-cols-2 lg:gap-[48px] lg:!max-w-fit lg:mx-none`}
             >
               <div className={`flex flex-col gap-4 xl:gap-5`}>
                 <h1
-                  className={`text-skeletonLoading bg-skeletonLoading  rounded-[8px] text-[1.5rem] xl:text-[1.625rem]`}
+                  className={`text-skeletonLoading bg-skeletonLoading  rounded-[8px] text-[1.5rem] `}
                 >
                   Lorem ipsum
                 </h1>
 
-                <p className="text-skeletonLoading bg-skeletonLoading  rounded-[8px] xl:text-[1.125rem]">
+                <p className="text-skeletonLoading bg-skeletonLoading  rounded-[8px] ">
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut
                   nemo, voluptate beatae accusantium qui rem eligendi id
                   sapiente impedit?

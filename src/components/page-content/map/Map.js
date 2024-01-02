@@ -41,7 +41,7 @@ const Map = () => {
   };
 
   const urlToFetch01 = `https://not-cool.onrender.com/api/locations-maps?populate=*`;
-  const { completeDataJSON: servicesData } = useDataFetching(urlToFetch01);
+  const { completeDataJSON: contentData } = useDataFetching(urlToFetch01);
 
   const handleImageClick = (index) => {
     setImageIndex(index);
@@ -77,14 +77,14 @@ const Map = () => {
 
   const customClusterIcon = (clusterItem) => {
     return new divIcon({
-      html: `<div className='bg-midnightBlack font-bold h-[3.4rem] w-[3.4rem] text-[white] flex items-center justify-center rounded-[50%] text-[1.5rem] shadow-xl border-solid border-skyBlue border-[2px]'>${clusterItem.getChildCount()}</div>`,
+      html: `<div class='bg-midnightBlack font-bold h-[3.4rem] w-[3.4rem] text-[white] flex items-center justify-center rounded-[50%] text-[1.5rem] shadow-xl border-solid border-skyBlue border-[2px]'>${clusterItem.getChildCount()}</div>`,
       iconSize: [38, 38],
     });
   };
 
   return (
     <>
-      {servicesData.data ? (
+      {contentData.data ? (
         <>
           <div className="visually-hidden">
             <div>
@@ -95,8 +95,8 @@ const Map = () => {
               </h1>
 
               <ul>
-                {servicesData.data &&
-                  servicesData.data.map((mapItem, itemIndex) => (
+                {contentData.data &&
+                  contentData.data.map((mapItem, itemIndex) => (
                     <li key={mapItem.id}>
                       <h2>Nome da Creche: {mapItem.attributes.Title}</h2>
 
@@ -178,8 +178,8 @@ const Map = () => {
                   showCoverageOnHover={false}
                   iconCreateFunction={customClusterIcon}
                 >
-                  {servicesData.data &&
-                    servicesData.data.map((mapItem, itemIndex) => (
+                  {contentData.data &&
+                    contentData.data.map((mapItem, itemIndex) => (
                       <Marker
                         alt={`${mapItem.attributes.Title}, (Pressione Espaço para Abrir e ver mais Informações.)`}
                         title={`Local: ${mapItem.attributes.Title}`}
@@ -257,7 +257,7 @@ const Map = () => {
                 ref={targetElementRef}
               >
                 <div>
-                  <h1
+                  <h2
                     tabIndex="0"
                     className="uppercase text-skyBlue text-[1.5rem] font-bold"
                   >
@@ -265,7 +265,7 @@ const Map = () => {
                     <span className="text-crimsonRed">
                       {selectedMarker.attributes.Title}
                     </span>
-                  </h1>
+                  </h2>
                 </div>
 
                 <div>
@@ -315,10 +315,10 @@ const Map = () => {
 
                 <div className="mt-[32px]">
                   <div>
-                    <h1 className="uppercase text-crimsonRed text-[1.5rem] font-bold">
+                    <h2 className="uppercase text-crimsonRed text-[1.5rem] font-bold">
                       {selectedMarker.attributes.Title},{" "}
                       <span className="text-skyBlue">Galleria:</span>
-                    </h1>
+                    </h2>
                   </div>
 
                   <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-[16px] mt-[24px]">

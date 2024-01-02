@@ -10,13 +10,13 @@ import { useSpring, animated } from "react-spring";
 const KenBurnsSlideshow = () => {
   const urlToFetch =
     "https://not-cool.onrender.com/api/open-positions-page?populate[SeeAboutUs][populate]=*";
-  const { completeDataJSON: ourHistoryData } = useDataFetching(urlToFetch);
+  const { completeDataJSON: contentData } = useDataFetching(urlToFetch);
 
   // Use the fetched image URLs if available
   const images =
-    ourHistoryData.data &&
-    ourHistoryData.data.attributes.SeeAboutUs.ImageKenBurns.data &&
-    ourHistoryData.data.attributes.SeeAboutUs.ImageKenBurns.data.map(
+    contentData.data &&
+    contentData.data.attributes.SeeAboutUs.ImageKenBurns.data &&
+    contentData.data.attributes.SeeAboutUs.ImageKenBurns.data.map(
       (mapItem) => `https://not-cool.onrender.com${mapItem.attributes.url}`
     );
 
@@ -41,7 +41,7 @@ const KenBurnsSlideshow = () => {
 
   return (
     <>
-      {ourHistoryData.data ? (
+      {contentData.data ? (
         <div className="blob-shape relative w-[100%] h-[440px] overflow-hidden border-solid border-[black] border-[4px] rounded-[800px]">
           <div>
             {images?.map((image, i) => (

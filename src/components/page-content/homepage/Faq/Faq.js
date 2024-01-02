@@ -6,7 +6,7 @@ import Link from "next/link";
 const Faq = () => {
   const urlToFetch =
     "https://not-cool.onrender.com/api/content-media?populate[FrequentlyAskedQuestions][populate][QuestionsAndAnswers][populate]=*";
-  const { completeDataJSON: faqData } = useDataFetching(urlToFetch);
+  const { completeDataJSON: contentData } = useDataFetching(urlToFetch);
 
   // State to manage visibility of all answers
   const [openQuestions, setOpenQuestions] = useState([]);
@@ -21,21 +21,21 @@ const Faq = () => {
 
   return (
     <>
-      {faqData.data ? (
+      {contentData.data ? (
         <div className="px-[24px] lg:px-[48px] mt-[72px] mb-[72px] flex flex-col gap-4">
           <h2 className="text-primaryBlue font-bold text-[1.75rem]">
-            {faqData.data.attributes.FrequentlyAskedQuestions.SectionTitle}
+            {contentData.data.attributes.FrequentlyAskedQuestions.SectionTitle}
           </h2>
 
           <hr aria-hidden="true" className="border-black25" />
 
           <ul className="flex flex-col gap-2">
-            {faqData.data.attributes.FrequentlyAskedQuestions.QuestionsAndAnswers.map(
+            {contentData.data.attributes.FrequentlyAskedQuestions.QuestionsAndAnswers.map(
               (mapItem) => (
                 <li key={mapItem.id}>
                   <button
                     aria-expanded={openQuestions.includes(mapItem.id)}
-                    className={`text-shadow-black-light bg-primaryBlue text-[white] font-bold  w-full text-left pl-[16px] pr-[16px] pt-[12px] pb-[12px] flex flex-row gap-3 items-center justify-between hover:text-white90 xl:text-[1.125rem]`}
+                    className={`text-shadow-black-light bg-primaryBlue text-[white] font-bold  w-full text-left pl-[16px] pr-[16px] pt-[12px] pb-[12px] flex flex-row gap-3 items-center justify-between hover:text-white90 `}
                     onClick={() => toggleQuestion(mapItem.id)}
                   >
                     {mapItem.Question}
@@ -82,9 +82,12 @@ const Faq = () => {
 
           <hr aria-hidden="true" className="border-black25" />
 
-          <div className="font-bold xl:text-[1.125rem]">
+          <div className="font-bold ">
             <p className="flex gap-[4px]">
-              {faqData.data.attributes.FrequentlyAskedQuestions.ContactUsText}
+              {
+                contentData.data.attributes.FrequentlyAskedQuestions
+                  .ContactUsText
+              }
               {"  "}
 
               <Link
@@ -92,7 +95,7 @@ const Faq = () => {
                 href="/contato"
               >
                 {
-                  faqData.data.attributes.FrequentlyAskedQuestions
+                  contentData.data.attributes.FrequentlyAskedQuestions
                     .ContactUsLinkOutlinedText
                 }
               </Link>
@@ -100,7 +103,10 @@ const Faq = () => {
           </div>
         </div>
       ) : (
-        <div aria-hidden="true" className="px-[24px] lg:px-[48px] mt-[72px] mb-[72px] flex flex-col gap-4">
+        <div
+          aria-hidden="true"
+          className="px-[24px] lg:px-[48px] mt-[72px] mb-[72px] flex flex-col gap-4"
+        >
           <h2 className="w-fit text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1.75rem]">
             Lorem ipsum dolor sit amet consectetur
           </h2>
@@ -111,7 +117,7 @@ const Faq = () => {
             {Array.from({ length: 3 }, (_, itemIndex) => (
               <li key={itemIndex}>
                 <div
-                  className={`text-skeletonLoading bg-skeletonLoading rounded-[12px] w-full text-left pl-[16px] pr-[16px] pt-[12px] pb-[12px] flex flex-row gap-3 items-center xl:text-[1.125rem]`}
+                  className={`text-skeletonLoading bg-skeletonLoading rounded-[12px] w-full text-left pl-[16px] pr-[16px] pt-[12px] pb-[12px] flex flex-row gap-3 items-center `}
                 >
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit
                 </div>
@@ -121,7 +127,7 @@ const Faq = () => {
 
           <hr aria-hidden="true" className="border-black25" />
 
-          <p className="w-fit text-skeletonLoading bg-skeletonLoading rounded-[12px] xl:text-[1.125rem]">
+          <p className="w-fit text-skeletonLoading bg-skeletonLoading rounded-[12px] ">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem
             necessitatibus aut accusantium totam quibusdam ut provident sed.
           </p>

@@ -6,28 +6,28 @@ import React, { useEffect, useState } from "react";
 const AboutHero = () => {
   const urlToFetch =
     "https://not-cool.onrender.com/api/about-page?populate[HeroBaseUtils][populate]=*";
-  const { completeDataJSON: heroData } = useDataFetching(urlToFetch);
+  const { completeDataJSON: contentData } = useDataFetching(urlToFetch);
 
   return (
     <>
-      {heroData.data ? (
+      {contentData.data ? (
         <>
           <HeroSection
-            backgroundImage={`https://not-cool.onrender.com${heroData.data.attributes.HeroBaseUtils.BackgroundImage.data.attributes.url}`}
+            backgroundImage={`https://not-cool.onrender.com${contentData.data.attributes.HeroBaseUtils.BackgroundImage.data.attributes.url}`}
             backgroundPosition={
-              heroData.data.attributes.HeroBaseUtils.BackgroundPosition
+              contentData.data.attributes.HeroBaseUtils.BackgroundPosition
             }
             backgroundOverlay={
-              heroData.data.attributes.HeroBaseUtils.BackgroundOverlay
+              contentData.data.attributes.HeroBaseUtils.BackgroundOverlay
             }
-            title={heroData.data.attributes.HeroBaseUtils.HeroText.Title}
+            title={contentData.data.attributes.HeroBaseUtils.HeroText.Title}
             description={
-              heroData.data.attributes.HeroBaseUtils.HeroText.Description
+              contentData.data.attributes.HeroBaseUtils.HeroText.Description
             }
           />
         </>
       ) : (
-        <div className="relative">
+        <div aria-hidden="true" className="relative">
           <div className="mb-[72px] bg-black75 h-[70vh]">
             <div
               style={{
@@ -37,9 +37,9 @@ const AboutHero = () => {
               }}
               className="absolute text-skeletonLoading text-center flex flex-col gap-[12px] bg-skeletonLoading rounded-[8px] border-solid border-skeletonLoading border-[2px] p-[16px] select-none"
             >
-              <h1 className="text-[1.125rem] md:text-[1.25rem] lg:text-[1.5rem] text-skeletonLoading">
+              <h2 className="text-[1.125rem] md:text-[1.25rem] lg:text-[1.5rem] text-skeletonLoading">
                 Lorem ipsum
-              </h1>
+              </h2>
 
               <p className="hidden lg:block text-[1rem] text-skeletonLoading">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit.

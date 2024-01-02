@@ -8,10 +8,10 @@ import { useState } from "react";
 const MainContent = () => {
   const urlToFetch01 =
     "https://not-cool.onrender.com/api/open-positions-page?populate[MainContent][populate]=*";
-  const { completeDataJSON: heroData } = useDataFetching(urlToFetch01);
+  const { completeDataJSON: contentData01 } = useDataFetching(urlToFetch01);
 
   const urlToFetch02 = `https://not-cool.onrender.com/api/open-positions?populate=*`;
-  const { completeDataJSON: videoData } = useDataFetching(urlToFetch02);
+  const { completeDataJSON: contentData02 } = useDataFetching(urlToFetch02);
 
   const formatDate = (dateString) => {
     const options = {
@@ -28,20 +28,20 @@ const MainContent = () => {
 
   return (
     <>
-      {heroData.data && videoData.data ? (
+      {contentData01.data && contentData02.data ? (
         <div className="flex flex-col gap-[48px] px-[24px] lg:px-[48px]">
           <div className="relative flex flex-col gap-[16px]">
-            <h1
+            <h2
               id="main-content"
               className="text-primaryBlue font-bold text-[1.75rem]"
             >
-              {heroData.data.attributes.MainContent.Title}
-            </h1>
+              {contentData01.data.attributes.MainContent.Title}
+            </h2>
 
-            <p className="max-w-[600px] font-medium text-[1rem] xl:text-[1.125rem]">
+            <p className="max-w-[600px] font-medium text-[1rem] ">
               Vendo{" "}
               <span className="font-bold">
-                {videoData.data.length} Posições Disponiveis
+                {contentData02.data.length} Posições Disponiveis
               </span>{" "}
               em todos Locais.
             </p>
@@ -59,7 +59,7 @@ const MainContent = () => {
           </div>
 
           <ul className="grid gap-[16px]">
-            {videoData.data
+            {contentData02.data
               .sort(
                 (itemA, itemB) =>
                   new Date(itemB.attributes.publishedAt) -
@@ -109,7 +109,10 @@ const MainContent = () => {
         </div>
       ) : (
         <>
-          <div className=" px-[24px] lg:px-[48px] mt-[72px] flex flex-col gap-7">
+          <div
+            aria-hidden="true"
+            className=" px-[24px] lg:px-[48px] mt-[72px] flex flex-col gap-7"
+          >
             <div className="flex flex-col gap-[12px] text-center">
               <div className="flex justify-center relative py-3">
                 <h1 className="w-fit text-skeletonLoading bg-skeletonLoading rounded-[12px] text-[1.75rem] px-[24px] lg:px-[48px] ">
@@ -117,7 +120,7 @@ const MainContent = () => {
                 </h1>
               </div>
 
-              <p className="text-skeletonLoading bg-skeletonLoading rounded-[12px] px-[24px] md:mx-auto md:w-[80%] lg:px-[48px] xl:text-[1.125rem]">
+              <p className="text-skeletonLoading bg-skeletonLoading rounded-[12px] px-[24px] md:mx-auto md:w-[80%] lg:px-[48px] ">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                 Excepturi nesciunt natus unde dolorem voluptas. Sit architecto,
                 facere.

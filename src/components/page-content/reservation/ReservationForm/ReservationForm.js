@@ -5,8 +5,8 @@ import { useRouter } from "next/router";
 import React, { useState, useRef, useEffect } from "react";
 
 const ReservationForm = () => {
-  const urlToFetch01 = `https://not-cool.onrender.com/api/locations-maps?populate=*`;
-  const { completeDataJSON: servicesData } = useDataFetching(urlToFetch01);
+  const urlToFetch = `https://not-cool.onrender.com/api/locations-maps?populate=*`;
+  const { completeDataJSON: contentData } = useDataFetching(urlToFetch);
 
   const [numberOfDogs, setNumberOfDogs] = useState("");
   const [agreeToTerms, setAgreeToTerms] = useState(false);
@@ -622,7 +622,7 @@ const ReservationForm = () => {
           <div className="px-[24px] lg:px-[48px]">
             <div className="grid gap-[24px]">
               <div className="grid md:grid-cols-2 gap-[60px] items-start">
-                {servicesData.data ? (
+                {contentData.data ? (
                   <>
                     {renderSelect(
                       "Localidade",
@@ -630,7 +630,7 @@ const ReservationForm = () => {
                       "Location",
                       formData.Location,
                       formErrors.Location,
-                      servicesData.data.map((mapItem) => ({
+                      contentData.data.map((mapItem) => ({
                         value: mapItem.attributes.Title,
                         label: `${mapItem.attributes.Title}, ${mapItem.attributes.SpecificLocation}`,
                       })),

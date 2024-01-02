@@ -56,9 +56,8 @@ const LoadingScreen = () => {
 
         <div className="flex flex-col gap-3 text-center">
           <h1
-            role="alert"
-            aria-live="assertive"
-            className="font-bold text-[1.5rem] xl:text-[1.625rem] text-crimsonRed"
+            aria-live="polite"
+            className="font-bold text-[1.5rem]  text-crimsonRed"
             aria-label="Carregando Conteúdo do Strapi, por favor, aguarde..."
           >
             Carregando Conteúdo do Strapi<span className="loading-dots"></span>

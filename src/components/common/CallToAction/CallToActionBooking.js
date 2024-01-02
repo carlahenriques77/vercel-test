@@ -1,4 +1,3 @@
-import Attribution from "@/components/utils/Attribution";
 import Button from "@/components/utils/Button";
 import useDataFetching from "@/hooks/useDataFetching";
 import Image from "next/image";
@@ -8,21 +7,21 @@ import React, { useEffect, useState } from "react";
 const CallToActionBooking = () => {
   const urlToFetch =
     "https://not-cool.onrender.com/api/about-page?populate[CallToAction][populate]=*";
-  const { completeDataJSON: callToActionData } = useDataFetching(urlToFetch);
+  const { completeDataJSON: contentData } = useDataFetching(urlToFetch);
 
   return (
     <>
-      {callToActionData.data ? (
+      {contentData.data ? (
         <>
           <div className="bg-[url(/pattern.webp)] bg-repeat text-[white] flex flex-col py-[8%] gap-9 px-[24px] md:py-[4%] lg:px-[48px] lg:items-center border-solid border-[black] border-t-[4px]">
             <div className="flex flex-col gap-4 xl:gap-5 md:text-center ,md:items-center">
-              <h1 className="w-full font-bold text-[1.75rem]">
-                {callToActionData.data.attributes.CallToAction.Title}
-              </h1>
+              <h2 className="w-full font-bold text-[1.75rem]">
+                {contentData.data.attributes.CallToAction.Title}
+              </h2>
 
-              <p className="font-semibold xl:text-[1.125rem] sm:max-w-[600px] md:mx-auto">
+              <p className="font-semibold  sm:max-w-[600px] md:mx-auto">
                 {
-                  callToActionData.data.attributes.CallToAction.Description[0]
+                  contentData.data.attributes.CallToAction.Description[0]
                     .children[0].text
                 }
               </p>
@@ -38,12 +37,15 @@ const CallToActionBooking = () => {
           </div>
         </>
       ) : (
-        <div className="text-skeletonLoading bg-black50 flex flex-col justify-center items-center relative gap-[16px] p-[32px]">
-          <h1 className="text-skeletonLoading bg-skeletonLoading text-center text-[1.5rem] xl:text-[1.625rem] rounded-[8px]">
+        <div
+          aria-hidden="true"
+          className="text-skeletonLoading bg-black50 flex flex-col justify-center items-center relative gap-[16px] p-[32px]"
+        >
+          <h1 className="text-skeletonLoading bg-skeletonLoading text-center text-[1.5rem]  rounded-[8px]">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit.
           </h1>
 
-          <p className="rounded-[8px] text-skeletonLoading bg-skeletonLoading font-semibold max-w-[600px] mx-auto xl:text-[1.125rem]">
+          <p className="rounded-[8px] text-skeletonLoading bg-skeletonLoading font-semibold max-w-[600px] mx-auto ">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
             sint atque ad cumque quis maxime, voluptatibus exercitationem
             nostrum delectus ut modi asperiores repudiandae molestiae placeat

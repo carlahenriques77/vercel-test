@@ -2,7 +2,7 @@ import Button from "@/components/utils/Button";
 import Image from "next/image";
 import React, { useState } from "react";
 
-const ServicePricing = ({ thirdData }) => {
+const ServicePricing = ({ contentData03 }) => {
   // State to manage visibility of all answers
   const [openQuestions, setOpenQuestions] = useState([]);
 
@@ -16,12 +16,12 @@ const ServicePricing = ({ thirdData }) => {
 
   return (
     <>
-      {thirdData.data && (
+      {contentData03.data && (
         <div className="px-[24px] lg:px-[48px] mb-[72px] flex flex-col gap-[24px]">
           <div>
-            <h1 className="w-fit text-[black] font-bold text-[1.5rem]">
+            <h2 className="w-fit text-[black] font-bold text-[1.5rem]">
               Preços:
-            </h1>
+            </h2>
           </div>
 
           <div>
@@ -44,7 +44,7 @@ const ServicePricing = ({ thirdData }) => {
               </ul>
 
               <div className="overflow-x-auto">
-                {thirdData.data?.map((mapItem, itemIndex, arrayOfItems) => (
+                {contentData03.data?.map((mapItem, itemIndex, arrayOfItems) => (
                   <div key={mapItem.id}>
                     {mapItem.attributes.Pricing.TableItems.map(
                       (mapItem, itemIndex, arrayOfItems) => (

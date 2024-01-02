@@ -1,14 +1,14 @@
 import Image from "next/image";
 import React from "react";
 
-const ServiceGallery = ({ videoData, handleImageClick }) => {
+const ServiceGallery = ({ contentData01, handleImageClick }) => {
   const animationSpeed = "40s";
 
   return (
     <>
-      {videoData.data && (
+      {contentData01.data && (
         <>
-          {videoData.data?.map((mapItem, itemIndex) => (
+          {contentData01.data?.map((mapItem, itemIndex) => (
             <div className="mb-[72px]" key={mapItem.id}>
               <div className="overflow-hidden bg-midnightBlack py-[72px] border-y-[4px] border-solid border-skyBlue">
                 <style jsx>{`

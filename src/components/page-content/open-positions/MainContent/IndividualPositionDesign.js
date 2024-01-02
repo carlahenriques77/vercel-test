@@ -11,7 +11,7 @@ const IndividualPositionDesign = () => {
   const { slug } = router.query;
 
   const [loading, setLoading] = useState(true);
-  const [videoData, setVideoData] = useState(null);
+  const [contentData, setVideoData] = useState(null);
   const [socialIconsData, setSocialIconsData] = useState(null);
 
   const urlToFetch01 = `https://not-cool.onrender.com/api/open-positions?filters[slug]=${slug}&populate[ContentTextRepeatable][populate]=*`;
@@ -56,13 +56,13 @@ const IndividualPositionDesign = () => {
 
   return (
     <>
-      {videoData &&
-      videoData.data &&
+      {contentData &&
+      contentData.data &&
       socialIconsData &&
       socialIconsData.data &&
       !loading ? (
         <>
-          {videoData.data?.map((mapItem, itemIndex) => (
+          {contentData.data?.map((mapItem, itemIndex) => (
             <div
               className="px-[24px] lg:px-[48px] mt-[72px] pb-[72px] bg-[url(/curvy-background.svg)] bg-repeat flex flex-col gap-[62px]"
               key={mapItem.id}
@@ -96,8 +96,8 @@ const IndividualPositionDesign = () => {
                 </div>
 
                 <div className="flex flex-col gap-[62px] lg:grid md-grid-cols-2fr-1fr">
-                  <div className="h-fit text-[black] px-[16px] py-[24px] rounded-[8px] shadow-xl border-primaryBlue bg-[white] border-[2px] border-solid flex flex-col gap-[16px] md:max-w-[400px] lg:order-1 lg:max-w-full">
-                    <div>
+                  <ul className="h-fit text-[black] px-[16px] py-[24px] rounded-[8px] shadow-xl border-primaryBlue bg-[white] border-[2px] border-solid flex flex-col gap-[16px] md:max-w-[400px] lg:order-1 lg:max-w-full">
+                    <li>
                       <p className="text-[black] font-bold flex flex-col gap-1">
                         {" "}
                         Postado em:{" "}
@@ -105,27 +105,27 @@ const IndividualPositionDesign = () => {
                           {formatDate(mapItem.attributes.publishedAt)}
                         </span>
                       </p>
-                    </div>
+                    </li>
 
-                    <div>
+                    <li>
                       <p className="text-[black] font-bold flex flex-col gap-1">
                         Tipo de Trabalho:{" "}
                         <span className="font-normal text-black75">
                           {mapItem.attributes.EmploymentType}
                         </span>
                       </p>
-                    </div>
+                    </li>
 
-                    <div>
+                    <li>
                       <p className="text-[black] font-bold flex flex-col gap-1">
                         Experiencia:{" "}
                         <span className="font-normal text-black75">
                           {mapItem.attributes.Experience}
                         </span>
                       </p>
-                    </div>
+                    </li>
 
-                    <div className="flex flex-col gap-1">
+                    <li className="flex flex-col gap-1">
                       <p className="text-[black] font-bold">
                         Compatilhe esse Anuncio!
                       </p>
@@ -156,16 +156,16 @@ const IndividualPositionDesign = () => {
                           )
                         )}
                       </ul>
-                    </div>
+                    </li>
 
-                    <div>
+                    <li>
                       <p className="text-[black] font-bold flex flex-col gap-1">
                         Localidade:{" "}
                         <span className="mt-[4px] uppercase py-[6px] px-[16px] bg-skyBlue rounded-[8px] text-[white] font-bold w-fit border-solid border-skyBlue border-[2px]">
                           {mapItem.attributes.JobLocation}
                         </span>
                       </p>
-                    </div>
+                    </li>
 
                     <Button
                       pageHref={mapItem.attributes.UrlToExternalJobPage}
@@ -174,7 +174,7 @@ const IndividualPositionDesign = () => {
                       altText="Pata de cachorro Icone"
                       buttonClassName="!mt-[0px] max-w-[600px] !bg-midnightBlack"
                     />
-                  </div>
+                  </ul>
 
                   <div className="flex flex-col gap-[28px]">
                     {mapItem.attributes.ContentTextRepeatable.map(
@@ -215,7 +215,10 @@ const IndividualPositionDesign = () => {
         </>
       ) : (
         <>
-          <div className="px-[24px] lg:px-[48px] mt-[72px] pb-[72px]   flex flex-col gap-[62px]">
+          <div
+            aria-hidden="true"
+            className="px-[24px] lg:px-[48px] mt-[72px] pb-[72px]   flex flex-col gap-[62px]"
+          >
             <div className="flex flex-col gap-[32px]">
               <div className="flex flex-col gap-[16px]">
                 <div className="bg-skeletonLoading text-skeletonLoading w-fit">

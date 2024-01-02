@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 
 const Contact = () => {
   const urlToFetch01 = `https://not-cool.onrender.com/api/locations-maps?populate=*`;
-  const { completeDataJSON: servicesData } = useDataFetching(urlToFetch01);
+  const { completeDataJSON: contentData } = useDataFetching(urlToFetch01);
 
   const [formData, setFormData] = useState({
     FirstName: "",
@@ -186,10 +186,10 @@ const Contact = () => {
             ENTRE EM CONTATO
           </h1>
 
-          <p className="font-medium xl:text-[1.125rem]">
+          <p className="font-medium ">
             Se você tiver alguma dúvida que não está respondida em nossa{" "}
             <Link
-              className="text-primaryBlue underline"
+              className="text-primaryBlue underline font-bold"
               href={"/perguntas-frequentes"}
             >
               seção de Perguntas Frequentes (FAQ)
@@ -373,9 +373,9 @@ const Contact = () => {
                       ⚠️ Selecione uma Localização ⚠️
                     </option>
 
-                    {servicesData.data ? (
+                    {contentData.data ? (
                       <>
-                        {servicesData.data.map((mapItem, itemIndex) => (
+                        {contentData.data.map((mapItem, itemIndex) => (
                           <option
                             value={mapItem.attributes.Title}
                             key={mapItem.id}
@@ -470,7 +470,7 @@ const Contact = () => {
 
             <div className="flex flex-col gap-[16px]">
               <div>
-                <p className="text-[black] font-bold xl:text-[1.125rem]">
+                <p className="text-[black] font-bold ">
                   <span aria-hidden={true} className="text-crimsonRed">
                     *
                   </span>

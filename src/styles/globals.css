@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 /* src/styles/global.css */
 
 @font-face {
@@ -79,6 +78,7 @@
 
 body {
   font-family: "Inter", sans-serif !important;
+  font-size: 1rem;
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/ 

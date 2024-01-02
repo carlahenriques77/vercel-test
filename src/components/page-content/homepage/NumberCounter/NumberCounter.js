@@ -7,7 +7,7 @@ import { Waypoint } from "react-waypoint";
 const NumberCounter = () => {
   const urlToFetch =
     "https://not-cool.onrender.com/api/content-media?populate[NumberCounter][populate]=*";
-  const { completeDataJSON: numberCounterData } = useDataFetching(urlToFetch);
+  const { completeDataJSON: contentData } = useDataFetching(urlToFetch);
 
   const [startAnimation, setStartAnimation] = useState(false);
 
@@ -15,21 +15,13 @@ const NumberCounter = () => {
     setStartAnimation(true);
   };
 
-  let backgroundImageUrl;
-
-  if (numberCounterData.data) {
-    const imageSize = numberCounterData.data.attributes.NumberCounter.ImageSize;
-
-    backgroundImageUrl = `https://not-cool.onrender.com${numberCounterData.data.attributes.NumberCounter.CounterBackgroundImage.data.attributes.url}`;
-  }
-
   return (
     <>
       {/* Content */}
-      {numberCounterData.data ? (
+      {contentData.data ? (
         <div
           style={{
-            backgroundImage: `url(${backgroundImageUrl})`,
+            backgroundImage: `url(https://not-cool.onrender.com${contentData.data.attributes.NumberCounter.CounterBackgroundImage.data.attributes.url})`,
           }}
           className="bg-cover bg-center relative bg-fixed"
         >
@@ -37,11 +29,11 @@ const NumberCounter = () => {
 
           <ul
             style={{
-              backgroundColor: `rgba(0, 0, 0, 0.${numberCounterData.data.attributes.NumberCounter.GlassOverlayTransparency})`,
+              backgroundColor: `rgba(0, 0, 0, 0.${contentData.data.attributes.NumberCounter.GlassOverlayTransparency})`,
             }}
             className="px-[24px] lg:px-[48px] mt-[72px] flex flex-col gap-2 items-center justify-center py-[12%] w-[100%] h-[100%] md:gap-[16px] md:py-[4%] lg:grid lg:grid-cols-3 border-solid border-[black] border-y-[4px]"
           >
-            {numberCounterData.data.attributes.NumberCounter.NumberCounterRepetable.map(
+            {contentData.data.attributes.NumberCounter.NumberCounterRepetable.map(
               (mapItem) => (
                 <li
                   key={mapItem.id}
@@ -51,13 +43,13 @@ const NumberCounter = () => {
 
                   <h3 className="flex gap-1 flex-col">
                     <CountUp
-                      className="text-crimsonRed font-black text-[1.5rem] xl:text-[1.625rem]"
+                      className="text-crimsonRed font-black text-[1.5rem] "
                       duration={mapItem.DurationInSeconds}
                       end={mapItem.CounterAmount}
                       start={startAnimation}
                     />
 
-                    <span className="font-semibold text-white75 xl:text-[1.125rem]">
+                    <span className="font-semibold text-white75 ">
                       {mapItem.CounterSubtitle}
                     </span>
                   </h3>
@@ -77,11 +69,11 @@ const NumberCounter = () => {
                 key={index}
                 className="w-full flex gap-1 flex-col items-center p-4 bg-white50 rounded-[12px]"
               >
-                <span className="text-skeletonLoading bg-skeletonLoading rounded-[12px] w-fit font-black text-[1.5rem] xl:text-[1.625rem]">
+                <span className="text-skeletonLoading bg-skeletonLoading rounded-[12px] w-fit font-black text-[1.5rem] ">
                   Lorem
                 </span>
 
-                <span className="text-skeletonLoading bg-skeletonLoading rounded-[12px] w-fit xl:text-[1.125rem]">
+                <span className="text-skeletonLoading bg-skeletonLoading rounded-[12px] w-fit ">
                   Lorem ipsum
                 </span>
               </div>

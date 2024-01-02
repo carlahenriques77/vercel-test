@@ -1,63 +1,29 @@
 import Footer from "@/components/common/Footer/Footer";
+import LoadingScreen from "@/components/common/LoadingScreen/LoadingScreen";
 import NavBar from "@/components/common/NavBar/NavBar";
+import ServerDown from "@/components/common/ServerDown/ServerDown";
+import useCheckFetch from "@/hooks/useCheckFetch";
+import useDataFetching from "@/hooks/useDataFetching";
 import Head from "next/head";
 import React from "react";
 
-const privacyPolicyContent = {
-  title: "Política de Privacidade",
-  description:
-    "Bem-vindo à nossa Política de Privacidade. Esta página informa sobre as práticas de coleta, uso e divulgação de informações quando você usa nosso serviço.",
-  sections: [
-    {
-      heading: "1. Informações que Coletamos",
-      content: [
-        "1.1 Reservas Falsas: Ao criar uma reserva fictícia, coletamos informações como nome e endereço de e-mail para processar a reserva.",
-        "1.2 Formulário de Contato: Quando você utiliza nosso formulário de contato, coletamos as informações fornecidas para responder às suas consultas.",
-      ],
-    },
-    {
-      heading: "2. Uso das Informações",
-      content: [
-        "2.1 Processamento de Reservas: Utilizamos as informações fornecidas nas reservas fictícias para processar e confirmar as reservas.",
-        "2.2 Respostas a Consultas: As informações do formulário de contato são usadas para responder às suas perguntas e solicitações.",
-      ],
-    },
-    {
-      heading: "3. Armazenamento de Dados",
-      content: [
-        "3.1 Local de Armazenamento: As informações são armazenadas de forma segura em nossos servidores.",
-        "3.2 Medidas de Segurança: Implementamos medidas de segurança para proteger as informações contra acesso não autorizado.",
-      ],
-    },
-    {
-      heading: "4. Comunicações por E-mail",
-      content: [
-        "4.1 Confirmação de Reservas: Podemos enviar e-mails de confirmação relacionados às reservas fictícias.",
-        "4.2 Outras Comunicações: Podemos enviar e-mails relacionados a atualizações ou informações importantes sobre nossos serviços.",
-      ],
-    },
-    {
-      heading: "5. Compartilhamento de Informações",
-      content: [
-        "5.1 Terceiros: Não compartilhamos suas informações com terceiros, exceto quando necessário para os fins descritos nesta política.",
-      ],
-    },
-    {
-      heading: "6. Alterações nesta Política",
-      content: [
-        "6.1 Atualizações: Podemos atualizar nossa política de privacidade periodicamente. Recomendamos que você revise esta página regularmente para ficar informado sobre quaisquer alterações.",
-      ],
-    },
-    {
-      heading: "7. Contato",
-      content: [
-        "7.1 Dúvidas: Se tiver dúvidas sobre esta política, entre em contato conosco através do formulário disponível em nosso site.",
-      ],
-    },
-  ],
-};
-
 const PrivacyPolicy = () => {
+  const urlToFetch =
+    "https://not-cool.onrender.com/api/terms-and-privacy-policy?populate[PrivacyPolicy][populate]=*";
+  const { completeDataJSON: contentData } = useDataFetching(urlToFetch);
+
+  const apiUrl =
+    "https://not-cool.onrender.com/api/terms-and-privacy-policy?populate[PrivacyPolicy][populate]=*";
+  const { loading, error } = useCheckFetch(apiUrl);
+
+  if (loading) {
+    return <LoadingScreen />;
+  }
+
+  if (error) {
+    return <ServerDown />;
+  }
+
   return (
     <div>
       <Head>
@@ -70,37 +36,96 @@ const PrivacyPolicy = () => {
 
       <NavBar />
 
-      <div className="px-[24px] lg:px-[48px] my-[72px]">
-        <div>
-          <h1 className="text-[1.75rem] font-bold">
-            {privacyPolicyContent.title}
+      {contentData.data ? (
+        <div className="px-[24px] lg:px-[48px] my-[72px]">
+          <div>
+            <h1 className="text-[1.75rem] font-bold">
+              Política de Privacidade
+            </h1>
+
+            <p className="mt-[12px] text-[1.375rem] font-medium">
+              Bem-vindo à nossa Política de Privacidade. Esta página informa
+              sobre as práticas de coleta, uso e divulgação de informações
+              quando você usa nosso serviço.
+            </p>
+          </div>
+
+          <hr className="my-[32px] border-black75" />
+
+          {contentData.data.attributes.PrivacyPolicy.TitleAndDescription.map(
+            (mapItem, index) => (
+              <div key={mapItem.id}>
+                <h2 className="text-[1.5rem] font-semibold">{mapItem.Title}</h2>
+
+                <ul className="grid gap-[8px] mt-[12px]">
+                  {mapItem.Description.map((paragraph, index) => (
+                    <li key={index}>
+                      <p className="text-[1.125rem]">
+                        {paragraph.children.map((child, childIndex) => (
+                          <React.Fragment key={childIndex}>
+                            {child.type === "text" && child.text}
+                          </React.Fragment>
+                        ))}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+
+                {index !==
+                  contentData.data.attributes.PrivacyPolicy.TitleAndDescription
+                    .length -
+                    1 && (
+                  <hr aria-hidden="true" className="my-[32px] border-black75" />
+                )}
+              </div>
+            )
+          )}
+        </div>
+      ) : (
+        <div
+          aria-hidden="true"
+          className="px-[24px] lg:px-[48px] my-[72px] text-skeletonLoading"
+        >
+          <h1 className="w-fit bg-skeletonLoading text-[24px]">
+            Lorem ipsum dolor
           </h1>
 
-          <p className="mt-[12px] text-[1.375rem] font-medium">
-            {privacyPolicyContent.description}
+          <p className="w-fit bg-skeletonLoading mt-[12px]">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum quo
+            vitae perspiciatis nobis exercitationem error ipsam laudantium
+            consequuntur libero corrupti. Nam, quibusdam ratione cum amet eaque
+            ipsa. Distinctio, nulla iste!
           </p>
-        </div>
 
-        <hr className="my-[32px] border-black75" />
+          <hr className="my-[32px] border-black25" />
 
-        {privacyPolicyContent.sections.map((section, index) => (
-          <div key={index}>
-            <h2 className="text-[1.5rem] font-semibold">{section.heading}</h2>
-
-            <ul className="grid gap-[8px] mt-[12px]">
-              {section.content.map((item, itemIndex) => (
-                <li key={itemIndex}>
-                  <p className="text-[1.125rem]">{item}</p>
+          <ul className="grid gap-[8px] mt-[12px]">
+            {Array.from({ length: 4 }, (_, itemIndex) => (
+              <div key={itemIndex}>
+                <li>
+                  <h2 className="w-fit bg-skeletonLoading text-[24px]">
+                    Lorem ipsum dolor
+                  </h2>
+                  <ul className="grid gap-[8px] mt-[12px]">
+                    {Array.from({ length: 4 }, (_, itemIndex) => (
+                      <li className="w-fit bg-skeletonLoading" key={itemIndex}>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Non amet tempora velit commodi deserunt nobis nisi. Vel,
+                        accusamus quae? Veniam quaerat assumenda quidem aliquid
+                        impedit perferendis deleniti quasi odit exercitationem.
+                      </li>
+                    ))}
+                  </ul>
                 </li>
-              ))}
-            </ul>
 
-            {index !== privacyPolicyContent.sections.length - 1 && (
-              <hr className="my-[32px] border-black75" />
-            )}
-          </div>
-        ))}
-      </div>
+                {itemIndex !== 3 && (
+                  <hr aria-hidden="true" className="my-[32px] border-black25" />
+                )}
+              </div>
+            ))}
+          </ul>
+        </div>
+      )}
 
       <Footer />
     </div>

@@ -36,7 +36,7 @@ const Menu = ({ menuOpen, setMenuOpen, isScreen1024Px, isLinkActive }) => {
     >
       <ul
         ref={ulRef}
-        role="dialog"
+        role={menuOpen && !isScreen1024Px ? "dialog" : undefined}
         tabIndex="-1" // Make the ul focusable
         aria-modal={menuOpen ? "true" : "false"}
         className={`max-h-[420px] flex flex-col items-center gap-3 text-[1.25rem] overflow-auto py-[24px] lg:flex-row lg:py-[0px] lg:h-auto lg:gap-[6px] lg:overflow-visible xl:gap-[12px]`}
@@ -65,9 +65,14 @@ const Menu = ({ menuOpen, setMenuOpen, isScreen1024Px, isLinkActive }) => {
           </li>
         ))}
 
-        <button className="visually-hidden" onClick={toggleMenu}>
-          Fechar Modal
-        </button>
+        {menuOpen && !isScreen1024Px && (
+          <li
+            className="visually-hidden"
+            aria-hidden={menuOpen && !isScreen1024Px ? "false" : "true"}
+          >
+            <button onClick={toggleMenu}>Fechar Modal</button>
+          </li>
+        )}
       </ul>
     </div>
   );

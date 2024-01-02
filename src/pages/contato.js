@@ -8,7 +8,7 @@ import Head from "next/head";
 import React from "react";
 
 const Contato = () => {
-  const apiUrl = "https://not-cool.onrender.com/api/content-media?populate=*";
+  const apiUrl = "https://not-cool.onrender.com/api/locations-maps?populate=*";
   const { loading, error } = useCheckFetch(apiUrl);
 
   if (loading) {

@@ -11,7 +11,7 @@ import YouTube from "react-youtube";
 const TestimonialsPage = () => {
   const urlToFetch01 =
     "https://not-cool.onrender.com/api/testimonials-page?populate[TestimonialsRepeatable][populate]=*";
-  const { completeDataJSON: videoData } = useDataFetching(urlToFetch01);
+  const { completeDataJSON: contentData } = useDataFetching(urlToFetch01);
 
   return (
     <div>
@@ -32,23 +32,23 @@ const TestimonialsPage = () => {
 
       <NavBar />
 
-      {videoData.data ? (
+      {contentData.data ? (
         <div className="px-[24px] lg:px-[48px] w-full overflow-hidden text-[black] py-[72px] bg-[black]">
           <div className="relative z-10 grid gap-[8px]">
             <h1
               id="main-content"
               className="text-[white] text-[1.75rem] font-bold uppercase"
             >
-              {videoData.data.attributes.Title}
+              {contentData.data.attributes.Title}
             </h1>
 
             <p className="text-white75 text-[1.125rem] font-bold">
-              {videoData.data.attributes.Description}
+              {contentData.data.attributes.Description}
             </p>
           </div>
 
           <ul className="relative z-10 grid md:grid-cols-2 lg:grid-cols-3 gap-[12px] mt-[24px]">
-            {videoData.data.attributes.TestimonialsRepeatable.map(
+            {contentData.data.attributes.TestimonialsRepeatable.map(
               (mapItem, itemIndex) => (
                 <li
                   className="w-full h-fit text-[white] bg-[black] rounded-[8px] grid gap-[24px]"

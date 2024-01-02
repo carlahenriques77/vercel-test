@@ -18,10 +18,10 @@ const MeetOurTeam = () => {
   return (
     <>
       {teamData.data ? (
-        <div className="my-[72px] px-[24px] lg:px-[48px]" aria-hidden={true}>
-          <h1 className="text-center text-[black] font-bold text-[1.75rem]">
+        <div aria-hidden="true" className="my-[72px] px-[24px] lg:px-[48px]">
+          <h2 className="text-center text-[black] font-bold text-[1.75rem]">
             {teamData.data.attributes.YourTeam.Title}
-          </h1>
+          </h2>
 
           <div className="mt-[28px] grid items-center justify-center gap-[16px] sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {teamData.data.attributes.YourTeam.WorkerInformation.map(
@@ -67,10 +67,10 @@ const MeetOurTeam = () => {
           </div>
         </div>
       ) : (
-        <div className="my-[72px] px-[24px] lg:px-[48px]">
-          <h1 className="w-fit rounded-[8px] text-skeletonLoading bg-skeletonLoading text-center font-bold text-[1.75rem] mb-[36px] mx-auto">
+        <div aria-hidden="true" className="my-[72px] px-[24px] lg:px-[48px]">
+          <h2 className="w-fit rounded-[8px] text-skeletonLoading bg-skeletonLoading text-center font-bold text-[1.75rem] mb-[36px] mx-auto">
             Lorem ipsum dolor
-          </h1>
+          </h2>
 
           <div className="md:columns-2 lg:columns-4">
             {Array.from({ length: 8 }, (_, itemIndex) => (

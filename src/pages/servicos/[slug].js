@@ -22,9 +22,9 @@ const IndividualServices = () => {
   const { slug } = router.query;
 
   const [loading, setLoading] = useState(true);
-  const [videoData, setVideoData] = useState(null);
-  const [secondData, setSecondData] = useState(null);
-  const [thirdData, setThirdData] = useState(null);
+  const [contentData01, setContentData01] = useState(null);
+  const [contentData02, setContentData02] = useState(null);
+  const [contentData03, setContentData03] = useState(null);
 
   const [currentImageIndex, setCurrentImageIndex] = useState(null);
 
@@ -61,9 +61,9 @@ const IndividualServices = () => {
         return;
       }
 
-      setVideoData(completeDataJSON01);
-      setSecondData(completeDataJSON02);
-      setThirdData(completeDataJSON03);
+      setContentData01(completeDataJSON01);
+      setContentData02(completeDataJSON02);
+      setContentData03(completeDataJSON03);
       setLoading(false);
     };
 
@@ -71,7 +71,7 @@ const IndividualServices = () => {
   }, [slug, completeDataJSON01, completeDataJSON02, completeDataJSON03]);
 
   const generateImagePaths = () => {
-    const videoImagePaths = videoData.data?.flatMap((videoItem) =>
+    const videoImagePaths = contentData01.data?.flatMap((videoItem) =>
       videoItem.attributes.ImageSlideshow.data.map(
         (imageItem) =>
           `https://not-cool.onrender.com${imageItem.attributes.formats.small.url}`
@@ -107,39 +107,39 @@ const IndividualServices = () => {
         />
       )}
 
-      {videoData &&
-      videoData.data &&
-      secondData &&
-      secondData.data &&
-      thirdData &&
-      thirdData.data &&
+      {contentData01 &&
+      contentData01.data &&
+      contentData02 &&
+      contentData02.data &&
+      contentData03 &&
+      contentData03.data &&
       !loading ? (
         <>
           <LazyLoadComponent
-            lazyComponent={<IndividualServicesHero videoData={videoData} />}
+            lazyComponent={<IndividualServicesHero contentData01={contentData01} />}
           />
 
           <LazyLoadComponent
             lazyComponent={
-              <ServiceBenefits videoData={videoData} secondData={secondData} />
+              <ServiceBenefits contentData01={contentData01} contentData02={contentData02} />
             }
           />
 
           <LazyLoadComponent
-            lazyComponent={<ServiceDescription videoData={videoData} />}
+            lazyComponent={<ServiceDescription contentData01={contentData01} />}
           />
 
           <LazyLoadComponent
             lazyComponent={
               <ServiceGallery
-                videoData={videoData}
+                contentData01={contentData01}
                 handleImageClick={handleImageClick}
               />
             }
           />
 
           <LazyLoadComponent
-            lazyComponent={<ServicePricing thirdData={thirdData} />}
+            lazyComponent={<ServicePricing contentData03={contentData03} />}
           />
 
           <LazyLoadComponent
@@ -151,7 +151,7 @@ const IndividualServices = () => {
           <LazyLoadComponent lazyComponent={<Footer />} />
         </>
       ) : (
-        <>
+        <div aria-hidden="true">
           <div>
             <div className="mb-[72px] bg-skeletonLoading h-[70vh]"></div>
           </div>
@@ -199,7 +199,7 @@ const IndividualServices = () => {
                 </h1>
               </div>
 
-              <p className="text-skeletonLoading bg-skeletonLoading rounded-[12px] px-[24px] md:w-[80%] lg:px-[48px] xl:text-[1.125rem]">
+              <p className="text-skeletonLoading bg-skeletonLoading rounded-[12px] px-[24px] md:w-[80%] lg:px-[48px] ">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                 Excepturi nesciunt natus unde dolorem voluptas. Sit architecto,
                 facere.
@@ -214,7 +214,7 @@ const IndividualServices = () => {
           <div className="my-[72px] px-[24px] lg:px-[48px] rounded-[8px]">
             <div className="bg-skeletonLoading h-[40vh] rounded-[8px]"></div>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

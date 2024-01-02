@@ -33,23 +33,23 @@ const Home = () => {
 
   const urlToFetchImage01 =
     "https://not-cool.onrender.com/api/content-media?populate[LongTextDescription][populate][ThirdTextGroup][populate]=*";
-  const { completeDataJSON: imageData } = useDataFetching(urlToFetchImage01);
+  const { completeDataJSON: contentData01 } = useDataFetching(urlToFetchImage01);
 
   const urlToFetchImage02 = `https://not-cool.onrender.com/api/services-collections?populate=*`;
-  const { completeDataJSON: servicesData } = useDataFetching(urlToFetchImage02);
+  const { completeDataJSON: contentData02 } = useDataFetching(urlToFetchImage02);
 
   const urlToFetchImage03 =
     "https://not-cool.onrender.com/api/content-media?populate[Testimonials][populate]=*";
-  const { completeDataJSON: testimonialsData } =
+  const { completeDataJSON: contentData03 } =
     useDataFetching(urlToFetchImage03);
 
   const generateImagePaths = () => {
-    const longTextImagePath = `https://not-cool.onrender.com${imageData.data.attributes.LongTextDescription.ThirdTextGroup.IllustrationImage.data.attributes.formats.small.url}`;
+    const longTextImagePath = `https://not-cool.onrender.com${contentData01.data.attributes.LongTextDescription.ThirdTextGroup.IllustrationImage.data.attributes.formats.small.url}`;
 
-    const testimonialsImagePath = `https://not-cool.onrender.com${testimonialsData.data.attributes.Testimonials.Image.data.attributes.formats.small.url}`;
+    const testimonialsImagePath = `https://not-cool.onrender.com${contentData03.data.attributes.Testimonials.Image.data.attributes.formats.small.url}`;
 
-    // Replace this with the actual logic to extract image paths from servicesData.data
-    const serviceImagePaths = servicesData.data.map((mapItem) => {
+    // Replace this with the actual logic to extract image paths from contentData02.data
+    const serviceImagePaths = contentData02.data.map((mapItem) => {
       return `https://not-cool.onrender.com${mapItem.attributes.Image.data.attributes.formats.small.url}`;
     });
 
