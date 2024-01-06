@@ -215,8 +215,6 @@ table {
   border-spacing: 0;
 }
 
-/* All content side padding to separate from the Website "Walls" */
-
 @media only screen and (min-width: 768px) {
   .md-grid-cols-1fr-2fr {
     grid-template-columns: 1fr 1.14fr;

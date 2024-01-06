@@ -2,7 +2,5 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/politica-de-privacidade": "pages/politica-de-privacidade.js",
-  "/termos-e-condicoes": "pages/termos-e-condicoes.js",
   "/": "pages/index.js"
 }
